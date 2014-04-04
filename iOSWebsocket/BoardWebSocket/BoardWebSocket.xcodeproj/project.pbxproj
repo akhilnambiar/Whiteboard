@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B7CC10918EF6CA000D73F1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC10818EF6CA000D73F1A /* Foundation.framework */; };
+		1B7CC10B18EF6CA100D73F1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC10A18EF6CA100D73F1A /* CoreGraphics.framework */; };
+		1B7CC10D18EF6CA100D73F1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC10C18EF6CA100D73F1A /* UIKit.framework */; };
+		1B7CC11318EF6CA100D73F1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CC11118EF6CA100D73F1A /* InfoPlist.strings */; };
+		1B7CC11518EF6CA100D73F1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CC11418EF6CA100D73F1A /* main.m */; };
+		1B7CC11918EF6CA100D73F1A /* BoardWebSocketAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CC11818EF6CA100D73F1A /* BoardWebSocketAppDelegate.m */; };
+		1B7CC11C18EF6CA100D73F1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CC11A18EF6CA100D73F1A /* Main.storyboard */; };
+		1B7CC11F18EF6CA100D73F1A /* BoardWebSocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CC11E18EF6CA100D73F1A /* BoardWebSocketViewController.m */; };
+		1B7CC12118EF6CA100D73F1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CC12018EF6CA100D73F1A /* Images.xcassets */; };
+		1B7CC12818EF6CA100D73F1A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC12718EF6CA100D73F1A /* XCTest.framework */; };
+		1B7CC12918EF6CA100D73F1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC10818EF6CA000D73F1A /* Foundation.framework */; };
+		1B7CC12A18EF6CA100D73F1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC10C18EF6CA100D73F1A /* UIKit.framework */; };
+		1B7CC13218EF6CA100D73F1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CC13018EF6CA100D73F1A /* InfoPlist.strings */; };
+		1B7CC13418EF6CA100D73F1A /* BoardWebSocketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CC13318EF6CA100D73F1A /* BoardWebSocketTests.m */; };
+		1B7CC14118EF6DEB00D73F1A /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CC14018EF6DEA00D73F1A /* SRWebSocket.m */; };
+		1B7CC14318EF6E8600D73F1A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC14218EF6E8600D73F1A /* libicucore.dylib */; };
+		1B7CC14518EF6E9000D73F1A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC14418EF6E9000D73F1A /* CFNetwork.framework */; };
+		1B7CC14718EF6E9A00D73F1A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7CC14618EF6E9A00D73F1A /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1B7CC12B18EF6CA100D73F1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B7CC0FD18EF6CA000D73F1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B7CC10418EF6CA000D73F1A;
+			remoteInfo = BoardWebSocket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B7CC10518EF6CA000D73F1A /* BoardWebSocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardWebSocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B7CC10818EF6CA000D73F1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1B7CC10A18EF6CA100D73F1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1B7CC10C18EF6CA100D73F1A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1B7CC11018EF6CA100D73F1A /* BoardWebSocket-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BoardWebSocket-Info.plist"; sourceTree = "<group>"; };
+		1B7CC11218EF6CA100D73F1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1B7CC11418EF6CA100D73F1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1B7CC11618EF6CA100D73F1A /* BoardWebSocket-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BoardWebSocket-Prefix.pch"; sourceTree = "<group>"; };
+		1B7CC11718EF6CA100D73F1A /* BoardWebSocketAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardWebSocketAppDelegate.h; sourceTree = "<group>"; };
+		1B7CC11818EF6CA100D73F1A /* BoardWebSocketAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardWebSocketAppDelegate.m; sourceTree = "<group>"; };
+		1B7CC11B18EF6CA100D73F1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B7CC11D18EF6CA100D73F1A /* BoardWebSocketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardWebSocketViewController.h; sourceTree = "<group>"; };
+		1B7CC11E18EF6CA100D73F1A /* BoardWebSocketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardWebSocketViewController.m; sourceTree = "<group>"; };
+		1B7CC12018EF6CA100D73F1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1B7CC12618EF6CA100D73F1A /* BoardWebSocketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoardWebSocketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B7CC12718EF6CA100D73F1A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		1B7CC12F18EF6CA100D73F1A /* BoardWebSocketTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BoardWebSocketTests-Info.plist"; sourceTree = "<group>"; };
+		1B7CC13118EF6CA100D73F1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1B7CC13318EF6CA100D73F1A /* BoardWebSocketTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardWebSocketTests.m; sourceTree = "<group>"; };
+		1B7CC13E18EF6DEA00D73F1A /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		1B7CC13F18EF6DEA00D73F1A /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		1B7CC14018EF6DEA00D73F1A /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		1B7CC14218EF6E8600D73F1A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		1B7CC14418EF6E9000D73F1A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1B7CC14618EF6E9A00D73F1A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B7CC10218EF6CA000D73F1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7CC14718EF6E9A00D73F1A /* Security.framework in Frameworks */,
+				1B7CC14518EF6E9000D73F1A /* CFNetwork.framework in Frameworks */,
+				1B7CC14318EF6E8600D73F1A /* libicucore.dylib in Frameworks */,
+				1B7CC10B18EF6CA100D73F1A /* CoreGraphics.framework in Frameworks */,
+				1B7CC10D18EF6CA100D73F1A /* UIKit.framework in Frameworks */,
+				1B7CC10918EF6CA000D73F1A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B7CC12318EF6CA100D73F1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7CC12818EF6CA100D73F1A /* XCTest.framework in Frameworks */,
+				1B7CC12A18EF6CA100D73F1A /* UIKit.framework in Frameworks */,
+				1B7CC12918EF6CA100D73F1A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B7CC0FC18EF6CA000D73F1A = {
+			isa = PBXGroup;
+			children = (
+				1B7CC10E18EF6CA100D73F1A /* BoardWebSocket */,
+				1B7CC12D18EF6CA100D73F1A /* BoardWebSocketTests */,
+				1B7CC10718EF6CA000D73F1A /* Frameworks */,
+				1B7CC10618EF6CA000D73F1A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B7CC10618EF6CA000D73F1A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B7CC10518EF6CA000D73F1A /* BoardWebSocket.app */,
+				1B7CC12618EF6CA100D73F1A /* BoardWebSocketTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B7CC10718EF6CA000D73F1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B7CC14618EF6E9A00D73F1A /* Security.framework */,
+				1B7CC14418EF6E9000D73F1A /* CFNetwork.framework */,
+				1B7CC14218EF6E8600D73F1A /* libicucore.dylib */,
+				1B7CC10818EF6CA000D73F1A /* Foundation.framework */,
+				1B7CC10A18EF6CA100D73F1A /* CoreGraphics.framework */,
+				1B7CC10C18EF6CA100D73F1A /* UIKit.framework */,
+				1B7CC12718EF6CA100D73F1A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1B7CC10E18EF6CA100D73F1A /* BoardWebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				1B7CC11718EF6CA100D73F1A /* BoardWebSocketAppDelegate.h */,
+				1B7CC11818EF6CA100D73F1A /* BoardWebSocketAppDelegate.m */,
+				1B7CC11A18EF6CA100D73F1A /* Main.storyboard */,
+				1B7CC11D18EF6CA100D73F1A /* BoardWebSocketViewController.h */,
+				1B7CC11E18EF6CA100D73F1A /* BoardWebSocketViewController.m */,
+				1B7CC12018EF6CA100D73F1A /* Images.xcassets */,
+				1B7CC10F18EF6CA100D73F1A /* Supporting Files */,
+			);
+			path = BoardWebSocket;
+			sourceTree = "<group>";
+		};
+		1B7CC10F18EF6CA100D73F1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B7CC13D18EF6DEA00D73F1A /* SocketRocket */,
+				1B7CC11018EF6CA100D73F1A /* BoardWebSocket-Info.plist */,
+				1B7CC11118EF6CA100D73F1A /* InfoPlist.strings */,
+				1B7CC11418EF6CA100D73F1A /* main.m */,
+				1B7CC11618EF6CA100D73F1A /* BoardWebSocket-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B7CC12D18EF6CA100D73F1A /* BoardWebSocketTests */ = {
+			isa = PBXGroup;
+			children = (
+				1B7CC13318EF6CA100D73F1A /* BoardWebSocketTests.m */,
+				1B7CC12E18EF6CA100D73F1A /* Supporting Files */,
+			);
+			path = BoardWebSocketTests;
+			sourceTree = "<group>";
+		};
+		1B7CC12E18EF6CA100D73F1A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B7CC12F18EF6CA100D73F1A /* BoardWebSocketTests-Info.plist */,
+				1B7CC13018EF6CA100D73F1A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B7CC13D18EF6DEA00D73F1A /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				1B7CC13E18EF6DEA00D73F1A /* SocketRocket-Prefix.pch */,
+				1B7CC13F18EF6DEA00D73F1A /* SRWebSocket.h */,
+				1B7CC14018EF6DEA00D73F1A /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B7CC10418EF6CA000D73F1A /* BoardWebSocket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B7CC13718EF6CA100D73F1A /* Build configuration list for PBXNativeTarget "BoardWebSocket" */;
+			buildPhases = (
+				1B7CC10118EF6CA000D73F1A /* Sources */,
+				1B7CC10218EF6CA000D73F1A /* Frameworks */,
+				1B7CC10318EF6CA000D73F1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BoardWebSocket;
+			productName = BoardWebSocket;
+			productReference = 1B7CC10518EF6CA000D73F1A /* BoardWebSocket.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1B7CC12518EF6CA100D73F1A /* BoardWebSocketTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B7CC13A18EF6CA100D73F1A /* Build configuration list for PBXNativeTarget "BoardWebSocketTests" */;
+			buildPhases = (
+				1B7CC12218EF6CA100D73F1A /* Sources */,
+				1B7CC12318EF6CA100D73F1A /* Frameworks */,
+				1B7CC12418EF6CA100D73F1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B7CC12C18EF6CA100D73F1A /* PBXTargetDependency */,
+			);
+			name = BoardWebSocketTests;
+			productName = BoardWebSocketTests;
+			productReference = 1B7CC12618EF6CA100D73F1A /* BoardWebSocketTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B7CC0FD18EF6CA000D73F1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BoardWebSocket;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Akhil Nambiar";
+				TargetAttributes = {
+					1B7CC12518EF6CA100D73F1A = {
+						TestTargetID = 1B7CC10418EF6CA000D73F1A;
+					};
+				};
+			};
+			buildConfigurationList = 1B7CC10018EF6CA000D73F1A /* Build configuration list for PBXProject "BoardWebSocket" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B7CC0FC18EF6CA000D73F1A;
+			productRefGroup = 1B7CC10618EF6CA000D73F1A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B7CC10418EF6CA000D73F1A /* BoardWebSocket */,
+				1B7CC12518EF6CA100D73F1A /* BoardWebSocketTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B7CC10318EF6CA000D73F1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7CC12118EF6CA100D73F1A /* Images.xcassets in Resources */,
+				1B7CC11318EF6CA100D73F1A /* InfoPlist.strings in Resources */,
+				1B7CC11C18EF6CA100D73F1A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B7CC12418EF6CA100D73F1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7CC13218EF6CA100D73F1A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B7CC10118EF6CA000D73F1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7CC14118EF6DEB00D73F1A /* SRWebSocket.m in Sources */,
+				1B7CC11F18EF6CA100D73F1A /* BoardWebSocketViewController.m in Sources */,
+				1B7CC11518EF6CA100D73F1A /* main.m in Sources */,
+				1B7CC11918EF6CA100D73F1A /* BoardWebSocketAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B7CC12218EF6CA100D73F1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7CC13418EF6CA100D73F1A /* BoardWebSocketTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1B7CC12C18EF6CA100D73F1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B7CC10418EF6CA000D73F1A /* BoardWebSocket */;
+			targetProxy = 1B7CC12B18EF6CA100D73F1A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1B7CC11118EF6CA100D73F1A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B7CC11218EF6CA100D73F1A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1B7CC11A18EF6CA100D73F1A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B7CC11B18EF6CA100D73F1A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B7CC13018EF6CA100D73F1A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B7CC13118EF6CA100D73F1A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B7CC13518EF6CA100D73F1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		1B7CC13618EF6CA100D73F1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B7CC13818EF6CA100D73F1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BoardWebSocket/BoardWebSocket-Prefix.pch";
+				INFOPLIST_FILE = "BoardWebSocket/BoardWebSocket-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1B7CC13918EF6CA100D73F1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BoardWebSocket/BoardWebSocket-Prefix.pch";
+				INFOPLIST_FILE = "BoardWebSocket/BoardWebSocket-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1B7CC13B18EF6CA100D73F1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BoardWebSocket.app/BoardWebSocket";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BoardWebSocket/BoardWebSocket-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "BoardWebSocketTests/BoardWebSocketTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1B7CC13C18EF6CA100D73F1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BoardWebSocket.app/BoardWebSocket";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BoardWebSocket/BoardWebSocket-Prefix.pch";
+				INFOPLIST_FILE = "BoardWebSocketTests/BoardWebSocketTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B7CC10018EF6CA000D73F1A /* Build configuration list for PBXProject "BoardWebSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B7CC13518EF6CA100D73F1A /* Debug */,
+				1B7CC13618EF6CA100D73F1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B7CC13718EF6CA100D73F1A /* Build configuration list for PBXNativeTarget "BoardWebSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B7CC13818EF6CA100D73F1A /* Debug */,
+				1B7CC13918EF6CA100D73F1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1B7CC13A18EF6CA100D73F1A /* Build configuration list for PBXNativeTarget "BoardWebSocketTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B7CC13B18EF6CA100D73F1A /* Debug */,
+				1B7CC13C18EF6CA100D73F1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B7CC0FD18EF6CA000D73F1A /* Project object */;
+}
