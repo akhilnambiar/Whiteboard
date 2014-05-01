@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SRWebSocket.h"
+#import "SmoothedBIView.h"
+#import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface BoardViewController : UIViewController
+#import "GTMOAuth2ViewControllerTouch.h"
+#import "GTLDrive.h"
+
+
+
+@interface BoardViewController : UIViewController <SRWebSocketDelegate,boardViewDelegate>
+
+@property (nonatomic, retain) GTLServiceDrive *driveService;
 
 @end

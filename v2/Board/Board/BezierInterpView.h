@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol someProtocol
+- (void)recivedTouch:(UITouch *)touch fromUIView:(UIView *)uiView;
+@end
+
 @interface BezierInterpView : UIView
 
 @end

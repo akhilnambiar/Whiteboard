@@ -7,6 +7,11 @@
 //
 
 #import "SmoothedBIView.h"
+@interface SmoothedBIView()
+@property (weak, nonatomic) IBOutlet UILabel *lifeCycleTest;
+@property (weak, nonatomic) UIImage *recievedData;
+
+@end
 
 @implementation SmoothedBIView
 {
@@ -14,6 +19,23 @@
     UIImage *incrementalImage;
     CGPoint pts[5]; // we now need to keep track of the four points of a Bezier segment and the first control point of the next segment
     uint ctr;
+}
+
+
+@synthesize delegate;
+
+-(void)updateLabel:(NSData *)imageData;
+{
+    self.lifeCycleTest.text = @"Changed";
+    
+    UIImage *image = [UIImage imageWithData:imageData];
+    //[image drawAtPoint:CGPointZero];
+    //UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
+    //[self addSubview: imageView];
+    self.recievedData = image;
+    incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -45,6 +67,7 @@
 - (void)drawRect:(CGRect)rect
 {
     [incrementalImage drawInRect:rect];
+    [self.recievedData drawInRect:rect];
     [path stroke];
 }
 
@@ -54,10 +77,15 @@
     ctr = 0;
     UITouch *touch = [touches anyObject];
     pts[0] = [touch locationInView:self];
+    
+    //added Code
+    //UITouch *touch = [touches anyObject];
+    //[delegate recivedTouch:touch fromUIView:self];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    //NSLog(@"pooping Monkey");
     UITouch *touch = [touches anyObject];
     CGPoint p = [touch locationInView:self];
     ctr++;
@@ -75,15 +103,22 @@
         pts[1] = pts[4];
         ctr = 1;
     }
-    
+    //NSData *bezierData = [NSKeyedArchiver archivedDataWithRootObject:path];
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrementalImage)];
+    [delegate recivedTouch:touch fromUIView:self andData: imageData];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    NSLog(@"me fin los tocas");
+    UITouch *touch = [touches anyObject];
     [self drawBitmap];
     [self setNeedsDisplay];
     [path removeAllPoints];
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrementalImage)];
+    [delegate recivedTouch:touch fromUIView:self andData: imageData];
     ctr = 0;
+    
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -91,8 +126,20 @@
     [self touchesEnded:touches withEvent:event];
 }
 
+-(void)updateBoard:(NSData *)message
+{
+    UIImage *newImage = [UIImage imageWithData:message];
+    [newImage drawAtPoint:CGPointZero];
+    //[[UIColor blackColor] setStroke];
+    //[path stroke];
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    incrementalImage = newImage;
+}
+
 - (void)drawBitmap
 {
+    //AT SOME POINT, WE NEED TO INSTALL INCREMENTAL CACHING
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, 0.0);
     
     if (!incrementalImage) // first time; paint background white
