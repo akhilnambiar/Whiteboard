@@ -9,6 +9,7 @@
 #import "GoogleLoginViewController.h"
 
 @interface GoogleLoginViewController ()
+@property (strong, nonatomic) IBOutlet UIWebView *GoogleWebView;
 
 @end
 
@@ -17,7 +18,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    NSString *fullURL = @"http://conecode.com";
+    NSURL *url = [NSURL URLWithString:fullURL];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    [self.GoogleWebView loadRequest:requestObj];
 }
 
 - (void)didReceiveMemoryWarning
