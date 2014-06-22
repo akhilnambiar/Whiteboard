@@ -136,7 +136,7 @@
         }
     }
     // Form the URL string.
-    NSString *targetURLString = [NSString stringWithFormat:@"%@?scope=%@&amp;redirect_uri=%@&amp;client_id=%@&amp;response_type=code",
+    NSString *targetURLString = [NSString stringWithFormat:@"%@?scope=%@&redirect_uri=%@&client_id=%@&response_type=code",
                                  authorizationTokenEndpoint,
                                  scope,
                                  _redirectUri,
@@ -144,6 +144,8 @@
     //HERE IS THE URL STRING THAT WORKED
     NSString *fullURL = @"https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=919063903792-mq1o9pmi47qdbe2ar1rv72fhohta9unf.apps.googleusercontent.com";
     
+    //THIS IS THE URL THAT HAS A REDIRICT
+    NSString *redirectURL = @"https://accounts.google.com/o/oauth2/auth?client_id=client_id=919063903792-mq1o9pmi47qdbe2ar1rv72fhohta9unf.apps.googleusercontent.com&redirect_uri=https://www.google.com&scope=profile&response_type=code";
     
     // Do some basic webview setup.
     [self setDelegate:self];
@@ -151,7 +153,9 @@
     [self setAutoresizingMask:_parentView.autoresizingMask];
     
     // Make the request and add self (webview) to the parent view.
-    [self loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullURL]]];
+    [self loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetURLString]]];
+    //NSLog(@"HAHAHAHAH");
+    //NSLog(@"%@",targetURLString);
     [_parentView addSubview:self];
 }
 
@@ -171,7 +175,8 @@
         
         // Show a "Please wait..." message to the webview.
         NSString *html = @"<html><head><title>Please wait</title></head><body><h1>Please wait...</h1></body></html>";
-        [self loadHTMLString:html baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+        //[self loadHTMLString:html baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+        NSLog(@"The authorization code is %@",self.authorizationCode);
         
         // Exchange the authorization code for an access code.
         [self exchangeAuthorizationCodeForAccessToken];
@@ -186,9 +191,10 @@
 }
 
 -(void)exchangeAuthorizationCodeForAccessToken{
+    NSLog(@"I start exchanging the authorization code");
     // Create a string containing all the post parameters required to exchange the authorization code
     // with the access token.
-    NSString *postParams = [NSString stringWithFormat:@"code=%@&amp;client_id=%@&amp;client_secret=%@&amp;redirect_uri=%@&amp;grant_type=authorization_code",
+    NSString *postParams = [NSString stringWithFormat:@"code=%@&client_id=%@&client_secret=%@&redirect_uri=%@&grant_type=authorization_code",
                             _authorizationCode,
                             _clientID,
                             _clientSecret,
@@ -408,6 +414,9 @@
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     NSLog(@"%d", [httpResponse statusCode]);
+    if ([httpResponse statusCode]!=200){
+        NSLog(@"We have a bad client response. You're a failure");
+    }
 }
 
 

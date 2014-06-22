@@ -33,6 +33,34 @@
 			remoteGlobalIDString = 1B654D1B193A98CD001D1B19;
 			remoteInfo = GoogleLogin;
 		};
+		1B8F636E19579B5400F4EB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B8F636719579B5300F4EB84 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
+			remoteInfo = GTLFramework;
+		};
+		1B8F637019579B5400F4EB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B8F636719579B5300F4EB84 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
+			remoteInfo = GTLTouchStaticLib;
+		};
+		1B8F637219579B5400F4EB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B8F636719579B5300F4EB84 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
+			remoteInfo = GTLUnitTests;
+		};
+		1B8F637419579B5400F4EB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B8F636719579B5300F4EB84 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
+			remoteInfo = DevelopmentTestTool;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +87,7 @@
 		1B654D4A193A98CE001D1B19 /* GoogleLoginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleLoginTests.m; sourceTree = "<group>"; };
 		1B88D24F193D92E000F86390 /* GoogleOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleOAuth.h; sourceTree = "<group>"; };
 		1B88D250193D92E000F86390 /* GoogleOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleOAuth.m; sourceTree = "<group>"; };
+		1B8F636719579B5300F4EB84 /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = "../../../../google-api-objectivec-client-read-only/Source/GTL.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +121,7 @@
 				1B654D44193A98CE001D1B19 /* GoogleLoginTests */,
 				1B654D1E193A98CD001D1B19 /* Frameworks */,
 				1B654D1D193A98CD001D1B19 /* Products */,
+				1B8F636719579B5300F4EB84 /* GTL.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +192,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1B8F636819579B5300F4EB84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B8F636F19579B5400F4EB84 /* GTL.framework */,
+				1B8F637119579B5400F4EB84 /* libGTLTouchStaticLib.a */,
+				1B8F637319579B5400F4EB84 /* GTLUnitTests.xctest */,
+				1B8F637519579B5400F4EB84 /* DevelopmentTestTool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,6 +267,12 @@
 			mainGroup = 1B654D13193A98CD001D1B19;
 			productRefGroup = 1B654D1D193A98CD001D1B19 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1B8F636819579B5300F4EB84 /* Products */;
+					ProjectRef = 1B8F636719579B5300F4EB84 /* GTL.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1B654D1B193A98CD001D1B19 /* GoogleLogin */,
@@ -233,6 +280,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1B8F636F19579B5400F4EB84 /* GTL.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTL.framework;
+			remoteRef = 1B8F636E19579B5400F4EB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B8F637119579B5400F4EB84 /* libGTLTouchStaticLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGTLTouchStaticLib.a;
+			remoteRef = 1B8F637019579B5400F4EB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B8F637319579B5400F4EB84 /* GTLUnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLUnitTests.xctest;
+			remoteRef = 1B8F637219579B5400F4EB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B8F637519579B5400F4EB84 /* DevelopmentTestTool */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DevelopmentTestTool;
+			remoteRef = 1B8F637419579B5400F4EB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1B654D1A193A98CD001D1B19 /* Resources */ = {

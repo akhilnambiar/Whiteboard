@@ -18,10 +18,19 @@
 
 - (IBAction)showProfile:(id)sender {
     NSLog(@"I clicked Show my profile");
-    [_googleOAuth authorizeUserWithClienID:@"YOUR_CLIENT_ID"
-                           andClientSecret:@"YOUR_CLIENT_SECRET"
+    /*
+    [_googleOAuth authorizeUserWithClienID:@"919063903792-mq1o9pmi47qdbe2ar1rv72fhohta9unf.apps.googleusercontent.com"
+                           andClientSecret:@"_4RSLRU9KjLFjZZiVXgEpFT5"
                              andParentView:self.view
                                  andScopes:[NSArray arrayWithObjects:@"https://www.googleapis.com/auth/userinfo.profile", nil]
+     ];
+    */
+    //New Scope for google drive
+    //https://www.googleapis.com/auth/drive
+    [_googleOAuth authorizeUserWithClienID:@"919063903792-mq1o9pmi47qdbe2ar1rv72fhohta9unf.apps.googleusercontent.com"
+                           andClientSecret:@"_4RSLRU9KjLFjZZiVXgEpFT5"
+                             andParentView:self.view
+                                 andScopes:[NSArray arrayWithObjects:@"https://www.googleapis.com/auth/drive", nil]
      ];
 }
 - (IBAction)revokeAccess:(id)sender {
@@ -43,9 +52,18 @@
 }
 
 -(void)authorizationWasSuccessful{
+    /*
     [self.googleOAuth callAPI:@"https://www.googleapis.com/oauth2/v1/userinfo"
                withHttpMethod:httpMethod_GET
            postParameterNames:nil postParameterValues:nil];
+    */
+    //call for google drive
+    
+    //https://www.googleapis.com/drive/v2/files
+    [self.googleOAuth callAPI:@"https://www.googleapis.com/oauth2/v1/userinfo"
+               withHttpMethod:httpMethod_GET
+           postParameterNames:nil postParameterValues:nil];
+    
 }
 
 -(void)accessTokenWasRevoked{
@@ -91,6 +109,7 @@
              [_table reloadData];
              */
             //Figure out what to do here
+            NSLog(@"I'm about to spit out all the items in the dictionary");
             for(NSString *key in [dictionary allKeys]) {
                 NSLog(@"%@",[dictionary objectForKey:key]);
             }
