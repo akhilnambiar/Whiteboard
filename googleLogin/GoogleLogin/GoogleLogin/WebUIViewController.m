@@ -7,6 +7,7 @@
 //
 
 #import "WebUIViewController.h"
+#import "GoogleLoginViewController.h"
 
 @interface WebUIViewController ()
 @property (strong, nonatomic) IBOutlet UIWebView *UIWebInstance;

@@ -524,6 +524,10 @@ postParameterValues:(NSArray *)values{
         [self makeRequest:request];
     }
 }
+
+-(NSString*)getToken{
+    return self.authorizationCode;
+}
 // Check for invalid refresh token.
 // In that case guide the user to enter the credentials again.
 

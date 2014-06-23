@@ -31,6 +31,7 @@ typedef enum {
 -(void)revokeAccessToken;
 -(void)callAPI:(NSString *)apiURL withHttpMethod:(HTTP_Method)httpMethod
 postParameterNames:(NSArray *)params postParameterValues:(NSArray *)values;
-
+-(NSString*)getToken;
+extern NSString* GoogleToken;
 
 @end

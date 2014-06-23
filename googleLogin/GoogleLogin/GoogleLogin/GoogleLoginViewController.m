@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSMutableArray *arrProfileInfo;
 @property (nonatomic, strong) NSMutableArray *arrProfileInfoLabel;
 @property (nonatomic, strong) GoogleOAuth *googleOAuth;
+
 @end
 
 @implementation GoogleLoginViewController
