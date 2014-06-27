@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DrEditFileEditViewController : UIViewController
+#import "GTLDrive.h"
 
+#import "DrEditFileEditDelegate.h"
+
+@interface DrEditFileEditViewController : UIViewController <UITextViewDelegate, UIAlertViewDelegate>
+@property GTLServiceDrive *driveService;
+@property GTLDriveFile *driveFile;
+@property id<DrEditFileEditDelegate> delegate;
+@property NSInteger fileIndex;
 @end

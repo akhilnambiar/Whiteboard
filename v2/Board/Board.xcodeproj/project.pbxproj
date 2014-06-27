@@ -426,7 +426,7 @@
 		1B42FD2519107D66003658A0 /* GTLUnitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GTLUnitTests.octest;
+			path = GTLUnitTests.xctest;
 			remoteRef = 1B42FD2419107D66003658A0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="QO3-6f-rJq">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Class View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ClassViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Classboard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoB-rB-aSw">
+                                <rect key="frame" x="254" y="123" width="261" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ym9-k7-eCy">
+                                <rect key="frame" x="294" y="374" width="197" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <state key="normal" title="Sign In wih ">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecF-Cx-jv4">
+                                <rect key="frame" x="266" y="584" width="253" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-38" maxY="5"/>
+                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                <state key="normal" title="Sign in with Google" backgroundImage="SignIn">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N7A-Ox-GaY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FOM-FA-sxk"/>
+                    <connections>
+                        <segue destination="r2n-0T-QHB" kind="push" identifier="postSignon" id="lfJ-Wc-ja7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="866" y="-276"/>
+        </scene>
+        <!--Splash Page View Controller-->
+        <scene sceneID="riz-Tp-T3O">
+            <objects>
+                <viewController id="r2n-0T-QHB" customClass="SplashPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Arv-Of-N5E"/>
+                        <viewControllerLayoutGuide type="bottom" id="UI1-45-7ql"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vVv-qZ-DR3">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="8Es-HD-eY9" userLabel="SingleBoard">
+                                <rect key="frame" x="0.0" y="0.0" width="389" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.4973493303571429" green="0.044549997973406689" blue="0.032320935316983344" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="Single Board">
+                                    <color key="titleColor" red="0.98767076499999995" green="1" blue="0.98567383549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.98767076497891138" green="1" blue="0.9856738355245781" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="n1o-Ku-u0t" kind="push" id="I09-Fa-8Ju"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBX-kh-PVT" userLabel="ViewDocs">
+                                <rect key="frame" x="0.0" y="512" width="389" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.81289859693877553" green="0.6476127194915221" blue="0.0019969095185808491" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="View Documents">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELr-mR-NfR" userLabel="Invites">
+                                <rect key="frame" x="389" y="512" width="389" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.35611184865944351" green="0.0" blue="0.53708944515306123" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Invites">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCv-ZT-KUb" userLabel="GroupBoard">
+                                <rect key="frame" x="389" y="0.0" width="389" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0027518714127868367" blue="0.54549984056122447" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <state key="normal" title="Group Board">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kpK-hC-u4X"/>
+                    <connections>
+                        <outlet property="GroupBoard" destination="xCv-ZT-KUb" id="eaM-8T-cyW"/>
+                        <outlet property="Invites" destination="ELr-mR-NfR" id="ani-Ik-0l9"/>
+                        <outlet property="SingleBoard" destination="8Es-HD-eY9" id="h5S-om-dnd"/>
+                        <outlet property="ViewDocs" destination="RBX-kh-PVT" id="GOd-tG-zNW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HsH-ko-kpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1809" y="-276"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pV9-Jm-o6c">
+            <objects>
+                <viewController id="n1o-Ku-u0t" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IuF-gR-m3H"/>
+                        <viewControllerLayoutGuide type="bottom" id="nfb-cj-Ja1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MxI-sm-iZ6">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wl-fD-Lnc">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="OLO-kD-CH0" kind="push" id="VRS-aq-zuM"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlz-tz-2Td">
+                                <rect key="frame" x="384" y="0.0" width="384" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Tlz-tz-2Td" secondAttribute="trailing" id="1vF-u6-Kgu"/>
+                            <constraint firstItem="4Wl-fD-Lnc" firstAttribute="leading" secondItem="MxI-sm-iZ6" secondAttribute="leading" id="6ib-s3-iRO"/>
+                            <constraint firstItem="Tlz-tz-2Td" firstAttribute="leading" secondItem="4Wl-fD-Lnc" secondAttribute="trailing" id="6r3-Vq-4xs"/>
+                            <constraint firstItem="4Wl-fD-Lnc" firstAttribute="top" secondItem="MxI-sm-iZ6" secondAttribute="top" id="793-At-yRa"/>
+                            <constraint firstItem="Tlz-tz-2Td" firstAttribute="width" secondItem="4Wl-fD-Lnc" secondAttribute="width" id="JxT-P0-zrI"/>
+                            <constraint firstItem="Tlz-tz-2Td" firstAttribute="top" secondItem="MxI-sm-iZ6" secondAttribute="top" id="LDD-46-Uxj"/>
+                            <constraint firstAttribute="bottom" secondItem="4Wl-fD-Lnc" secondAttribute="bottom" id="XRJ-X6-Q3z"/>
+                            <constraint firstItem="nfb-cj-Ja1" firstAttribute="top" secondItem="Tlz-tz-2Td" secondAttribute="bottom" id="jSK-qj-7sd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hf0-Wl-fS0"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xn3-17-cnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2988" y="13"/>
+        </scene>
+        <!--Board View Controller-->
+        <scene sceneID="AeJ-ak-HxP">
+            <objects>
+                <viewController id="OLO-kD-CH0" customClass="BoardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VLA-Bn-7uq"/>
+                        <viewControllerLayoutGuide type="bottom" id="7oB-E1-VaP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BFk-3U-ICg" customClass="SmoothedBIView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="doq-zH-wZ6">
+                                <rect key="frame" x="0.0" y="490" width="184" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Pencil" id="MS0-oW-jdY"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="y88-KG-qlj"/>
+                    <connections>
+                        <outlet property="pencilitem" destination="MS0-oW-jdY" id="4jm-lR-it3"/>
+                        <outlet property="smooth" destination="BFk-3U-ICg" id="N2u-Dh-WfC"/>
+                        <outlet property="toolbar" destination="doq-zH-wZ6" id="D5U-67-Q3h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="53h-io-eFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6666" y="1178"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="igw-D6-ixI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QO3-6f-rJq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="80G-Hs-0Sj">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="XeP-SJ-Ts0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NpL-yz-1Y7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-115" y="380"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SignIn" width="216" height="72"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

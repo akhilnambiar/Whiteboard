@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DrEditFilesListViewController : UIViewController
+#import "DrEditFileEditDelegate.h"
+
+@interface DrEditFilesListViewController : UITableViewController <DrEditFileEditDelegate>
 
 @end

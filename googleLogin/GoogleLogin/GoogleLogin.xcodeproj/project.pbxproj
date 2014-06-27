@@ -32,6 +32,7 @@
 		1B8F6DB81957B79200F4EB84 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8F6DB11957B59700F4EB84 /* libGTLTouchStaticLib.a */; };
 		1B8F6DBB1957D56E00F4EB84 /* DrEditFilesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8F6DBA1957D56D00F4EB84 /* DrEditFilesListViewController.m */; };
 		1B8F6DBE1957FB5700F4EB84 /* DrEditFileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8F6DBD1957FB5700F4EB84 /* DrEditFileEditViewController.m */; };
+		1B995DE8195932AB004F64C6 /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B995DE7195932AB004F64C6 /* DrEditUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,9 @@
 		1B8F6DBA1957D56D00F4EB84 /* DrEditFilesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditFilesListViewController.m; sourceTree = "<group>"; };
 		1B8F6DBC1957FB5600F4EB84 /* DrEditFileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditFileEditViewController.h; sourceTree = "<group>"; };
 		1B8F6DBD1957FB5700F4EB84 /* DrEditFileEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditFileEditViewController.m; sourceTree = "<group>"; };
+		1B995DDF195931EB004F64C6 /* DrEditFileEditDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditFileEditDelegate.h; sourceTree = "<group>"; };
+		1B995DE6195932AB004F64C6 /* DrEditUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditUtilities.h; sourceTree = "<group>"; };
+		1B995DE7195932AB004F64C6 /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +189,10 @@
 				1B654D31193A98CD001D1B19 /* Main.storyboard */,
 				1B8F6DB91957D56D00F4EB84 /* DrEditFilesListViewController.h */,
 				1B8F6DBA1957D56D00F4EB84 /* DrEditFilesListViewController.m */,
+				1B995DE6195932AB004F64C6 /* DrEditUtilities.h */,
+				1B995DE7195932AB004F64C6 /* DrEditUtilities.m */,
 				1B8F6DBC1957FB5600F4EB84 /* DrEditFileEditViewController.h */,
+				1B995DDF195931EB004F64C6 /* DrEditFileEditDelegate.h */,
 				1B8F6DBD1957FB5700F4EB84 /* DrEditFileEditViewController.m */,
 				1B88D24F193D92E000F86390 /* GoogleOAuth.h */,
 				1B88D250193D92E000F86390 /* GoogleOAuth.m */,
@@ -376,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B995DE8195932AB004F64C6 /* DrEditUtilities.m in Sources */,
 				1B654D36193A98CD001D1B19 /* GoogleLoginViewController.m in Sources */,
 				1B654D2C193A98CD001D1B19 /* main.m in Sources */,
 				1B654D30193A98CD001D1B19 /* GoogleLoginAppDelegate.m in Sources */,
