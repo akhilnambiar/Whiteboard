@@ -18,15 +18,18 @@
 @property CGFloat brush;
 @property CGFloat opacity;
 @property BOOL mouseSwiped;
+@property BOOL toggleShowing;
+@property BOOL animationDone;
 @property (nonatomic, readwrite) SRWebSocket *warbleSocket;
 @property (nonatomic, readwrite) BOOL socketReady;
 @property (weak, nonatomic) IBOutlet UILabel *connectStatus;
 @property (strong, nonatomic) IBOutlet SmoothedBIView *smooth2;
 @property NSData* localdata;
+@property (weak, nonatomic) IBOutlet UIView *toolBar;
 @property (strong, nonatomic) IBOutlet SmoothedBIView *smooth;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *pencilitem;
-
+/*
+@property (weak, nonatomic) IBOutlet UIView *toolBar;
+*/
 @end
 
 
@@ -38,64 +41,7 @@ NSString *scopes = @"https://www.googleapis.com/auth/drive.file";
 NSString *keychainItemName = @"My App";
 NSString *clientId = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559.apps.googleusercontent.com";
 NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@developer.gserviceaccount.com";
-/*
- 
- IMPLEMENTATION 1
- 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    self.mouseSwiped = NO;
-    UITouch *touch = [touches anyObject];
-    self.lastPoint = [touch locationInView:self.view];
-}
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    self.mouseSwiped = YES;
-    UITouch *touch = [touches anyObject];
-    CGPoint currentPoint = [touch locationInView:self.view];
-    
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [self.TopBoardLayer.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), self.lastPoint.x, self.lastPoint.y);
-    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
-    CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), self.brush );
-    CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), self.red, self.green, self.blue, 1.0);
-    CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
-    
-    CGContextStrokePath(UIGraphicsGetCurrentContext());
-    self.TopBoardLayer.image = UIGraphicsGetImageFromCurrentImageContext();
-    [self.TopBoardLayer setAlpha:self.opacity];
-    UIGraphicsEndImageContext();
-    
-    self.lastPoint = currentPoint;
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    if(!self.mouseSwiped) {
-        UIGraphicsBeginImageContext(self.view.frame.size);
-        [self.TopBoardLayer.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), self.brush);
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), self.red, self.green, self.blue, self.opacity);
-        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), self.lastPoint.x, self.lastPoint.y);
-        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), self.lastPoint.x, self.lastPoint.y);
-        CGContextStrokePath(UIGraphicsGetCurrentContext());
-        CGContextFlush(UIGraphicsGetCurrentContext());
-        self.TopBoardLayer.image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-    }
-    
-    UIGraphicsBeginImageContext(self.BottomBoardLayer.frame.size);
-    [self.BottomBoardLayer.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
-    [self.TopBoardLayer.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:self.opacity];
-    self.BottomBoardLayer.image = UIGraphicsGetImageFromCurrentImageContext();
-    self.TopBoardLayer.image = nil;
-    UIGraphicsEndImageContext();
-}
-*/
 
 - (IBAction)Save:(id)sender {
 }
@@ -119,6 +65,8 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    self.animationDone = YES;
+    self.toggleShowing = YES;
     self.socketReady = NO;
     self.warbleSocket = [[SRWebSocket alloc] initWithURL:[[NSURL alloc] initWithString:@"http://glacial-castle-5433.herokuapp.com"]];
     self.warbleSocket.delegate = self;
@@ -134,8 +82,12 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 - (void)viewDidLoad
 {
     //SmoothedBIView *smooth = [[SmoothedBIView alloc] init];
-    self.toolbar.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
+    
+    
+    
+    //self.toolbar.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
     //self.pencilitem.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
+    //self.toolbar.transform = CGAffineTransformRotate(CGAffineTransformIdentity, 270.0/180*M_PI);
     if(self.smooth2){
         NSLog(@"Starting GET request t other person.");
         NSString *url = @"http://glacial-castle-5433.herokuapp.com/paint";
@@ -177,39 +129,7 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 // SRWebSocket handlers
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
-    //NSLog(@"waka waka");
-    //[self.smooth2 updateLabel:self.localdata];
-    //self.serverMessage.text = (NSString *)message;
-    /*
-     CODE USED FOR RENDERING
-     [incrementalImage drawAtPoint:CGPointZero];
-     [[UIColor blackColor] setStroke];
-     [path stroke];
-     incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
-     UIGraphicsEndImageContext();
-     */
-    
-    /*
-     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrImage)];
-     */
-    /*
-    UIImage *incrementalImage = [UIImage imageWithData:message];
-    [incrementalImage drawAtPoint:CGPointZero];
-    [[UIColor blackColor] setStroke];
-    //[path stroke];
-    incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    */
-    //UIBezierPath *bezierPath = [NSKeyedUnarchiver unarchiveObjectWithData:message];
-    //[self.smooth2 updateBoard:message];
-    /*
-    UIImage *incrementalImage = [UIImage imageWithData:message];
-    [incrementalImage drawAtPoint:CGPointZero];
-    [[UIColor blackColor] setStroke];
-    //[path stroke];
-    incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-     */
+ 
     
 }
 
@@ -256,6 +176,39 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     //[self logTouches: event];
     [super touchesEnded: touches withEvent: event];
 }
+- (IBAction)toggleTool:(id)sender {
+    if(self.toggleShowing){
+        CGRect newFrame = self.toolBar.frame;
+        newFrame.origin.x += -100;    // shift right by 500pts
+        
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             self.toolBar.frame = newFrame;
+                         }];
+        //[self.toolBar setHidden:YES];
+        //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(hideLabel) userInfo:nil repeats:NO];
+        self.toggleShowing = NO;
+    }
+    else{
+        CGRect newFrame = self.toolBar.frame;
+        //[self.toolBar setHidden:NO];
+        newFrame.origin.x += 100;    // shift right by 500pts
+        
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             self.toolBar.frame = newFrame;
+                         }];
+        //[self.toolBar setHidden:YES];
+        //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideLabel) userInfo:nil repeats:NO];
+        self.toggleShowing = YES;
+    }
+}
+
+- (void) hideLabel
+{
+    [self.toolBar setHidden:YES];  //This assumes that your label is a property of your view controller
+}
+
 
 // Ad hoc fix for the Node.js connection issue
 /*

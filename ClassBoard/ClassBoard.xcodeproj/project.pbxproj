@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B169DE11960D66300CDC9AA /* ClassGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B169DE01960D66300CDC9AA /* ClassGroupsViewController.m */; };
+		1B169DE81960DAB200CDC9AA /* HandoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B169DE71960DAB200CDC9AA /* HandoutViewController.m */; };
 		1B3E15E2195C8EA000DF7B16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E15E1195C8EA000DF7B16 /* Foundation.framework */; };
 		1B3E15E4195C8EA000DF7B16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E15E3195C8EA000DF7B16 /* CoreGraphics.framework */; };
 		1B3E15E6195C8EA000DF7B16 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E15E5195C8EA000DF7B16 /* UIKit.framework */; };
@@ -75,6 +77,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B169DDF1960D66300CDC9AA /* ClassGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassGroupsViewController.h; sourceTree = "<group>"; };
+		1B169DE01960D66300CDC9AA /* ClassGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassGroupsViewController.m; sourceTree = "<group>"; };
+		1B169DE61960DAB200CDC9AA /* HandoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoutViewController.h; sourceTree = "<group>"; };
+		1B169DE71960DAB200CDC9AA /* HandoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoutViewController.m; sourceTree = "<group>"; };
 		1B3E15DE195C8EA000DF7B16 /* ClassBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3E15E1195C8EA000DF7B16 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1B3E15E3195C8EA000DF7B16 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -188,12 +194,16 @@
 				1B3E164E195CEC2700DF7B16 /* SmoothedBIView.m */,
 				1B3E163C195CE9B200DF7B16 /* BoardViewController.h */,
 				1B3E163D195CE9B200DF7B16 /* BoardViewController.m */,
+				1B169DE61960DAB200CDC9AA /* HandoutViewController.h */,
+				1B169DE71960DAB200CDC9AA /* HandoutViewController.m */,
 				1B3E162E195CBB1100DF7B16 /* GTLDrive.h */,
 				1B3E162F195CBB1100DF7B16 /* GTLDrive_Sources.m */,
 				1B3E162C195CBAE500DF7B16 /* GTMOAuth2ViewTouch.xib */,
 				1B3E15F0195C8EA000DF7B16 /* ClassAppDelegate.h */,
 				1B3E15F1195C8EA000DF7B16 /* ClassAppDelegate.m */,
 				1B3E15F3195C8EA000DF7B16 /* Main.storyboard */,
+				1B169DDF1960D66300CDC9AA /* ClassGroupsViewController.h */,
+				1B169DE01960D66300CDC9AA /* ClassGroupsViewController.m */,
 				1B3E1633195CD71000DF7B16 /* SplashPageViewController.h */,
 				1B3E1634195CD71000DF7B16 /* SplashPageViewController.m */,
 				1B3E15F6195C8EA000DF7B16 /* ClassViewController.h */,
@@ -393,12 +403,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B169DE81960DAB200CDC9AA /* HandoutViewController.m in Sources */,
 				1B3E15EE195C8EA000DF7B16 /* main.m in Sources */,
 				1B3E1630195CBB1100DF7B16 /* GTLDrive_Sources.m in Sources */,
 				1B3E1635195CD71000DF7B16 /* SplashPageViewController.m in Sources */,
 				1B3E163E195CE9B200DF7B16 /* BoardViewController.m in Sources */,
 				1B3E164F195CEC2700DF7B16 /* SmoothedBIView.m in Sources */,
 				1B3E1647195CEA9600DF7B16 /* SRWebSocket.m in Sources */,
+				1B169DE11960D66300CDC9AA /* ClassGroupsViewController.m in Sources */,
 				1B3E15F2195C8EA000DF7B16 /* ClassAppDelegate.m in Sources */,
 				1B3E15F8195C8EA000DF7B16 /* ClassViewController.m in Sources */,
 			);

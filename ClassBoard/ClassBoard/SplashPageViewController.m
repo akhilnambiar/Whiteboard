@@ -16,6 +16,9 @@
 
 @end
 
+static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
+NSString *rootURL=@"http://radiant-dusk-5060.herokuapp.com/";
+
 @implementation SplashPageViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

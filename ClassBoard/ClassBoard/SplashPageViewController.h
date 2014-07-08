@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SplashPageViewController : UIViewController
+extern const NSString *rootURL;
 
 @end
