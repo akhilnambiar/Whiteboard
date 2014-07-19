@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GTMOAuth2Authentication.h"
+#import "GTLServiceDrive.h"
 
 @interface SplashPageViewController : UIViewController
 extern const NSString *rootURL;
-
+@property (weak, nonatomic) GTLServiceDrive *driveService;
 @end

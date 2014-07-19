@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GTLDrive.h"
+#import "GTMOAuth2ViewControllerTouch.h"
 
 @interface ClassViewController : UIViewController
 

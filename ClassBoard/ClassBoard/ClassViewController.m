@@ -10,10 +10,12 @@
 
 #import "GTLDrive.h"
 #import "GTMOAuth2ViewControllerTouch.h"
+#import "SplashPageViewController.h"
 
 @interface ClassViewController ()
 @property BOOL isAuthorized;
 @property (weak, readonly) GTLServiceDrive *driveService;
+//@property (weak, readonly) GTLServiceDrive *driveService;
 @end
 
 @implementation ClassViewController
@@ -36,13 +38,14 @@ static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
     }
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)signin:(id)sender {
-    NSLog(@"I'm pressing sign in");
+    //NSLog(@"I'm pressing sign in");
     if (!self.isAuthorized) {
         // Sign in.
         SEL finishedSelector = @selector(viewController:finishedWithAuth:error:);
@@ -66,6 +69,8 @@ static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
         //[self toggleActionButtons:NO];
     }
     
+    //we now need to push this data to another global singleton
+    
 }
 
 
@@ -85,6 +90,37 @@ static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
     self.isAuthorized = YES;
     //[self toggleActionButtons:YES];
     //[self loadDriveFiles];
+    //self.authSend = auth;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"postSignon"]){
+        SplashPageViewController *vc = [segue destinationViewController];
+        vc.driveService = self.driveService;
+        /*
+        NSLog(@"The value of the driveService is:%@",self.driveService);
+        NSLog(@"The vc driveService is:%@",vc.driveService);
+        */
+        
+    }
+}
+
+- (GTLServiceDrive *)driveService {
+    static GTLServiceDrive *service = nil;
+    
+    if (!service) {
+        service = [[GTLServiceDrive alloc] init];
+        
+        // Have the service object set tickets to fetch consecutive pages
+        // of the feed so we do not need to manually fetch them.
+        service.shouldFetchNextPages = YES;
+        
+        // Have the service object set tickets to retry temporary error conditions
+        // automatically.
+        service.retryEnabled = YES;
+    }
+    return service;
 }
 
 @end

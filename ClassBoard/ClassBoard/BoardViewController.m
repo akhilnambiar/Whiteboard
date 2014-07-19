@@ -7,6 +7,8 @@
 //
 
 #import "BoardViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "DrEditUtilities.h"
 
 @interface BoardViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *BottomBoardLayer;
@@ -26,12 +28,19 @@
 @property (strong, nonatomic) IBOutlet SmoothedBIView *smooth2;
 @property NSData* localdata;
 @property (weak, nonatomic) IBOutlet UIView *toolBar;
+- (IBAction)saveFile:(id)sender;
 @property (strong, nonatomic) IBOutlet SmoothedBIView *smooth;
 /*
 @property (weak, nonatomic) IBOutlet UIView *toolBar;
 */
 @end
 
+/*
+ NOTE: Saving as a PDF will require a backend call/processing most likely
+ 
+ NOTE: we will need to make sure the file is only saved when it is changed. We will introduce a variable for that
+ 
+ */
 
 
 
@@ -83,7 +92,8 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 {
     //SmoothedBIView *smooth = [[SmoothedBIView alloc] init];
     
-    
+    //This method is used to decojuple from the whiteboard only stuff
+    [self driveInits];
     
     //self.toolbar.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
     //self.pencilitem.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
@@ -118,8 +128,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     self.opacity = 1.0;
     self.smooth.delegate =  self;
     
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     NSLog(@"this is loaded");
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -221,4 +229,87 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
  */
 
 
+- (IBAction)saveFile:(id)sender {
+    /*
+     Logic:
+     
+     1) convert UIView into a PDF
+     2) Save to google drive
+     */
+    
+    //First we will convert it to NSData
+    NSData* boardPNG = [self pngSnapshot];
+    
+    GTLUploadParameters *uploadParameters = nil;
+    // Only update the file content if different.
+    
+    NSLog(@"we are entering the save file function");
+    
+    //NOTE: We will need to create a variable to avoid double saving, we will do this later?
+    /*
+    if (![self.originalContent isEqualToString:self.textView.text]) {
+        NSData *fc = [self.textView.text dataUsingEncoding: ]
+        NSData *fileContent =
+        [self.textView.text dataUsingEncoding:NSUTF8StringEncoding];
+        uploadParameters =
+        [GTLUploadParameters uploadParametersWithData:fileContent MIMEType:@"text/plain"];
+    }
+     */
+    uploadParameters = [GTLUploadParameters uploadParametersWithData:boardPNG MIMEType:@"image/png"];
+    //SAVE POINT:
+    
+    
+    GTLQueryDrive *query = nil;
+    if (self.driveFile.identifier == nil || self.driveFile.identifier.length == 0) {
+        NSLog(@"we have identified that this is new");
+        // This is a new file, instantiate an insert query.
+        query = [GTLQueryDrive queryForFilesInsertWithObject:self.driveFile
+                                            uploadParameters:uploadParameters];
+    } else {
+        // This file already exists, instantiate an update query.
+        query = [GTLQueryDrive queryForFilesUpdateWithObject:self.driveFile
+                                                      fileId:self.driveFile.identifier
+                                            uploadParameters:uploadParameters];
+    }
+    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Saving file"
+                                                             delegate:self];
+    
+    [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
+                                                              GTLDriveFile *updatedFile,
+                                                              NSError *error) {
+        NSLog(@"Completion Handler is called");
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        if (error == nil) {
+            /*
+             THIS CODE IS JUST MADE TO UPDATE THE LOCAL PAGE
+             
+            self.driveFile = updatedFile;
+            self.originalContent = [self.textView.text copy];
+            self.updatedTitle = [updatedFile.title copy];
+            [self toggleSaveButton];
+            [self.delegate didUpdateFileWithIndex:self.fileIndex
+                                        driveFile:self.driveFile];
+            [self doneEditing:nil];
+             */
+        } else {
+            NSLog(@"An error occurred: %@", error);
+            [DrEditUtilities showErrorMessageWithTitle:@"Unable to save file"
+                                               message:[error description]
+                                              delegate:self];
+        }
+    }];
+}
+
+-(NSData *) pngSnapshot{
+    UIGraphicsBeginImageContextWithOptions(self.smooth.bounds.size, self.smooth.opaque, 0.0);
+    [self.smooth.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return UIImagePNGRepresentation(img);
+}
+
+-(void) driveInits{
+    self.driveFile = [GTLDriveFile object];
+    self.driveFile.title = self.fileTitle;
+}
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GTMOAuth2Authentication.h"
+#import "GTLDrive.h"
 
 @interface HandoutViewController : UIViewController
-
+@property (weak, readwrite) GTLServiceDrive *driveService;
 @end

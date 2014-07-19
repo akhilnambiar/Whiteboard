@@ -20,5 +20,7 @@
 @interface BoardViewController : UIViewController <SRWebSocketDelegate,boardViewDelegate>
 
 @property (nonatomic, retain) GTLServiceDrive *driveService;
+@property GTLDriveFile *driveFile;
+@property NSString *fileTitle;
 
 @end
