@@ -9,6 +9,7 @@
 #import "SplashPageViewController.h"
 #import "HandoutViewController.h"
 #import "GTMOAuth2Authentication.h"
+#import "ClassGroupsViewController.h"
 
 @interface SplashPageViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *SingleBoard;
@@ -69,6 +70,10 @@ NSString *rootURL=@"http://radiant-dusk-5060.herokuapp.com/";
     // Pass the selected object to the new view controller.
         if ([segue.identifier isEqualToString:@"splashToHandout"]){
             HandoutViewController *viewController = [segue destinationViewController];
+            viewController.driveService = self.driveService;
+        }
+        else if([segue.identifier isEqualToString:@"splashToGroup"]){
+            ClassGroupsViewController *viewController = [segue destinationViewController];
             viewController.driveService = self.driveService;
         }
 }

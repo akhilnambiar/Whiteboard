@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GTLServiceDrive.h"
 
 @interface ClassGroupsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
+@property (weak, nonatomic) GTLServiceDrive *driveService;
 @end

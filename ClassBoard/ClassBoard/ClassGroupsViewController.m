@@ -8,6 +8,7 @@
 
 #import "ClassGroupsViewController.h"
 #import "SplashPageViewController.h"
+#import "HandoutViewController.h"
 
 @interface ClassGroupsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *classmateList;
@@ -75,7 +76,7 @@
     //return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -83,8 +84,12 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"groupsToHandout"]){
+        HandoutViewController *viewController = [segue destinationViewController];
+        viewController.driveService = self.driveService;
+    }
 }
-*/
+
 
 #pragma mark - Table View
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -213,7 +218,9 @@
 
 -(void)makePostRequest{
     //NSString *post = [NSString stringWithFormat:@"example=test&p=1&test=yourPostMessage&this=isNotReal"];
-    NSString *post = [NSString stringWithFormat:@"students=%@", self.selectedMates];
+    NSArray *converted = [[NSArray alloc] initWithArray:self.selectedMates];
+    NSString *stringOfArray = [[converted valueForKey:@"description"] componentsJoinedByString:@","];
+    NSString *post = [NSString stringWithFormat:@"students=[%@]", stringOfArray];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
