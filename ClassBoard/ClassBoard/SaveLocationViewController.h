@@ -13,5 +13,7 @@
 @interface SaveLocationViewController : UIViewController
 
 @property (strong, nonatomic) GTLServiceDrive *driveService;
+@property (strong, nonatomic) GTLDriveFile *driveFile;
+@property BOOL withHandout;
 
 @end

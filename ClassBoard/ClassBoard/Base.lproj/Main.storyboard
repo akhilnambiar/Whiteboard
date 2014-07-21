@@ -202,10 +202,10 @@
             </objects>
             <point key="canvasLocation" x="2980" y="94"/>
         </scene>
-        <!--View Controller-->
+        <!--Invites View Controller-->
         <scene sceneID="Aa4-Vl-MSQ">
             <objects>
-                <viewController id="r6y-bs-y0x" sceneMemberID="viewController">
+                <viewController id="r6y-bs-y0x" customClass="InvitesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W7n-RM-cm9"/>
                         <viewControllerLayoutGuide type="bottom" id="PbU-EI-nXo"/>
@@ -220,6 +220,78 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2z-od-P8a">
+                                <rect key="frame" x="20" y="183" width="309" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptInvite:" destination="r6y-bs-y0x" eventType="touchUpInside" id="8I6-Yv-KGU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0X-l1-Xcu">
+                                <rect key="frame" x="20" y="414" width="309" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptInvite:" destination="r6y-bs-y0x" eventType="touchUpInside" id="Mcy-A2-QvQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQI-Wg-1CI">
+                                <rect key="frame" x="20" y="650" width="309" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptInvite:" destination="r6y-bs-y0x" eventType="touchUpInside" id="ZkD-Ee-3SA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMz-1G-Lm4">
+                                <rect key="frame" x="439" y="650" width="309" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptInvite:" destination="r6y-bs-y0x" eventType="touchUpInside" id="zac-F1-TOs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Kv-I9-nhk">
+                                <rect key="frame" x="439" y="414" width="309" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptInvite:" destination="r6y-bs-y0x" eventType="touchUpInside" id="YdF-gO-PQi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yme-Ba-N02">
+                                <rect key="frame" x="439" y="183" width="309" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptInvite:" destination="r6y-bs-y0x" eventType="touchUpInside" id="wwQ-K4-ks1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -232,10 +304,19 @@
                                 <state key="normal" title="+">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="OLO-kD-CH0" kind="push" identifier="acceptInvite" id="SU4-Eh-1Bm"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outletCollection property="InviteButtons" destination="W2z-od-P8a" id="hZZ-Lm-X6Q"/>
+                        <outletCollection property="InviteButtons" destination="O0X-l1-Xcu" id="1eB-yX-0ZQ"/>
+                        <outletCollection property="InviteButtons" destination="wQI-Wg-1CI" id="8be-yf-EpB"/>
+                        <outletCollection property="InviteButtons" destination="TMz-1G-Lm4" id="wSz-s7-6C2"/>
+                        <outletCollection property="InviteButtons" destination="1Kv-I9-nhk" id="HLv-fg-Sqe"/>
+                        <outletCollection property="InviteButtons" destination="yme-Ba-N02" id="o7n-2C-2hb"/>
                         <segue destination="cFw-in-See" kind="push" id="CzW-oF-i3a"/>
                     </connections>
                 </viewController>
@@ -395,7 +476,7 @@
                         <viewControllerLayoutGuide type="top" id="VLA-Bn-7uq"/>
                         <viewControllerLayoutGuide type="bottom" id="7oB-E1-VaP"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BFk-3U-ICg" customClass="SmoothedBIView">
+                    <view key="view" contentMode="scaleToFill" id="BFk-3U-ICg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -452,6 +533,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I47-jU-q9L">
+                                <rect key="frame" x="0.0" y="64" width="768" height="916"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2FM-Y6-Jly" customClass="SmoothedBIView">
+                                <rect key="frame" x="0.0" y="64" width="768" height="916"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -465,7 +555,9 @@
                     <navigationItem key="navigationItem" id="y88-KG-qlj"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="smooth" destination="BFk-3U-ICg" id="N2u-Dh-WfC"/>
+                        <outlet property="containerView" destination="BFk-3U-ICg" id="zT1-oU-zYc"/>
+                        <outlet property="handoutImageView" destination="I47-jU-q9L" id="Cvn-nI-njX"/>
+                        <outlet property="smooth" destination="2FM-Y6-Jly" id="QXt-k0-DHq"/>
                         <outlet property="toolBar" destination="XBc-uf-pPB" id="8lu-rZ-Ysa"/>
                     </connections>
                 </viewController>
@@ -491,6 +583,40 @@
             </objects>
             <point key="canvasLocation" x="-115" y="380"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="DwH-Hn-2ZU">
+            <objects>
+                <viewController id="TJ2-uU-qwx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fo0-FU-yFj"/>
+                        <viewControllerLayoutGuide type="bottom" id="fUf-pJ-qJr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SBv-C9-Lgd">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ONj-Cf-uJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aHg-Cg-PpQ">
+            <objects>
+                <viewController id="3CR-EO-wDI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rpi-xR-XTp"/>
+                        <viewControllerLayoutGuide type="bottom" id="l6X-78-ztq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="auJ-1l-5AR">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIu-mV-xgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="SignIn" width="216" height="72"/>
@@ -501,6 +627,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="SU4-Eh-1Bm"/>
         <segue reference="CzW-oF-i3a"/>
         <segue reference="9xQ-Vr-LXa"/>
     </inferredMetricsTieBreakers>

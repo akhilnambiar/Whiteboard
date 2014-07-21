@@ -10,6 +10,7 @@
 #import "HandoutViewController.h"
 #import "GTMOAuth2Authentication.h"
 #import "ClassGroupsViewController.h"
+#import "InvitesViewController.h"
 
 @interface SplashPageViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *SingleBoard;
@@ -74,6 +75,10 @@ NSString *rootURL=@"http://radiant-dusk-5060.herokuapp.com/";
         }
         else if([segue.identifier isEqualToString:@"splashToGroup"]){
             ClassGroupsViewController *viewController = [segue destinationViewController];
+            viewController.driveService = self.driveService;
+        }
+        else if([segue.identifier isEqualToString:@"splashToInvites"]){
+            InvitesViewController *viewController = [segue destinationViewController];
             viewController.driveService = self.driveService;
         }
 }

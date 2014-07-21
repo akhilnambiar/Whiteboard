@@ -51,6 +51,8 @@
         BoardViewController *viewController = [segue destinationViewController];
         viewController.driveService = self.driveService;
         viewController.fileTitle = self.titleTextField.text;
+        viewController.driveFile = self.driveFile;
+        viewController.withHandout = self.withHandout;
     }
 }
 -(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{

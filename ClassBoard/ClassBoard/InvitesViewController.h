@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GTLDrive.h"
 @interface InvitesViewController : UIViewController
-
+@property (nonatomic, retain) GTLServiceDrive *driveService;
 @end

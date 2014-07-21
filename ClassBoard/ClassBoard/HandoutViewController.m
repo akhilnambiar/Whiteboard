@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *handoutView;
 @property (weak, nonatomic) GTLServiceDrive *ourDrive;
 @property (retain) NSMutableArray *driveFiles;
+@property (nonatomic) BOOL withHandout;
 
 @end
 
@@ -41,7 +42,11 @@
  
  Logic: Just hide that toolbar and make the visibility 0. Then save and then bring it back!
  
+ Note: we need to make sure that the image reacts when we click on it
  
+ Note: when we are retriving a specific file, we need to specify this in our method and just return one, should be a design decision.
+ 
+ Note: Loading Many files is just to populate the initial list (there should be a load Files and a getFile). we can encapsulate repeated code in a subroutine
  */
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -56,6 +61,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.withHandout = NO;
     const NSString *rU = rootURL;
     NSString *handoutURL = [rU stringByAppendingString:@"/class/handouts"];
     NSString* json = [self getDataFrom:handoutURL];
@@ -170,6 +176,7 @@
      */
     button.tintColor = [UIColor blackColor];
     imageView.frame = CGRectMake(width*.1, cellHeight*3, cellWidth, cellHeight);
+    [button addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
     [self.handoutView addSubview:imageView];
     [self.handoutView addSubview:button];
     
@@ -260,6 +267,15 @@
         SaveLocationViewController *viewController = [segue destinationViewController];
         //NSString *className = NSStringFromClass([[segue destinationViewController] class]);
         //NSLog(@"Answer to this is: %@",className);
+        viewController.withHandout = self.withHandout;
+        //CLEAN THIS UP TOO THIS METHOD SPECIFICALLY
+        if(self.withHandout){
+            viewController.driveFile = [self.driveFiles objectAtIndex:0];
+        }
+        else{
+            viewController.driveFile = [GTLDriveFile object];
+        }
+        
         viewController.driveService = self.driveService;
     }
 }
@@ -314,5 +330,39 @@
         [contents addObject:file.thumbnail];
     }
     [self drawHandouts:contents];
+}
+
+-(void) clickButton{
+    self.withHandout = YES;
+    [self performSegueWithIdentifier:@"HandoutToSave" sender:self];
+}
+
+-(void)loadHandoutFiles {
+    GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
+    //query.q = @"mimeType = 'text/plain'";
+    NSString *search = @"title = 'englishworksheet.png'";
+    query.q = search;
+    
+    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading files"
+                                                             delegate:self];
+    [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
+                                                              GTLDriveFileList *files,
+                                                              NSError *error) {
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        if (error == nil) {
+            if (self.driveFiles == nil) {
+                self.driveFiles = [[NSMutableArray alloc] init];
+            }
+            [self.driveFiles removeAllObjects];
+            [self.driveFiles addObjectsFromArray:files.items];
+            NSLog(@"THe drive files are:%@",self.driveFiles);
+            //[];
+        } else {
+            NSLog(@"An error occurred: %@", error);
+            [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
+                                               message:[error description]
+                                              delegate:self];
+        }
+    }];
 }
 @end

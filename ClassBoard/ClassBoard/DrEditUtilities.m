@@ -46,4 +46,24 @@
                                         otherButtonTitles:nil];
   [alert show];
 }
+
+
+//This will take in a JSON response and return NSData
+- (NSMutableArray *) getDataFrom:(NSString *)url{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    [request setURL:[NSURL URLWithString:url]];
+    
+    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *responseCode = nil;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
+        return nil;
+    }
+    return oResponseData;
+    //return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
+}
 @end

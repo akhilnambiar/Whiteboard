@@ -37,7 +37,7 @@
 		1B3E164B195CEB3200DF7B16 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E164A195CEB3200DF7B16 /* libicucore.dylib */; };
 		1B3E164F195CEC2700DF7B16 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E164E195CEC2700DF7B16 /* SmoothedBIView.m */; };
 		1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */; };
-		1B81ECB5197BBD0700789664 /* InvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81ECB4197BBD0700789664 /* InvitesViewController.m */; };
+		1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81ECBB197BBE0800789664 /* InvitesViewController.m */; };
 		1BCDF68C1978EE3C007745AD /* SaveLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -124,8 +124,8 @@
 		1B3E164E195CEC2700DF7B16 /* SmoothedBIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmoothedBIView.m; sourceTree = "<group>"; };
 		1B4F678719734A8400AC7CD3 /* DrEditUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditUtilities.h; sourceTree = "<group>"; };
 		1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
-		1B81ECB3197BBD0700789664 /* InvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InvitesViewController.h; path = ClassBoard/InvitesViewController.h; sourceTree = "<group>"; };
-		1B81ECB4197BBD0700789664 /* InvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InvitesViewController.m; path = ClassBoard/InvitesViewController.m; sourceTree = "<group>"; };
+		1B81ECBA197BBE0800789664 /* InvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitesViewController.h; sourceTree = "<group>"; };
+		1B81ECBB197BBE0800789664 /* InvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitesViewController.m; sourceTree = "<group>"; };
 		1BCDF68A1978EE3C007745AD /* SaveLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveLocationViewController.h; sourceTree = "<group>"; };
 		1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveLocationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,8 +163,6 @@
 		1B3E15D5195C8E9F00DF7B16 = {
 			isa = PBXGroup;
 			children = (
-				1B81ECB3197BBD0700789664 /* InvitesViewController.h */,
-				1B81ECB4197BBD0700789664 /* InvitesViewController.m */,
 				1B3E1616195CB7A100DF7B16 /* SystemConfiguration.framework */,
 				1B3E1617195CB7A100DF7B16 /* Security.framework */,
 				1B3E15E7195C8EA000DF7B16 /* ClassBoard */,
@@ -201,6 +199,8 @@
 		1B3E15E7195C8EA000DF7B16 /* ClassBoard */ = {
 			isa = PBXGroup;
 			children = (
+				1B81ECBA197BBE0800789664 /* InvitesViewController.h */,
+				1B81ECBB197BBE0800789664 /* InvitesViewController.m */,
 				1B3E164D195CEC2700DF7B16 /* SmoothedBIView.h */,
 				1B3E164E195CEC2700DF7B16 /* SmoothedBIView.m */,
 				1B3E163C195CE9B200DF7B16 /* BoardViewController.h */,
@@ -426,11 +426,11 @@
 				1B3E163E195CE9B200DF7B16 /* BoardViewController.m in Sources */,
 				1BCDF68C1978EE3C007745AD /* SaveLocationViewController.m in Sources */,
 				1B3E164F195CEC2700DF7B16 /* SmoothedBIView.m in Sources */,
-				1B81ECB5197BBD0700789664 /* InvitesViewController.m in Sources */,
 				1B3E1647195CEA9600DF7B16 /* SRWebSocket.m in Sources */,
 				1B169DE11960D66300CDC9AA /* ClassGroupsViewController.m in Sources */,
 				1B3E15F2195C8EA000DF7B16 /* ClassAppDelegate.m in Sources */,
 				1B3E15F8195C8EA000DF7B16 /* ClassViewController.m in Sources */,
+				1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

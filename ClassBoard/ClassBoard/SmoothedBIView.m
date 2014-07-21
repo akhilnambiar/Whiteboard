@@ -118,7 +118,8 @@
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrementalImage)];
     [delegate recivedTouch:touch fromUIView:self andData: imageData];
     ctr = 0;
-    
+    //New Line taht will take care of the white board showing up in between
+    //self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -140,12 +141,12 @@
 - (void)drawBitmap
 {
     //AT SOME POINT, WE NEED TO INSTALL INCREMENTAL CACHING
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, 0.0);
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0.0);
     
     if (!incrementalImage) // first time; paint background white
     {
         UIBezierPath *rectpath = [UIBezierPath bezierPathWithRect:self.bounds];
-        [[UIColor whiteColor] setFill];
+        [[[UIColor whiteColor] colorWithAlphaComponent:0.0] setFill];
         [rectpath fill];
     }
     [incrementalImage drawAtPoint:CGPointZero];

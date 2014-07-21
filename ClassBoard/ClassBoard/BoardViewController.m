@@ -28,8 +28,15 @@
 @property (strong, nonatomic) IBOutlet SmoothedBIView *smooth2;
 @property NSData* localdata;
 @property (weak, nonatomic) IBOutlet UIView *toolBar;
+@property (strong, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet SmoothedBIView *smooth;
+@property (weak, nonatomic) IBOutlet UIImageView *handoutImageView;
+
+
+
 - (IBAction)saveFile:(id)sender;
-@property (strong, nonatomic) IBOutlet SmoothedBIView *smooth;
+
+
 /*
 @property (weak, nonatomic) IBOutlet UIView *toolBar;
 */
@@ -39,7 +46,18 @@
  NOTE: Saving as a PDF will require a backend call/processing most likely
  
  NOTE: we will need to make sure the file is only saved when it is changed. We will introduce a variable for that
+ NOTE: LoadFileContent could be made into utilities
+ NOTE: We need to make the UIImageView Scrollable
+ NOTE: Deprecate the initDrivemethod
+
+ NOTE: We need to add pinch to zoom
+ SOLUTION: we need to change this to a UI Scroll View
+ https://developer.apple.com/library/ios/documentation/windowsviews/conceptual/UIScrollView_pg/ZoomZoom/ZoomZoom.html
  
+ 
+ Note: We need to make the toolbar disappear when we take a snapshot and save
+ 
+
  */
 
 
@@ -93,7 +111,17 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     //SmoothedBIView *smooth = [[SmoothedBIView alloc] init];
     
     //This method is used to decojuple from the whiteboard only stuff
-    [self driveInits];
+    NSLog(@"NOW WE ARE LOADING");
+    NSLog(@"Drivefile is: %@",self.driveFile);
+    self.smooth.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
+    [self.containerView sendSubviewToBack:self.handoutImageView];
+    [self.containerView bringSubviewToFront:self.toolBar];
+    if(self.withHandout){
+        [self loadFileContent];
+    }
+    else{
+        [self driveInits];
+    }
     
     //self.toolbar.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
     //self.pencilitem.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
@@ -301,18 +329,45 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 }
 
 -(NSData *) pngSnapshot{
-    UIGraphicsBeginImageContextWithOptions(self.smooth.bounds.size, self.smooth.opaque, 0.0);
-    [self.smooth.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIGraphicsBeginImageContextWithOptions(self.containerView.bounds.size, self.containerView.opaque, 0.0);
+    [self.containerView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return UIImagePNGRepresentation(img);
 }
 
+//THIS METHOD CAN BE DEPRECATED
 -(void) driveInits{
-    self.driveFile = [GTLDriveFile object];
-    self.driveFile.title = self.fileTitle;
+    /*
+    if (self.driveFile){
+        
+    }
+    else{
+        self.driveFile = [GTLDriveFile object];
+    }
+    
+     */
 }
 
-
+- (void)loadFileContent {
+    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading file content"
+                                                             delegate:self];
+    GTMHTTPFetcher *fetcher =
+    [self.driveService.fetcherService fetcherWithURLString:self.driveFile.downloadUrl];
+    NSLog(@"download URL is %@",self.driveFile.downloadUrl);
+    NSLog(@"The drive file is %@", self.driveFile.title);
+    [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        if (error == nil) {
+            UIImage *image = [UIImage imageWithData:data];
+            [self.handoutImageView setImage:image];
+        } else {
+            NSLog(@"An error occurred: %@", error);
+            [DrEditUtilities showErrorMessageWithTitle:@"Unable to load file"
+                                               message:[error description]
+                                              delegate:self];
+        }
+    }];
+}
 
 @end

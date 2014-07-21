@@ -22,5 +22,6 @@
 @property (nonatomic, retain) GTLServiceDrive *driveService;
 @property GTLDriveFile *driveFile;
 @property NSString *fileTitle;
+@property BOOL withHandout;
 
 @end
