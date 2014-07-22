@@ -49,7 +49,7 @@
  NOTE: LoadFileContent could be made into utilities
  NOTE: We need to make the UIImageView Scrollable
  NOTE: Deprecate the initDrivemethod
-
+ NOTE: While trying to save an image, we should check to see if a change has been made. We can create a boolean to do that
  NOTE: We need to add pinch to zoom
  SOLUTION: we need to change this to a UI Scroll View
  https://developer.apple.com/library/ios/documentation/windowsviews/conceptual/UIScrollView_pg/ZoomZoom/ZoomZoom.html
@@ -68,21 +68,6 @@ NSString *scopes = @"https://www.googleapis.com/auth/drive.file";
 NSString *keychainItemName = @"My App";
 NSString *clientId = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559.apps.googleusercontent.com";
 NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@developer.gserviceaccount.com";
-
-
-- (IBAction)Save:(id)sender {
-}
-
-- (IBAction)Reset:(id)sender {
-}
-
-
-- (IBAction)pencilPressed:(id)sender {
-}
-
-
-- (IBAction)eraserPressed:(id)sender {
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -111,23 +96,14 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     //SmoothedBIView *smooth = [[SmoothedBIView alloc] init];
     
     //This method is used to decojuple from the whiteboard only stuff
-    NSLog(@"NOW WE ARE LOADING");
-    NSLog(@"Drivefile is: %@",self.driveFile);
     self.smooth.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
     [self.containerView sendSubviewToBack:self.handoutImageView];
     [self.containerView bringSubviewToFront:self.toolBar];
     if(self.withHandout){
         [self loadFileContent];
     }
-    else{
-        [self driveInits];
-    }
-    
-    //self.toolbar.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
-    //self.pencilitem.transform = CGAffineTransformMakeRotation( ( 90 * M_PI ) / 180 );
-    //self.toolbar.transform = CGAffineTransformRotate(CGAffineTransformIdentity, 270.0/180*M_PI);
+    //The following block is mainly for testing purposes. It checks to see if the websocket is working
     if(self.smooth2){
-        NSLog(@"Starting GET request t other person.");
         NSString *url = @"http://glacial-castle-5433.herokuapp.com/paint";
         //This will make a get request
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -148,6 +124,10 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
         NSLog(@"response is %@",response);
         [self.smooth2 updateLabel:oResponseData];
     }
+    
+    //end of testing code block
+    
+    
     self.navigationController.toolbarHidden = NO; 
     self.red = 0.0/255.0;
     self.green = 0.0/255.0;
@@ -155,8 +135,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     self.brush = 2.0;
     self.opacity = 1.0;
     self.smooth.delegate =  self;
-    
-    NSLog(@"this is loaded");
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -171,16 +149,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 
 - (void)recivedTouch:(UITouch *)touch fromUIView:(UIView *)uiView andData:(NSData *)incrImage
 {
-    //NSLog(@"this is not called");
-    /*
-    if (uiView == self.someView)
-    {
-        // do some stuff with uiWebView
-    }
-     */
-    //NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrImage)];
-    //UIBezierPath *bezierPath = [NSKeyedUnarchiver unarchiveObjectWithData:incrImage];
-    //NSLog(@"Kanye");
     if (self.socketReady) {
         self.localdata = incrImage;
         [self.warbleSocket send:incrImage];
@@ -202,16 +170,12 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     self.connectStatus.text = @"Disconnected";
     self.connectStatus.textColor = [UIColor redColor];
 }
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"Touches Began");
-    //http://stackoverflow.com/questions/9859496/affecting-uiviewcontroller-from-a-child-uiview
-    //http://www.hardcodedstudios.com/home/ryan-newsome/simpledelegatetutorialforiosdevelopment
-    //TUTORIALS FOR DELEGATES
-    
-    //[self logTouches: event];
     [super touchesEnded: touches withEvent: event];
 }
+
 - (IBAction)toggleTool:(id)sender {
     if(self.toggleShowing){
         CGRect newFrame = self.toolBar.frame;
@@ -221,21 +185,16 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
                          animations:^{
                              self.toolBar.frame = newFrame;
                          }];
-        //[self.toolBar setHidden:YES];
-        //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(hideLabel) userInfo:nil repeats:NO];
         self.toggleShowing = NO;
     }
     else{
         CGRect newFrame = self.toolBar.frame;
-        //[self.toolBar setHidden:NO];
         newFrame.origin.x += 100;    // shift right by 500pts
         
         [UIView animateWithDuration:0.5
                          animations:^{
                              self.toolBar.frame = newFrame;
                          }];
-        //[self.toolBar setHidden:YES];
-        //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(hideLabel) userInfo:nil repeats:NO];
         self.toggleShowing = YES;
     }
 }
@@ -270,19 +229,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     
     GTLUploadParameters *uploadParameters = nil;
     // Only update the file content if different.
-    
-    NSLog(@"we are entering the save file function");
-    
-    //NOTE: We will need to create a variable to avoid double saving, we will do this later?
-    /*
-    if (![self.originalContent isEqualToString:self.textView.text]) {
-        NSData *fc = [self.textView.text dataUsingEncoding: ]
-        NSData *fileContent =
-        [self.textView.text dataUsingEncoding:NSUTF8StringEncoding];
-        uploadParameters =
-        [GTLUploadParameters uploadParametersWithData:fileContent MIMEType:@"text/plain"];
-    }
-     */
     uploadParameters = [GTLUploadParameters uploadParametersWithData:boardPNG MIMEType:@"image/png"];
     //SAVE POINT:
     
@@ -308,17 +254,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
         NSLog(@"Completion Handler is called");
         [alert dismissWithClickedButtonIndex:0 animated:YES];
         if (error == nil) {
-            /*
-             THIS CODE IS JUST MADE TO UPDATE THE LOCAL PAGE
-             
-            self.driveFile = updatedFile;
-            self.originalContent = [self.textView.text copy];
-            self.updatedTitle = [updatedFile.title copy];
-            [self toggleSaveButton];
-            [self.delegate didUpdateFileWithIndex:self.fileIndex
-                                        driveFile:self.driveFile];
-            [self doneEditing:nil];
-             */
         } else {
             NSLog(@"An error occurred: %@", error);
             [DrEditUtilities showErrorMessageWithTitle:@"Unable to save file"
@@ -336,26 +271,11 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     return UIImagePNGRepresentation(img);
 }
 
-//THIS METHOD CAN BE DEPRECATED
--(void) driveInits{
-    /*
-    if (self.driveFile){
-        
-    }
-    else{
-        self.driveFile = [GTLDriveFile object];
-    }
-    
-     */
-}
-
 - (void)loadFileContent {
     UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading file content"
                                                              delegate:self];
     GTMHTTPFetcher *fetcher =
     [self.driveService.fetcherService fetcherWithURLString:self.driveFile.downloadUrl];
-    NSLog(@"download URL is %@",self.driveFile.downloadUrl);
-    NSLog(@"The drive file is %@", self.driveFile.title);
     [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
         [alert dismissWithClickedButtonIndex:0 animated:YES];
         if (error == nil) {

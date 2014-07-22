@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="866" y="-276"/>
+            <point key="canvasLocation" x="462" y="-284"/>
         </scene>
         <!--Splash Page View Controller-->
         <scene sceneID="riz-Tp-T3O">
@@ -296,7 +296,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="6hn-F9-I6q">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Kh2-JK-4Le">
+                        <barButtonItem key="rightBarButtonItem" id="Kh2-JK-4Le">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vo2-ME-TyO">
                                 <rect key="frame" x="582" y="5" width="170" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -304,9 +304,6 @@
                                 <state key="normal" title="+">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="OLO-kD-CH0" kind="push" identifier="acceptInvite" id="SU4-Eh-1Bm"/>
-                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -317,7 +314,7 @@
                         <outletCollection property="InviteButtons" destination="TMz-1G-Lm4" id="wSz-s7-6C2"/>
                         <outletCollection property="InviteButtons" destination="1Kv-I9-nhk" id="HLv-fg-Sqe"/>
                         <outletCollection property="InviteButtons" destination="yme-Ba-N02" id="o7n-2C-2hb"/>
-                        <segue destination="cFw-in-See" kind="push" id="CzW-oF-i3a"/>
+                        <segue destination="cFw-in-See" kind="push" identifier="sendInvite" id="CzW-oF-i3a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXc-Jj-p8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -349,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="REb-ZO-6XD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2986" y="1538"/>
+            <point key="canvasLocation" x="3166" y="1510"/>
         </scene>
         <!--Choose Handouts-->
         <scene sceneID="pV9-Jm-o6c">
@@ -581,41 +578,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NpL-yz-1Y7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-115" y="380"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="DwH-Hn-2ZU">
-            <objects>
-                <viewController id="TJ2-uU-qwx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fo0-FU-yFj"/>
-                        <viewControllerLayoutGuide type="bottom" id="fUf-pJ-qJr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SBv-C9-Lgd">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ONj-Cf-uJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="aHg-Cg-PpQ">
-            <objects>
-                <viewController id="3CR-EO-wDI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rpi-xR-XTp"/>
-                        <viewControllerLayoutGuide type="bottom" id="l6X-78-ztq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="auJ-1l-5AR">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rIu-mV-xgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="-739" y="-284"/>
         </scene>
     </scenes>
     <resources>
@@ -627,8 +590,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SU4-Eh-1Bm"/>
-        <segue reference="CzW-oF-i3a"/>
-        <segue reference="9xQ-Vr-LXa"/>
+        <segue reference="I09-Fa-8Ju"/>
+        <segue reference="QaU-7h-pGT"/>
     </inferredMetricsTieBreakers>
 </document>

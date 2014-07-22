@@ -19,6 +19,7 @@
 
 #import "DrEditUtilities.h"
 
+
 @implementation DrEditUtilities
 + (UIAlertView *)showLoadingMessageWithTitle:(NSString *)title 
                                     delegate:(id)delegate {
@@ -49,7 +50,7 @@
 
 
 //This will take in a JSON response and return NSData
-- (NSMutableArray *) getDataFrom:(NSString *)url{
++ (NSData *) getDataFrom:(NSString *)url{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
     [request setURL:[NSURL URLWithString:url]];
@@ -66,4 +67,28 @@
     return oResponseData;
     //return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
 }
+
+
++ (NSMutableArray *)groupsFromJSON:(NSData *)objectNotation forKeys:(NSArray *)keys error:(NSError **)error
+{
+    NSError *localError = nil;
+    NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
+    
+    if (localError != nil) {
+        *error = localError;
+        return nil;
+    }
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSString *key in keys){
+        NSArray *group = [parsedObject objectForKey:key];
+        [result addObject:group];
+    }
+    return result;
+}
+
+/*
+ @Returns a drive file if you pass in a Query and the service Drive Object. Returns nil othrewise
+ */
+
+
 @end

@@ -18,6 +18,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GTLDrive.h"
 
 @interface DrEditUtilities : NSObject
 + (UIAlertView *)showLoadingMessageWithTitle:(NSString *)title
@@ -25,4 +26,7 @@
 + (void)showErrorMessageWithTitle:(NSString *)title 
                           message:(NSString *)message
                          delegate:(id)delegate;
++ (NSData *) getDataFrom:(NSString *)url;
++ (NSMutableArray *)groupsFromJSON:(NSData *)objectNotation forKeys:(NSArray *)keys error:(NSError **)error;
+
 @end

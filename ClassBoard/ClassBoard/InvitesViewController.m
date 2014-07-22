@@ -13,7 +13,7 @@
 
 @interface InvitesViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *InviteButtons;
-@property (strong, nonatomic) NSMutableArray *driveFiles;
+@property (strong, nonatomic) GTLDriveFile *driveFile;
 
 @end
 /*
@@ -37,16 +37,19 @@
     return self;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [self loadDriveFiles];
+    //[self loadDriveFiles];
+    //self.driveFile = [DrEditUtilities getOneDriveFile:self.driveService withQuery:@"title = 'mathworksheet.jpg'"];
 }
 
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
+    NSError *error = [[NSError alloc] init];
     const NSString *rU = rootURL;
     NSString *handoutURL = [rU stringByAppendingString:@"/class/getInvites"];
-    NSMutableArray* json = [self getDataFrom:handoutURL];
+    NSData* jsonData = [DrEditUtilities getDataFrom:handoutURL];
+    NSMutableArray *json = [DrEditUtilities groupsFromJSON:jsonData forKeys:@[@"groups",@"handout"] error:&error];
     [self drawInvites:json];
     // Do any additional setup after loading the view.
 }
@@ -65,7 +68,6 @@
         if (button.tag>=tagCount && button.tag<maxInvites){
             button.enabled = YES;
             [button setTitle:[NSString stringWithFormat:@"%@",handouts[button.tag]] forState:UIControlStateNormal];
-            NSLog(@"The title should be %@",[NSString stringWithFormat:@"%@",handouts[button.tag]]);
             button.backgroundColor = [UIColor greenColor];
         }
     }
@@ -80,53 +82,9 @@
 
 #pragma mark custom methods
 
-//FOR BETTER REFACTORING, WE CAN MAKE THIS A CLASS METHOD IN UTILITIES THAT YOU CAL JUST CALL!
-
-//Moving this method to DrEditUtilities
-- (NSMutableArray *) getDataFrom:(NSString *)url{
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:url]];
-    
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *responseCode = nil;
-    
-    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-    
-    if([responseCode statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
-        return nil;
-    }
-    NSMutableArray* json_array = [self groupsFromJSON:oResponseData error:&error];
-    return json_array;
-    //return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-}
-
-- (NSMutableArray *)groupsFromJSON:(NSData *)objectNotation error:(NSError **)error
-{
-    NSError *localError = nil;
-    NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
-    
-    if (localError != nil) {
-        *error = localError;
-        return nil;
-    }
- 
-    NSArray *groups = [parsedObject objectForKey:@"groups"];
-    NSLog(@"object one is %@",[groups objectAtIndex:0]);
-    
-    NSArray *handout = [parsedObject objectForKey:@"handout"];
-    NSLog(@"object one is %@",[handout objectAtIndex:0]);
- 
-    //return class;
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    [result addObject:groups];
-    [result addObject:handout];
-    return result;
-}
 - (IBAction)acceptInvite:(id)sender {
-    NSLog(@"I'm abbout the segue");
-    [self performSegueWithIdentifier:@"acceptInvite" sender:self];
+    //we will get the file once we accept the invite. Then we can go ahead and call the perform from segue as a callback
+    [self getOneDriveFilewithQuery:@"title = 'mathworksheet.jpg'"];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -135,7 +93,7 @@
         viewController.driveService = self.driveService;
         viewController.withHandout = YES;
         //The first item should be the only one!
-        viewController.driveFile = [self.driveFiles objectAtIndex:0];
+        viewController.driveFile = self.driveFile;
         NSLog(@"the drive file in the view controller is: %@",viewController.driveFile);
     }
 }
@@ -151,28 +109,28 @@
 }
 */
 
-//REWRITE THIS METHOD AND PUT IT IN UTILITIES
 
-- (void)loadDriveFiles {
+- (void)getOneDriveFilewithQuery:(NSString *)search; {
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
     //query.q = @"mimeType = 'text/plain'";
-    NSString *search = @"title = 'mathworksheet.jpg'";
+    //NSString *search = @"title = 'mathworksheet.jpg'";
     query.q = search;
-    
     UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading files"
                                                              delegate:self];
-    [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
-                                                              GTLDriveFileList *files,
-                                                              NSError *error) {
+    [self.driveService executeQuery:query completionHandler: ^(GTLServiceTicket *ticket,
+                                                               GTLDriveFileList *files,
+                                                               NSError *error) {
         [alert dismissWithClickedButtonIndex:0 animated:YES];
         if (error == nil) {
-            if (self.driveFiles == nil) {
-                self.driveFiles = [[NSMutableArray alloc] init];
+            //Here we will assume that there is only one file with that Given Name
+            if (files.items.count>0){
+                
+                self.driveFile = [files.items objectAtIndex:0];
             }
-            [self.driveFiles removeAllObjects];
-            [self.driveFiles addObjectsFromArray:files.items];
-            NSLog(@"THe drive files are:%@",self.driveFiles);
-            //[];
+            else{
+                self.driveFile = nil;
+            }
+            [self performSegueWithIdentifier:@"acceptInvite" sender:self];
         } else {
             NSLog(@"An error occurred: %@", error);
             [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
@@ -180,6 +138,11 @@
                                               delegate:self];
         }
     }];
+    
+    //We need to use NStimer and fire nil if the item times out after querying for 60 seconds.
+    //We can create an error boolean and set it to True if nothing works out
 }
+
+
 
 @end

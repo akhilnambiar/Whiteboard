@@ -9,6 +9,7 @@
 #import "ClassGroupsViewController.h"
 #import "SplashPageViewController.h"
 #import "HandoutViewController.h"
+#import "DrEditUtilities.h"
 
 @interface ClassGroupsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *classmateList;
@@ -37,10 +38,12 @@
     self.selectedMates = [[NSMutableArray alloc]init];
     const NSString *rU = rootURL;
     NSString *classListURL = [rU stringByAppendingString:@"class/classmates"];
-    //NSLog(@"The URL is,%@",classListURL);
-    self.jsonClassmates = [self getDataFrom:classListURL];
-    //NSLog(@"here is the JSON Response %@",self.jsonClassmates);
-    //NSLog(@"First is %@",[self.jsonClassmates objectAtIndex:0]);
+    NSError *error = [[NSError alloc] init];
+    NSData* jsonData = [DrEditUtilities getDataFrom:classListURL];
+    NSMutableArray* temp = [DrEditUtilities groupsFromJSON:jsonData forKeys:@[@"class"] error:&error];
+    self.jsonClassmates = [temp objectAtIndex:0];
+    NSLog(@"classmates: %@",self.jsonClassmates);
+    //self.jsonClassmates = [self getDataFrom:classListURL];
     self.classmateList.dataSource = self;
     self.classmateList.delegate = self;
     [self.classmateList reloadData];
@@ -108,8 +111,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     NSString *student = [self.jsonClassmates objectAtIndex:indexPath.row];
-    //UIButton *cellButt = (UIButton*) [cell.contentView viewWithTag:1];
-    //[cellButt setTitle:student forState:UIControlStateNormal];
     cell.textLabel.text = student;
     
     return cell;
@@ -126,27 +127,7 @@
     }
     
     NSArray *class = [parsedObject objectForKey:@"class"];
-    NSLog(@"object one is %@",[class objectAtIndex:0]);
     return class;
-    /*
-    NSMutableArray *groups = [[NSMutableArray alloc] init];
-    
-    NSArray *results = [parsedObject valueForKey:@"results"];
-    NSLog(@"Count %d", results.count);
-    
-    for (NSDictionary *groupDic in results) {
-        Group *group = [[Group alloc] init];
-        
-        for (NSString *key in groupDic) {
-            if ([group respondsToSelector:NSSelectorFromString(key)]) {
-                [group setValue:[groupDic valueForKey:key] forKey:key];
-            }
-        }
-        
-        [groups addObject:group];
-    }
-    */
-    //return groups;
 }
 
 

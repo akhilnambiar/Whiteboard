@@ -8,7 +8,6 @@
 
 #import "SmoothedBIView.h"
 @interface SmoothedBIView()
-@property (weak, nonatomic) IBOutlet UILabel *lifeCycleTest;
 @property (weak, nonatomic) UIImage *recievedData;
 
 @end
@@ -26,12 +25,7 @@
 
 -(void)updateLabel:(NSData *)imageData;
 {
-    self.lifeCycleTest.text = @"Changed";
-    
     UIImage *image = [UIImage imageWithData:imageData];
-    //[image drawAtPoint:CGPointZero];
-    //UIImageView *imageView = [[UIImageView alloc] initWithImage: image];
-    //[self addSubview: imageView];
     self.recievedData = image;
     incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -77,15 +71,10 @@
     ctr = 0;
     UITouch *touch = [touches anyObject];
     pts[0] = [touch locationInView:self];
-    
-    //added Code
-    //UITouch *touch = [touches anyObject];
-    //[delegate recivedTouch:touch fromUIView:self];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //NSLog(@"pooping Monkey");
     UITouch *touch = [touches anyObject];
     CGPoint p = [touch locationInView:self];
     ctr++;
@@ -110,7 +99,6 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"me fin los tocas");
     UITouch *touch = [touches anyObject];
     [self drawBitmap];
     [self setNeedsDisplay];
@@ -118,8 +106,6 @@
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrementalImage)];
     [delegate recivedTouch:touch fromUIView:self andData: imageData];
     ctr = 0;
-    //New Line taht will take care of the white board showing up in between
-    //self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -131,8 +117,6 @@
 {
     UIImage *newImage = [UIImage imageWithData:message];
     [newImage drawAtPoint:CGPointZero];
-    //[[UIColor blackColor] setStroke];
-    //[path stroke];
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     incrementalImage = newImage;
