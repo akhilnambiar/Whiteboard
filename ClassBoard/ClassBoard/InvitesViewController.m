@@ -47,9 +47,11 @@
     [super viewDidLoad];
     NSError *error = [[NSError alloc] init];
     const NSString *rU = rootURL;
-    NSString *handoutURL = [rU stringByAppendingString:@"/class/getInvites"];
+    NSString *handoutURL = [rU stringByAppendingString:@"class/getInvites"];
     NSData* jsonData = [DrEditUtilities getDataFrom:handoutURL];
+    NSLog(@"hey wefwe %@",jsonData);
     NSMutableArray *json = [DrEditUtilities groupsFromJSON:jsonData forKeys:@[@"groups",@"handout"] error:&error];
+    NSLog(@"hey wefwe %@",json);
     [self drawInvites:json];
     // Do any additional setup after loading the view.
 }
@@ -61,6 +63,7 @@
     int tagCount = 0;
     int maxInvites = ((NSArray *)jsonInput[0]).count;
     NSArray *handouts = jsonInput[1];
+    NSLog(@"hey derr %@",jsonInput);
 
     //We iterate through each of the invites and we enable the ones that have a corresponding handout
     for (int i = 0; i < self.InviteButtons.count; i++) {

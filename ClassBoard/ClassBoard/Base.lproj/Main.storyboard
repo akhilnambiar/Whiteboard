@@ -202,10 +202,10 @@
             </objects>
             <point key="canvasLocation" x="2980" y="94"/>
         </scene>
-        <!--Invites View Controller-->
+        <!--Invites View Controller - InvitesViewController-->
         <scene sceneID="Aa4-Vl-MSQ">
             <objects>
-                <viewController id="r6y-bs-y0x" customClass="InvitesViewController" sceneMemberID="viewController">
+                <viewController title="InvitesViewController" id="r6y-bs-y0x" customClass="InvitesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W7n-RM-cm9"/>
                         <viewControllerLayoutGuide type="bottom" id="PbU-EI-nXo"/>
@@ -315,6 +315,7 @@
                         <outletCollection property="InviteButtons" destination="1Kv-I9-nhk" id="HLv-fg-Sqe"/>
                         <outletCollection property="InviteButtons" destination="yme-Ba-N02" id="o7n-2C-2hb"/>
                         <segue destination="cFw-in-See" kind="push" identifier="sendInvite" id="CzW-oF-i3a"/>
+                        <segue destination="OLO-kD-CH0" kind="push" identifier="acceptInvite" id="TLA-V3-tj8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXc-Jj-p8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -591,6 +592,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="I09-Fa-8Ju"/>
-        <segue reference="QaU-7h-pGT"/>
+        <segue reference="CzW-oF-i3a"/>
+        <segue reference="TLA-V3-tj8"/>
     </inferredMetricsTieBreakers>
 </document>

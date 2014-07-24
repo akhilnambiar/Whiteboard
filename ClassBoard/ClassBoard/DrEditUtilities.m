@@ -71,6 +71,7 @@
 
 + (NSMutableArray *)groupsFromJSON:(NSData *)objectNotation forKeys:(NSArray *)keys error:(NSError **)error
 {
+    NSLog(@"enter function");
     NSError *localError = nil;
     NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
     
@@ -83,6 +84,7 @@
         NSArray *group = [parsedObject objectForKey:key];
         [result addObject:group];
     }
+    NSLog(@"magic, %@",result);
     return result;
 }
 

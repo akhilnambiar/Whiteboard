@@ -11,8 +11,6 @@
 #import "SmoothedBIView.h"
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-
-#import "GTMOAuth2ViewControllerTouch.h"
 #import "GTLDrive.h"
 
 

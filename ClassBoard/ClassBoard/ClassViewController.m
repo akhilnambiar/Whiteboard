@@ -15,7 +15,6 @@
 @interface ClassViewController ()
 @property BOOL isAuthorized;
 @property (weak, readonly) GTLServiceDrive *driveService;
-//@property (weak, readonly) GTLServiceDrive *driveService;
 @end
 
 @implementation ClassViewController
@@ -45,7 +44,6 @@ static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)signin:(id)sender {
-    //NSLog(@"I'm pressing sign in");
     if (!self.isAuthorized) {
         // Sign in.
         SEL finishedSelector = @selector(viewController:finishedWithAuth:error:);
@@ -60,16 +58,7 @@ static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
                                 animated:YES completion:nil];
     } else {
         [self performSegueWithIdentifier: @"postSignon" sender: self];
-        // keychain remembered
-        //for testing, we will assume that this is a sign out button
-        //[GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
-        //[[self driveService] setAuthorizer:nil];
-        //self.authButton.title = @"Sign in";
-        //self.isAuthorized = NO;
-        //[self toggleActionButtons:NO];
     }
-    
-    //we now need to push this data to another global singleton
     
 }
 
@@ -86,11 +75,7 @@ static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
 
 - (void)isAuthorizedWithAuthentication:(GTMOAuth2Authentication *)auth {
     [[self driveService] setAuthorizer:auth];
-    //self.authButton.title = @"Sign out";
     self.isAuthorized = YES;
-    //[self toggleActionButtons:YES];
-    //[self loadDriveFiles];
-    //self.authSend = auth;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -98,10 +83,6 @@ static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
     if ([segue.identifier isEqualToString:@"postSignon"]){
         SplashPageViewController *vc = [segue destinationViewController];
         vc.driveService = self.driveService;
-        /*
-        NSLog(@"The value of the driveService is:%@",self.driveService);
-        NSLog(@"The vc driveService is:%@",vc.driveService);
-        */
         
     }
 }

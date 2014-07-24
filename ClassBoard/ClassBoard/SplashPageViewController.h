@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GTMOAuth2Authentication.h"
 #import "GTLServiceDrive.h"
 
 @interface SplashPageViewController : UIViewController

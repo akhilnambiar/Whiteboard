@@ -38,16 +38,6 @@ NSString *rootURL=@"http://radiant-dusk-5060.herokuapp.com/";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*
-     Method to find all the names of the different fonts
-     
-    NSArray *fontNames = [UIFont familyNames];
-    for (NSString *familyName in fontNames) {
-        NSLog(@"Font family name = %@", familyName);
-        NSArray *names = [UIFont fontNamesForFamilyName:familyName];
-        NSLog(@"Font names = %@", names);
-    }
-     */
     [self.SingleBoard.titleLabel setFont:[UIFont fontWithName:@"nevis-Bold" size:40]];
     [self.GroupBoard.titleLabel setFont:[UIFont fontWithName:@"nevis-Bold" size:40]];
     [self.ViewDocs.titleLabel setFont:[UIFont fontWithName:@"nevis-Bold" size:40]];

@@ -236,7 +236,7 @@
 
 -(void) clickButton{
     self.withHandout = YES;
-    [self performSegueWithIdentifier:@"HandoutToSave" sender:self];
+    [self loadHandoutFiles];
 }
 
 -(void)loadHandoutFiles {
@@ -265,6 +265,7 @@
                                                message:[error description]
                                               delegate:self];
         }
+        [self performSegueWithIdentifier:@"HandoutToSave" sender:self];
     }];
 }
 
