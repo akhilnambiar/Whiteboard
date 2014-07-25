@@ -32,6 +32,7 @@ static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
     [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
                                                           clientID:kClientId
                                                       clientSecret:kClientSecret];
+    NSLog(@"The auth thing is, %@",auth);
     if ([auth canAuthorize]) {
         [self isAuthorizedWithAuthentication:auth];
     }

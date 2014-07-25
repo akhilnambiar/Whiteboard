@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClassBoard/ClassViewController.m"
-            timestampString = "427871775.077048"
+            timestampString = "427952350.026802"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "-signin:"
             landmarkType = "5">
          </BreakpointContent>
