@@ -14,7 +14,7 @@
 @interface InvitesViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *InviteButtons;
 @property (strong, nonatomic) GTLDriveFile *driveFile;
-
+@property NSDictionary* jsonResp;
 @end
 /*
  Features to add
@@ -47,23 +47,18 @@
     [super viewDidLoad];
     NSError *error = [[NSError alloc] init];
     const NSString *rU = rootURL;
-    NSString *handoutURL = [rU stringByAppendingString:@"class/getInvites"];
-    NSData* jsonData = [DrEditUtilities getDataFrom:handoutURL];
-    NSLog(@"hey wefwe %@",jsonData);
-    NSMutableArray *json = [DrEditUtilities groupsFromJSON:jsonData forKeys:@[@"groups",@"handout"] error:&error];
-    NSLog(@"hey wefwe %@",json);
-    [self drawInvites:json];
+    NSString *handoutURL = [rU stringByAppendingString:@"get_invites/"];
+    NSData* jsonData = [self getDataFrom:handoutURL withKeys:@[@"user_id",@"teacher",@"period"] withValues:@[self.userId,[self.userData objectForKey:@"teacher"],[self.userData objectForKey:@"period"] ] ];
     // Do any additional setup after loading the view.
 }
 
--(void) drawInvites:(NSMutableArray *)jsonInput{
+-(void) drawInvites{
     //We will eventually use math to draw the views, right now we will use static buttons
     
     //We have a tagCount to have a range of how many buttons we have (tagCount,maxInvites)
     int tagCount = 0;
-    int maxInvites = ((NSArray *)jsonInput[0]).count;
-    NSArray *handouts = jsonInput[1];
-    NSLog(@"hey derr %@",jsonInput);
+    NSInteger maxInvites = [[self.jsonResp objectForKey:@"file_name"] count];
+    NSArray *handouts = [self.jsonResp objectForKey:@"file_name"];
 
     //We iterate through each of the invites and we enable the ones that have a corresponding handout
     for (int i = 0; i < self.InviteButtons.count; i++) {
@@ -87,7 +82,10 @@
 
 - (IBAction)acceptInvite:(id)sender {
     //we will get the file once we accept the invite. Then we can go ahead and call the perform from segue as a callback
-    [self getOneDriveFilewithQuery:@"title = 'mathworksheet.jpg'"];
+    //we know the sender is a UIButton
+    UIButton* s = (UIButton *) sender;
+    NSString *query =[NSString stringWithFormat:@"title = '%@'",s.titleLabel.text] ;
+    [self getOneDriveFilewithQuery:query];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -146,6 +144,54 @@
     //We can create an error boolean and set it to True if nothing works out
 }
 
+- (NSData *) getDataFrom:(NSString *)url withKeys:(NSArray *)keys withValues:(NSArray *)values{
+    NSError *error = [[NSError alloc] init];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    int i = 0;
+    for (NSString *x in keys){
+        [dict setObject:[values objectAtIndex:i] forKey:x];
+        i++;
+    }
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    if (!data) {
+        return NO;
+    }
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:data];
+    NSHTTPURLResponse *responseCode = nil;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
+        return nil;
+    }
+    [self groupsFromJSON:oResponseData forKeys:@[@"file_name",@"errcode",@"date"] error:&error];
+    return oResponseData;
+}
 
+
+- (void)groupsFromJSON:(NSData *)objectNotation forKeys:(NSArray *)keys error:(NSError **)error
+{
+    NSError *localError = nil;
+    NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
+    
+    
+    if (localError != nil) {
+        *error = localError;
+    }
+    //FIX
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSString *key in keys){
+        NSArray *group = [parsedObject objectForKey:key];
+        [result addObject:group];
+    }
+    self.jsonResp =  parsedObject;
+    NSLog(@"The JSON Object %@",self.jsonResp);
+    [self drawInvites];
+}
 
 @end

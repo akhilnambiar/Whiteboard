@@ -26,7 +26,9 @@
 + (void)showErrorMessageWithTitle:(NSString *)title 
                           message:(NSString *)message
                          delegate:(id)delegate;
-+ (NSData *) getDataFrom:(NSString *)url;
-+ (NSMutableArray *)groupsFromJSON:(NSData *)objectNotation forKeys:(NSArray *)keys error:(NSError **)error;
++ (NSData *) getDataFrom:(NSString *)url withKeys:(NSArray *)keys withValues:(NSArray *)values;
+
+//We can change the parameters
++ (NSDictionary *)groupsFromJSON:(NSData *)objectNotation forKeys:(NSArray *)keys error:(NSError **)error;
 
 @end

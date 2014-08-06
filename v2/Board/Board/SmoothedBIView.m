@@ -116,6 +116,7 @@
     [self setNeedsDisplay];
     [path removeAllPoints];
     NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrementalImage)];
+    
     [delegate recivedTouch:touch fromUIView:self andData: imageData];
     ctr = 0;
     

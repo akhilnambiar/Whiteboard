@@ -25,12 +25,14 @@
 @property (nonatomic, readwrite) SRWebSocket *warbleSocket;
 @property (nonatomic, readwrite) BOOL socketReady;
 @property (weak, nonatomic) IBOutlet UILabel *connectStatus;
-@property (strong, nonatomic) IBOutlet SmoothedBIView *smooth2;
 @property NSData* localdata;
 @property (weak, nonatomic) IBOutlet UIView *toolBar;
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet SmoothedBIView *smooth;
 @property (weak, nonatomic) IBOutlet UIImageView *handoutImageView;
+@property (strong, nonatomic) IBOutlet SmoothedBIView *smooth2;
+@property (weak, nonatomic) IBOutlet UIButton *testButton;
+
 
 
 
@@ -230,8 +232,10 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     GTLUploadParameters *uploadParameters = nil;
     // Only update the file content if different.
     uploadParameters = [GTLUploadParameters uploadParametersWithData:boardPNG MIMEType:@"image/png"];
-    //SAVE POINT:
-    
+    //SAVE POINT
+    self.driveFile.title = self.fileTitle;
+    self.driveFile.identifier = nil;
+    //Design Decision
     
     GTLQueryDrive *query = nil;
     if (self.driveFile.identifier == nil || self.driveFile.identifier.length == 0) {
@@ -289,5 +293,17 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
         }
     }];
 }
+
+- (IBAction)viewClassmate:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                    message:@"This feature is only used for testing to ensure that the websocket works. The link is to a webpage that has the image of the board."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [self performSegueWithIdentifier:@"WebsocketTestSegue" sender:self];
+}
+
+
 
 @end

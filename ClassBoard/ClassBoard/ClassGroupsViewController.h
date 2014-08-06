@@ -11,4 +11,5 @@
 
 @interface ClassGroupsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) GTLServiceDrive *driveService;
+@property (weak, nonatomic) NSDictionary *userData;
 @end

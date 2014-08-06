@@ -23,6 +23,7 @@
 @property (weak, nonatomic) GTLServiceDrive *ourDrive;
 @property (retain) NSMutableArray *driveFiles;
 @property (nonatomic) BOOL withHandout;
+@property NSDictionary* jsonResp;
 
 @end
 
@@ -63,9 +64,9 @@
     [super viewDidLoad];
     self.withHandout = NO;
     const NSString *rU = rootURL;
-    NSString *handoutURL = [rU stringByAppendingString:@"/class/handouts"];
-    NSString* json = [self getDataFrom:handoutURL];
-    [self loadDriveFiles];
+    NSError *error = [[NSError alloc] init];
+    NSString *handoutURL = [rU stringByAppendingString:@"get_handout/"];
+    [self getDataFrom:handoutURL withKeys:@[@"teacher",@"period"] withValues:@[[self.userData objectForKey:@"teacher"],[self.userData objectForKey:@"period"]] ];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,12 +75,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSString *) getDataFrom:(NSString *)url{
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:url]];
-    
+- (NSData *) getDataFrom:(NSString *)url withKeys:(NSArray *)keys withValues:(NSArray *)values{
     NSError *error = [[NSError alloc] init];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    int i = 0;
+    for (NSString *x in keys){
+        [dict setObject:[values objectAtIndex:i] forKey:x];
+        i++;
+    }
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    if (!data) {
+        return NO;
+    }
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:data];
     NSHTTPURLResponse *responseCode = nil;
     
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
@@ -88,17 +100,42 @@
         NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
         return nil;
     }
-    
-    return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
+    [self groupsFromJSON:oResponseData forKeys:@[@"file_name",@"errcode"] error:&error];
+    return oResponseData;
 }
 
 -(void) drawHandouts:(NSMutableArray*) handouts{
-    GTLDriveFile* testFile = [self.driveFiles objectAtIndex:2];
+    GTLDriveFile* testFile = [self.driveFiles objectAtIndex:0];
+    NSString* t1 = testFile.title;
+    NSString* t2 = nil;
+    NSString* t3 = nil;
     NSString* thumbnail = testFile.thumbnailLink;
     NSURL *url = [NSURL URLWithString: thumbnail];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIImageView *imageView2 = nil;
+    UIImageView *imageView3 = nil;
+    
+    if ([self.driveFiles count]>1){
+        GTLDriveFile* testFile2 = [self.driveFiles objectAtIndex:1];
+        NSString* thumbnail2 = testFile2.thumbnailLink;
+        NSURL *url2 = [NSURL URLWithString: thumbnail2];
+        NSData *data2 = [NSData dataWithContentsOfURL:url2];
+        UIImage *image2 = [UIImage imageWithData:data2];
+        imageView2 = [[UIImageView alloc] initWithImage:image2];
+        t2 = testFile2.title;
+    }
+    
+    if ([self.driveFiles count]>2){
+        GTLDriveFile* testFile3 = [self.driveFiles objectAtIndex:2];
+        NSString* thumbnail3 = testFile3.thumbnailLink;
+        NSURL *url3 = [NSURL URLWithString: thumbnail3];
+        NSData *data3 = [NSData dataWithContentsOfURL:url3];
+        UIImage *image3 = [UIImage imageWithData:data3];
+        imageView3 = [[UIImageView alloc] initWithImage:image3];
+        t3 = testFile3.title;
+    }
 
     CGFloat height = [self.handoutView bounds].size.height;
     CGFloat width = [self.handoutView bounds].size.width;
@@ -118,9 +155,10 @@
     [[button layer] setBorderColor:[UIColor blackColor].CGColor];
     button.tintColor = [UIColor blackColor];
     imageView.frame = CGRectMake(width*.1, cellHeight*3, cellWidth, cellHeight);
-    [button addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.handoutView addSubview:imageView];
     [self.handoutView addSubview:button];
+    button.tag=0;
     
     UILabel  *label1a = [[UILabel alloc] initWithFrame:CGRectMake(width*.1, cellHeight*3, cellWidth, cellHeight/3)];
     label1a.textColor=[UIColor whiteColor];
@@ -136,28 +174,36 @@
     [self.handoutView addSubview:label1b];
     
     UIButton *button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button2 addTarget:self
-               action:@selector(aMethod)
-     forControlEvents:UIControlEventTouchUpInside];
     [button2 setTitle:@"Show View" forState:UIControlStateNormal];
     button2.frame = CGRectMake(width*.1, cellHeight, cellWidth, cellHeight);
     button2.backgroundColor = [UIColor greenColor];
     [self.handoutView addSubview:button2];
+    if (imageView2!=nil){
+        imageView2.frame = CGRectMake(width*.1, cellHeight, cellWidth, cellHeight);
+        [self.handoutView addSubview:imageView2];
+        [button2 addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+        button2.tag=1;
+    }
+    
+    
     
     
     UIButton *b3 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [b3 addTarget:self
-                action:@selector(aMethod)
-      forControlEvents:UIControlEventTouchUpInside];
     [b3 setTitle:@"Show View" forState:UIControlStateNormal];
     b3.frame = CGRectMake(width*.1, cellHeight*5, cellWidth, cellHeight);
     b3.backgroundColor = [UIColor redColor];
     [self.handoutView addSubview:b3];
+    if (imageView3!=nil){
+        imageView3.frame = CGRectMake(width*.1, cellHeight*5, cellWidth, cellHeight);
+        [self.handoutView addSubview:imageView3];
+        [b3 addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+        b3.tag=1;
+    }
+    
     
 }
 
 -(void) aMethod{
-    NSLog(@"poopie face tomatoe nose");
     
 }
 
@@ -192,12 +238,22 @@
     //query.q = @"mimeType = 'text/plain'";
     //query.q = @"";
     //FOR HANDOUTS WE WILL ADD A SPECIFIC QUERY LATER
+    
+    //This block of code will be used to check to see if
+    
+    NSArray *file_names = [self.jsonResp objectForKey:@"file_name"];
+    NSMutableArray *query_ready_fn = [[NSMutableArray alloc] init];
+    NSString *y = @"";
+    for (NSString *x in file_names){
+        y = [NSString stringWithFormat:@"title ='%@'",x];
+        [query_ready_fn addObject:y];
+    }
+    NSString *temp =[[query_ready_fn valueForKey:@"description"] componentsJoinedByString:@" or "];
+    query.q = temp;
+    //query.q = @"title = 'englishworksheet.png' or title = 'mathworksheet.jpg'";
     BOOL notNull = self.driveService==NULL;
-    NSLog(@"Is this eual to %@",self.driveService);
     UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading files"
                                                              delegate:self];
-    
-    NSLog(@"Is this eual to %hhd",notNull);
     [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
                                                               GTLDriveFileList *files,
                                                               NSError *error) {
@@ -209,8 +265,6 @@
             }
             [self.driveFiles removeAllObjects];
             [self.driveFiles addObjectsFromArray:files.items];
-            //We will eventually send a file to the drawhandouts callback
-            GTLDriveFile *file = [self.driveFiles objectAtIndex:0];
             [self drawHandouts:(NSMutableArray *)@[]];
         } else {
             NSLog(@"An error occurred: %@", error);
@@ -234,15 +288,17 @@
     [self drawHandouts:contents];
 }
 
--(void) clickButton{
+-(void) clickButton:(id) sender{
     self.withHandout = YES;
-    [self loadHandoutFiles];
+    UIButton *clicked = (UIButton* ) sender;
+    NSString *fileTitle = ((GTLDriveFile *)[self.driveFiles objectAtIndex:clicked.tag]).title;
+    [self loadHandoutFiles:fileTitle];
 }
 
--(void)loadHandoutFiles {
+-(void)loadHandoutFiles:(NSString *) file_title {
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
     //query.q = @"mimeType = 'text/plain'";
-    NSString *search = @"title = 'englishworksheet.png'";
+    NSString *search = [NSString stringWithFormat:@"title ='%@'",file_title];
     query.q = search;
     
     UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading files"
@@ -257,7 +313,6 @@
             }
             [self.driveFiles removeAllObjects];
             [self.driveFiles addObjectsFromArray:files.items];
-            NSLog(@"THe drive files are:%@",self.driveFiles);
             //[];
         } else {
             NSLog(@"An error occurred: %@", error);
@@ -267,6 +322,26 @@
         }
         [self performSegueWithIdentifier:@"HandoutToSave" sender:self];
     }];
+}
+
+- (void)groupsFromJSON:(NSData *)objectNotation forKeys:(NSArray *)keys error:(NSError **)error
+{
+    NSError *localError = nil;
+    NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
+    
+    
+    if (localError != nil) {
+        *error = localError;
+    }
+    //FIX
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSString *key in keys){
+        NSArray *group = [parsedObject objectForKey:key];
+        [result addObject:group];
+    }
+    self.jsonResp =  parsedObject;
+    [self loadDriveFiles];
+    
 }
 
 @end

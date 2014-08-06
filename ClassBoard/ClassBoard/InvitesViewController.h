@@ -10,4 +10,6 @@
 #import "GTLDrive.h"
 @interface InvitesViewController : UIViewController
 @property (nonatomic, retain) GTLServiceDrive *driveService;
+@property (weak, nonatomic) NSDictionary *userData;
+@property NSString* userId;
 @end

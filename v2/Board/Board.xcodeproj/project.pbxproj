@@ -13,8 +13,6 @@
 		1B1BC0EC18EE893F00A5C750 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1BC0EB18EE893F00A5C750 /* SmoothedBIView.m */; };
 		1B42FD13191076A2003658A0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B42FD12191076A2003658A0 /* SystemConfiguration.framework */; };
 		1B42FD15191076B1003658A0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B42FD14191076B1003658A0 /* MobileCoreServices.framework */; };
-		1B42FD2919107F0F003658A0 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B42FD2819107F0F003658A0 /* GTMOAuth2ViewTouch.xib */; };
-		1B42FD2C1910803D003658A0 /* GTLDrive_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B42FD2B1910803D003658A0 /* GTLDrive_Sources.m */; };
 		1B487C3118EE4D0F00DA5FD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B487C3018EE4D0F00DA5FD5 /* Foundation.framework */; };
 		1B487C3318EE4D0F00DA5FD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B487C3218EE4D0F00DA5FD5 /* CoreGraphics.framework */; };
 		1B487C3518EE4D0F00DA5FD5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B487C3418EE4D0F00DA5FD5 /* UIKit.framework */; };
@@ -58,34 +56,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1B42FD2019107D66003658A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B42FD1919107D65003658A0 /* GTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
-			remoteInfo = GTLFramework;
-		};
-		1B42FD2219107D66003658A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B42FD1919107D65003658A0 /* GTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
-			remoteInfo = GTLTouchStaticLib;
-		};
-		1B42FD2419107D66003658A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B42FD1919107D65003658A0 /* GTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
-			remoteInfo = GTLUnitTests;
-		};
-		1B42FD2619107D66003658A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B42FD1919107D65003658A0 /* GTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
-			remoteInfo = DevelopmentTestTool;
-		};
 		1B487C5318EE4D1000DA5FD5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B487C2518EE4D0F00DA5FD5 /* Project object */;
@@ -106,10 +76,6 @@
 		1B1BC0EB18EE893F00A5C750 /* SmoothedBIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmoothedBIView.m; sourceTree = "<group>"; };
 		1B42FD12191076A2003658A0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1B42FD14191076B1003658A0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		1B42FD1919107D65003658A0 /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = "../../../../../google-api-objectivec-client-read-only/Source/GTL.xcodeproj"; sourceTree = "<group>"; };
-		1B42FD2819107F0F003658A0 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
-		1B42FD2A19108034003658A0 /* GTLDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTLDrive.h; sourceTree = "<group>"; };
-		1B42FD2B1910803D003658A0 /* GTLDrive_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLDrive_Sources.m; sourceTree = "<group>"; };
 		1B487C2D18EE4D0F00DA5FD5 /* Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Board.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B487C3018EE4D0F00DA5FD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1B487C3218EE4D0F00DA5FD5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -188,17 +154,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B42FD1A19107D65003658A0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1B42FD2119107D66003658A0 /* GTL.framework */,
-				1B42FD2319107D66003658A0 /* libGTLTouchStaticLib.a */,
-				1B42FD2519107D66003658A0 /* GTLUnitTests.octest */,
-				1B42FD2719107D66003658A0 /* DevelopmentTestTool */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1B487C2418EE4D0F00DA5FD5 = {
 			isa = PBXGroup;
 			children = (
@@ -237,8 +192,6 @@
 		1B487C3618EE4D0F00DA5FD5 /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				1B42FD2819107F0F003658A0 /* GTMOAuth2ViewTouch.xib */,
-				1B42FD1919107D65003658A0 /* GTL.xcodeproj */,
 				1B487C3F18EE4D0F00DA5FD5 /* BoardAppDelegate.h */,
 				1B487C4018EE4D0F00DA5FD5 /* BoardAppDelegate.m */,
 				1B487C4218EE4D0F00DA5FD5 /* Main.storyboard */,
@@ -249,8 +202,6 @@
 				1B1BC0E418EE7F5500A5C750 /* CachedLIView.h */,
 				1B1BC0E518EE7F5500A5C750 /* CachedLIView.m */,
 				1B487C4518EE4D0F00DA5FD5 /* BoardViewController.h */,
-				1B42FD2A19108034003658A0 /* GTLDrive.h */,
-				1B42FD2B1910803D003658A0 /* GTLDrive_Sources.m */,
 				1B487C4618EE4D0F00DA5FD5 /* BoardViewController.m */,
 				1B1BC0E118EE76A700A5C750 /* LinearInterpView.h */,
 				1B1BC0E218EE76A800A5C750 /* LinearInterpView.m */,
@@ -394,12 +345,6 @@
 			mainGroup = 1B487C2418EE4D0F00DA5FD5;
 			productRefGroup = 1B487C2E18EE4D0F00DA5FD5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1B42FD1A19107D65003658A0 /* Products */;
-					ProjectRef = 1B42FD1919107D65003658A0 /* GTL.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1B487C2C18EE4D0F00DA5FD5 /* Board */,
@@ -407,37 +352,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		1B42FD2119107D66003658A0 /* GTL.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GTL.framework;
-			remoteRef = 1B42FD2019107D66003658A0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B42FD2319107D66003658A0 /* libGTLTouchStaticLib.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGTLTouchStaticLib.a;
-			remoteRef = 1B42FD2219107D66003658A0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B42FD2519107D66003658A0 /* GTLUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GTLUnitTests.xctest;
-			remoteRef = 1B42FD2419107D66003658A0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B42FD2719107D66003658A0 /* DevelopmentTestTool */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = DevelopmentTestTool;
-			remoteRef = 1B42FD2619107D66003658A0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1B487C2B18EE4D0F00DA5FD5 /* Resources */ = {
@@ -458,7 +372,6 @@
 				1B487C3B18EE4D0F00DA5FD5 /* InfoPlist.strings in Resources */,
 				1B487C8118EE4D6100DA5FD5 /* DarkGreen.png in Resources */,
 				1B487C8C18EE4D6100DA5FD5 /* Save-Small.png in Resources */,
-				1B42FD2919107F0F003658A0 /* GTMOAuth2ViewTouch.xib in Resources */,
 				1B487C7E18EE4D6100DA5FD5 /* Blue.png in Resources */,
 				1B487C7F18EE4D6100DA5FD5 /* Brown.png in Resources */,
 				1B487C8F18EE4D6100DA5FD5 /* thickness.png in Resources */,
@@ -488,7 +401,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B42FD2C1910803D003658A0 /* GTLDrive_Sources.m in Sources */,
 				1B487C4718EE4D0F00DA5FD5 /* BoardViewController.m in Sources */,
 				1B1BC0E618EE7F5500A5C750 /* CachedLIView.m in Sources */,
 				1B1BC0E318EE76A800A5C750 /* LinearInterpView.m in Sources */,

@@ -22,14 +22,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ym9-k7-eCy">
-                                <rect key="frame" x="294" y="374" width="197" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <state key="normal" title="Sign In wih ">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecF-Cx-jv4">
                                 <rect key="frame" x="266" y="584" width="253" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -466,6 +458,36 @@
             </objects>
             <point key="canvasLocation" x="4534" y="-1337"/>
         </scene>
+        <!--TestBoard-->
+        <scene sceneID="6do-VL-cqV">
+            <objects>
+                <viewController id="rxw-Nj-chI" userLabel="TestBoard" customClass="BoardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8gO-vE-DBd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bve-et-ji0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9f8-5g-wPE" customClass="SmoothedBIView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="http://glacial-castle-5433.herokuapp.com/paint" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uad-bP-bNZ">
+                                <rect key="frame" x="115" y="858" width="517" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7R3-ja-syS"/>
+                    <connections>
+                        <outlet property="smooth2" destination="9f8-5g-wPE" id="bEM-QU-wM1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1xW-qb-YnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7582" y="-1330"/>
+        </scene>
         <!--Board View Controller-->
         <scene sceneID="AeJ-ak-HxP">
             <objects>
@@ -482,14 +504,18 @@
                                 <rect key="frame" x="0.0" y="323" width="84" height="377"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gak-RJ-QMO">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gak-RJ-QMO">
                                         <rect key="frame" x="0.0" y="0.0" width="84" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Button">
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="View Classmate's Board">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="viewClassmate:" destination="OLO-kD-CH0" eventType="touchUpInside" id="b2n-SA-SWc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbY-SS-2KI">
                                         <rect key="frame" x="0.0" y="77" width="84" height="69"/>
@@ -557,6 +583,7 @@
                         <outlet property="handoutImageView" destination="I47-jU-q9L" id="Cvn-nI-njX"/>
                         <outlet property="smooth" destination="2FM-Y6-Jly" id="QXt-k0-DHq"/>
                         <outlet property="toolBar" destination="XBc-uf-pPB" id="8lu-rZ-Ysa"/>
+                        <segue destination="rxw-Nj-chI" kind="push" identifier="WebsocketTestSegue" id="Xqw-Qg-AHR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53h-io-eFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -591,8 +618,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="zE7-xz-jvs"/>
         <segue reference="I09-Fa-8Ju"/>
-        <segue reference="CzW-oF-i3a"/>
-        <segue reference="TLA-V3-tj8"/>
+        <segue reference="QaU-7h-pGT"/>
     </inferredMetricsTieBreakers>
 </document>

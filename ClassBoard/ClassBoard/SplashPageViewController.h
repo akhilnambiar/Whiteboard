@@ -12,4 +12,6 @@
 @interface SplashPageViewController : UIViewController
 extern const NSString *rootURL;
 @property (weak, nonatomic) GTLServiceDrive *driveService;
+@property (weak, nonatomic) NSDictionary *userData;
+@property NSString* userId;
 @end

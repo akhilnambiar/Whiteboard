@@ -11,4 +11,5 @@
 
 @interface HandoutViewController : UIViewController
 @property (weak, readwrite) GTLServiceDrive *driveService;
+@property (weak, nonatomic) NSDictionary *userData;
 @end
