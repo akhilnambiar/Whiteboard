@@ -24,6 +24,7 @@
 @property (retain) NSMutableArray *driveFiles;
 @property (nonatomic) BOOL withHandout;
 @property NSDictionary* jsonResp;
+@property (weak, nonatomic) IBOutlet UIButton *blankHandoutButton;
 
 @end
 
@@ -62,6 +63,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.blankHandoutButton setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:75]];
     self.withHandout = NO;
     const NSString *rU = rootURL;
     NSError *error = [[NSError alloc] init];
@@ -114,6 +116,7 @@
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     UIImageView *imageView2 = nil;
     UIImageView *imageView3 = nil;
     
@@ -124,6 +127,7 @@
         NSData *data2 = [NSData dataWithContentsOfURL:url2];
         UIImage *image2 = [UIImage imageWithData:data2];
         imageView2 = [[UIImageView alloc] initWithImage:image2];
+        imageView2.contentMode = UIViewContentModeScaleAspectFit;
         t2 = testFile2.title;
     }
     
@@ -134,6 +138,7 @@
         NSData *data3 = [NSData dataWithContentsOfURL:url3];
         UIImage *image3 = [UIImage imageWithData:data3];
         imageView3 = [[UIImageView alloc] initWithImage:image3];
+        imageView3.contentMode = UIViewContentModeScaleAspectFit;
         t3 = testFile3.title;
     }
 
@@ -164,41 +169,80 @@
     label1a.textColor=[UIColor whiteColor];
     label1a.adjustsFontSizeToFitWidth=YES;
     label1a.textAlignment = NSTextAlignmentCenter;
-    label1a.text = @"Multiplication Worksheet";
+    label1a.text = @"Math Worksheet";
     [self.handoutView addSubview:label1a];
+    [label1a setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
     
     UILabel  *label1b = [[UILabel alloc] initWithFrame:CGRectMake(width*.1, cellHeight*3, cellWidth, cellHeight/3*2)];
     label1b.textColor=[UIColor whiteColor];
     label1b.textAlignment = NSTextAlignmentCenter;
-    label1b.text = @"Due 7/11/1992";
+    label1b.text = @"Due 7/11/2015";
     [self.handoutView addSubview:label1b];
+    [label1b setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
     
     UIButton *button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button2 setTitle:@"Show View" forState:UIControlStateNormal];
     button2.frame = CGRectMake(width*.1, cellHeight, cellWidth, cellHeight);
-    button2.backgroundColor = [UIColor greenColor];
-    [self.handoutView addSubview:button2];
+    button2.backgroundColor = [UIColor grayColor];
+    [button2 setAlpha:0.66];
+    [[button2 layer] setBorderWidth:2.0f];
+    [[button2 layer] setBorderColor:[UIColor blackColor].CGColor];
+    button2.tintColor = [UIColor blackColor];
     if (imageView2!=nil){
         imageView2.frame = CGRectMake(width*.1, cellHeight, cellWidth, cellHeight);
         [self.handoutView addSubview:imageView2];
         [button2 addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
         button2.tag=1;
+        [self.handoutView addSubview:button2];
     }
+    
+    UILabel  *label2a = [[UILabel alloc] initWithFrame:CGRectMake(width*.1, cellHeight, cellWidth, cellHeight/3)];
+    label2a.textColor=[UIColor whiteColor];
+    label2a.adjustsFontSizeToFitWidth=YES;
+    label2a.textAlignment = NSTextAlignmentCenter;
+    label2a.text = @"Reading Worksheet";
+    [self.handoutView addSubview:label2a];
+    [label2a setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
+    
+    UILabel  *label2b = [[UILabel alloc] initWithFrame:CGRectMake(width*.1, cellHeight, cellWidth, cellHeight/3*2)];
+    label2b.textColor=[UIColor whiteColor];
+    label2b.textAlignment = NSTextAlignmentCenter;
+    label2b.text = @"Due 8/13/2015";
+    [self.handoutView addSubview:label2b];
+    [label2b setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
     
     
     
     
     UIButton *b3 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [b3 setTitle:@"Show View" forState:UIControlStateNormal];
     b3.frame = CGRectMake(width*.1, cellHeight*5, cellWidth, cellHeight);
-    b3.backgroundColor = [UIColor redColor];
-    [self.handoutView addSubview:b3];
+    b3.backgroundColor = [UIColor grayColor];
+    [b3 setAlpha:0.66];
+    [[b3 layer] setBorderWidth:2.0f];
+    [[b3 layer] setBorderColor:[UIColor blackColor].CGColor];
+    b3.tintColor = [UIColor blackColor];
     if (imageView3!=nil){
         imageView3.frame = CGRectMake(width*.1, cellHeight*5, cellWidth, cellHeight);
         [self.handoutView addSubview:imageView3];
         [b3 addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
         b3.tag=1;
+        [self.handoutView addSubview:b3];
     }
+    
+    
+    UILabel  *label3a = [[UILabel alloc] initWithFrame:CGRectMake(width*.1, cellHeight*5, cellWidth, cellHeight/3)];
+    label3a.textColor=[UIColor whiteColor];
+    label3a.adjustsFontSizeToFitWidth=YES;
+    label3a.textAlignment = NSTextAlignmentCenter;
+    label3a.text = @"English Worksheet";
+    [self.handoutView addSubview:label3a];
+    [label3a setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
+    
+    UILabel  *label3b = [[UILabel alloc] initWithFrame:CGRectMake(width*.1, cellHeight*5, cellWidth, cellHeight/3*2)];
+    label3b.textColor=[UIColor whiteColor];
+    label3b.textAlignment = NSTextAlignmentCenter;
+    label3b.text = @"Due 8/13/2015";
+    [self.handoutView addSubview:label3b];
+    [label3b setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
     
     
 }

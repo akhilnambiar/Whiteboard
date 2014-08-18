@@ -17,6 +17,7 @@
 @property(strong, nonatomic) NSMutableArray* jsonClassmates;
 @property(strong,nonatomic) NSMutableArray* selectedMates;
 @property NSDictionary* jsonResp;
+@property (weak, nonatomic) IBOutlet UILabel *groupLabel;
 
 
 @end
@@ -35,6 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.groupLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:40]];
     // Do any additional setup after loading the view.
     self.selectedMates = [[NSMutableArray alloc]init];
     const NSString *rU = rootURL;
@@ -83,6 +85,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     NSString *student = [self.jsonClassmates objectAtIndex:indexPath.row];
+    [cell.textLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:30]];
     cell.textLabel.text = student;
     
     return cell;

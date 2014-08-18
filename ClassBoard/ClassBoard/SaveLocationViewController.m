@@ -12,6 +12,7 @@
 @interface SaveLocationViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 - (IBAction)nextPage:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *chooseFileLabel;
 
 @end
 
@@ -30,6 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.chooseFileLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:45]];
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,6 +9,7 @@
 #import "BoardViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "DrEditUtilities.h"
+#import "TestControllerViewController.h"
 
 @interface BoardViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *BottomBoardLayer;
@@ -30,8 +31,16 @@
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet SmoothedBIView *smooth;
 @property (weak, nonatomic) IBOutlet UIImageView *handoutImageView;
-@property (strong, nonatomic) IBOutlet SmoothedBIView *smooth2;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *hideBar;
+@property (weak, nonatomic) IBOutlet UIButton *firstButton;
+@property (weak, nonatomic) IBOutlet UIButton *secondButton;
+@property (weak, nonatomic) IBOutlet UIButton *thirdButton;
 @property (weak, nonatomic) IBOutlet UIButton *testButton;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+
+//These properties are for the testboard
+@property UIImage* handoutImage;
+
 
 
 
@@ -104,8 +113,17 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     if(self.withHandout){
         [self loadFileContent];
     }
+    [self.firstButton.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
+    [self.secondButton.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
+    [self.thirdButton.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
+    [self.saveButton.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
+    [self.testButton.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:16]];
     //The following block is mainly for testing purposes. It checks to see if the websocket is working
+    /*
     if(self.smooth2){
+        NSLog(@"yea");
+        NSLog(@"the image %@",self.handoutImage);
+        [self.handoutImageView2 setImage:self.handoutImage];
         NSString *url = @"http://glacial-castle-5433.herokuapp.com/paint";
         //This will make a get request
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -121,12 +139,12 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
             NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
             response = @"no hay response";
         }
-        
+     
         response = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
         NSLog(@"response is %@",response);
         [self.smooth2 updateLabel:oResponseData];
     }
-    
+    */
     //end of testing code block
     
     
@@ -180,6 +198,12 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 
 - (IBAction)toggleTool:(id)sender {
     if(self.toggleShowing){
+        if([self.hideBar.title isEqualToString:@"Hide"]){
+            self.hideBar.title=@"Show";
+        }
+        else{
+            self.hideBar.title=@"Hide";
+        }
         CGRect newFrame = self.toolBar.frame;
         newFrame.origin.x += -100;    // shift right by 500pts
         
@@ -227,8 +251,9 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
      */
     
     //First we will convert it to NSData
+    [self.toolBar setValue:@YES forKeyPath:@"hidden"];
     NSData* boardPNG = [self pngSnapshot];
-    
+    [self.toolBar setValue:@NO forKeyPath:@"hidden"];
     GTLUploadParameters *uploadParameters = nil;
     // Only update the file content if different.
     uploadParameters = [GTLUploadParameters uploadParametersWithData:boardPNG MIMEType:@"image/png"];
@@ -285,6 +310,8 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
         if (error == nil) {
             UIImage *image = [UIImage imageWithData:data];
             [self.handoutImageView setImage:image];
+            self.handoutImage = image;
+            NSLog(@"at first the image is: %@",self.handoutImage);
         } else {
             NSLog(@"An error occurred: %@", error);
             [DrEditUtilities showErrorMessageWithTitle:@"Unable to load file"
@@ -304,6 +331,11 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     [self performSegueWithIdentifier:@"WebsocketTestSegue" sender:self];
 }
 
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"WebsocketTestSegue"]){
+        TestControllerViewController *viewController = [segue destinationViewController];
+        viewController.handoutImage = self.handoutImage;
+    }
+}
 
 @end

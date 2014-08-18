@@ -38,6 +38,8 @@
 		1B3E164F195CEC2700DF7B16 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E164E195CEC2700DF7B16 /* SmoothedBIView.m */; };
 		1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */; };
 		1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81ECBB197BBE0800789664 /* InvitesViewController.m */; };
+		1B96522E1992BE950071DD05 /* walkway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B96522D1992BE950071DD05 /* walkway.ttf */; };
+		1B9652351992CE0A0071DD05 /* TestControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9652341992CE0A0071DD05 /* TestControllerViewController.m */; };
 		1BCDF68C1978EE3C007745AD /* SaveLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +128,9 @@
 		1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
 		1B81ECBA197BBE0800789664 /* InvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitesViewController.h; sourceTree = "<group>"; };
 		1B81ECBB197BBE0800789664 /* InvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitesViewController.m; sourceTree = "<group>"; };
+		1B96522D1992BE950071DD05 /* walkway.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = walkway.ttf; sourceTree = "<group>"; };
+		1B9652331992CE0A0071DD05 /* TestControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestControllerViewController.h; sourceTree = "<group>"; };
+		1B9652341992CE0A0071DD05 /* TestControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestControllerViewController.m; sourceTree = "<group>"; };
 		1BCDF68A1978EE3C007745AD /* SaveLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveLocationViewController.h; sourceTree = "<group>"; };
 		1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveLocationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +220,8 @@
 				1B3E15F0195C8EA000DF7B16 /* ClassAppDelegate.h */,
 				1B3E15F1195C8EA000DF7B16 /* ClassAppDelegate.m */,
 				1B3E15F3195C8EA000DF7B16 /* Main.storyboard */,
+				1B9652331992CE0A0071DD05 /* TestControllerViewController.h */,
+				1B9652341992CE0A0071DD05 /* TestControllerViewController.m */,
 				1B169DDF1960D66300CDC9AA /* ClassGroupsViewController.h */,
 				1B169DE01960D66300CDC9AA /* ClassGroupsViewController.m */,
 				1B3E1633195CD71000DF7B16 /* SplashPageViewController.h */,
@@ -234,6 +241,7 @@
 			children = (
 				1B3E1643195CEA9600DF7B16 /* SocketRocket */,
 				1B3E1631195CD53500DF7B16 /* nevis.ttf */,
+				1B96522D1992BE950071DD05 /* walkway.ttf */,
 				1B3E15E9195C8EA000DF7B16 /* ClassBoard-Info.plist */,
 				1B3E15EA195C8EA000DF7B16 /* InfoPlist.strings */,
 				1B3E15ED195C8EA000DF7B16 /* main.m */,
@@ -400,6 +408,7 @@
 				1B3E15EC195C8EA000DF7B16 /* InfoPlist.strings in Resources */,
 				1B3E15F5195C8EA000DF7B16 /* Main.storyboard in Resources */,
 				1B3E1632195CD5C100DF7B16 /* nevis.ttf in Resources */,
+				1B96522E1992BE950071DD05 /* walkway.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B9652351992CE0A0071DD05 /* TestControllerViewController.m in Sources */,
 				1B169DE81960DAB200CDC9AA /* HandoutViewController.m in Sources */,
 				1B3E15EE195C8EA000DF7B16 /* main.m in Sources */,
 				1B3E1630195CBB1100DF7B16 /* GTLDrive_Sources.m in Sources */,

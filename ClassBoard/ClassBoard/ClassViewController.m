@@ -19,6 +19,7 @@
 @property NSDictionary* jsonResp;
 @property NSString* userId;
 @property UIAlertView* loginAlert;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
 
 @implementation ClassViewController
@@ -29,6 +30,9 @@ static NSString *const kClientId = @"919063903792-mq1o9pmi47qdbe2ar1rv72fhohta9u
 static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
 NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:80]];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,8 +53,6 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)signin:(id)sender {
-    self.loginAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading Classboard"
-                                                             delegate:self];
     if (!self.isAuthorized) {
         // Sign in.
         SEL finishedSelector = @selector(viewController:finishedWithAuth:error:);
@@ -65,10 +67,17 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
                                 animated:YES completion:nil];
     } else {
         [self getUserInfo:self.driveService];
+        self.loginAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading Classboard"
+                                                              delegate:self];
     }
     
 }
 
+-(void)showAlert{
+    NSLog(@"I reach here");
+    self.loginAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading Classboard"
+                                                          delegate:self];
+}
 
 - (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
       finishedWithAuth:(GTMOAuth2Authentication *)auth
@@ -76,6 +85,9 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
     [self dismissViewControllerAnimated:YES completion:nil];
     [self getUserInfo:self.driveService];
     if (error == nil) {
+        //After they log in, we introduce the alert
+        self.loginAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading Classboard"
+                                                              delegate:self];
         [self isAuthorizedWithAuthentication:auth];
     }
 }

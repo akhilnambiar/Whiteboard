@@ -14,6 +14,7 @@
 @interface InvitesViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *InviteButtons;
 @property (strong, nonatomic) GTLDriveFile *driveFile;
+@property (weak, nonatomic) IBOutlet UILabel *InviteTitle;
 @property NSDictionary* jsonResp;
 @end
 /*
@@ -45,6 +46,10 @@
 {
     
     [super viewDidLoad];
+    [self.InviteTitle setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:55]];
+    for (UIButton* b in self.InviteButtons){
+        [b.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:35]];
+    }
     NSError *error = [[NSError alloc] init];
     const NSString *rU = rootURL;
     NSString *handoutURL = [rU stringByAppendingString:@"get_invites/"];
@@ -66,7 +71,7 @@
         if (button.tag>=tagCount && button.tag<maxInvites){
             button.enabled = YES;
             [button setTitle:[NSString stringWithFormat:@"%@",handouts[button.tag]] forState:UIControlStateNormal];
-            button.backgroundColor = [UIColor greenColor];
+            button.backgroundColor = [UIColor colorWithRed:179.0/255.0 green:187.0/255.0 blue:225.0/255.0 alpha:1];
         }
     }
 }

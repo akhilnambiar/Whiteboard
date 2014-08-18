@@ -50,11 +50,21 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.SingleBoard.titleLabel setFont:[UIFont fontWithName:@"nevis-Bold" size:40]];
-    [self.GroupBoard.titleLabel setFont:[UIFont fontWithName:@"nevis-Bold" size:40]];
-    [self.ViewDocs.titleLabel setFont:[UIFont fontWithName:@"nevis-Bold" size:40]];
-    [self.Invites.titleLabel setFont:[UIFont fontWithName:@"nevis-Bold" size:40]];
+    [self.SingleBoard.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:55]];
+    [self.GroupBoard.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:55]];
+    [self.ViewDocs.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:55]];
+    [self.Invites.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:55]];
     // Do any additional setup after loading the view.
+    [[self.Invites layer] setBorderWidth:2.0f];
+    [[self.Invites layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [[self.ViewDocs layer] setBorderWidth:2.0f];
+    [[self.ViewDocs layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [[self.GroupBoard layer] setBorderWidth:2.0f];
+    [[self.GroupBoard layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [[self.SingleBoard layer] setBorderWidth:2.0f];
+    [[self.SingleBoard layer] setBorderColor:[UIColor whiteColor].CGColor];
+    NSLog(@"The width of one item %f",self.Invites.frame.size.width);
+    NSLog(@"The height of one item %f",self.Invites.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +99,18 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
         }
 }
 
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if([identifier isEqualToString:@"splashToDocument"]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                        message:@"This feature is currently unavailable"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return NO;
+    }
+    return YES;
+}
 
 
 
