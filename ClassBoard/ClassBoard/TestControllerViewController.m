@@ -32,8 +32,6 @@
     // Do any additional setup after loading the view.
         //The following block is mainly for testing purposes. It checks to see if the websocket is working
         if(self.smooth2){
-            NSLog(@"yea");
-            NSLog(@"the image %@",self.handoutImage);
             self.smooth2.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
             [self.handoutImageView setImage:self.handoutImage];
             NSString *url = @"http://glacial-castle-5433.herokuapp.com/paint";
@@ -53,7 +51,7 @@
             }
             
             response = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-            NSLog(@"response is %@",response);
+            NSLog(@"data response is %@",oResponseData);
             [self.smooth2 updateLabel:oResponseData];
         }
         

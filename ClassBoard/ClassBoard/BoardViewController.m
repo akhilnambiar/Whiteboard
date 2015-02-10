@@ -163,8 +163,17 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 // SRWebSocket handlers
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
- 
-    
+    /*
+    [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                     target:self selector:@selector(timerFireMethod:) userInfo:message repeats:NO];
+     */
+    [self.smooth updateLabel:message];
+}
+
+- (void)timerFireMethod:(NSTimer *)timer
+{
+    NSLog(@"timer has been fired");
+    [self.smooth updateLabel:(NSData*) timer.userInfo];
 }
 
 - (void)recivedTouch:(UITouch *)touch fromUIView:(UIView *)uiView andData:(NSData *)incrImage

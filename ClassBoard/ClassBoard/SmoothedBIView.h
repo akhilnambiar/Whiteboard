@@ -17,6 +17,6 @@
     //id <boardViewDelegate> delegate;
 }
 @property (nonatomic, assign) id <boardViewDelegate> delegate;
--(void)updateBoard:(NSData *)message;
+//-(void)updateBoard:(NSData *)message;
 -(void)updateLabel:(NSData *)imageData;
 @end

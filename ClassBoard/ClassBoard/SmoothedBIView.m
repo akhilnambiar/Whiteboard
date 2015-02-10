@@ -9,11 +9,14 @@
 #import "SmoothedBIView.h"
 @interface SmoothedBIView()
 @property (weak, nonatomic) UIImage *recievedData;
+@property (strong, nonatomic) UIImageView *recieveView;
+@property BOOL running;
 
 @end
 
 @implementation SmoothedBIView
 {
+    //SAVE POINT: Try creating a UIImageView and adding the image to it
     UIBezierPath *path;
     UIImage *incrementalImage;
     CGPoint pts[5]; // we now need to keep track of the four points of a Bezier segment and the first control point of the next segment
@@ -25,21 +28,34 @@
 
 -(void)updateLabel:(NSData *)imageData;
 {
-    UIImage *image = [UIImage imageWithData:imageData];
-    self.recievedData = image;
-    incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
+    if (!self.running){
+        self.running=YES;
+        NSLog(@"we have called update label");
+        UIImage *image = [UIImage imageWithData:imageData];
+        self.recievedData = image;
+        //Taking these two lines off fixes the incremental image issue
+        //incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
+        //UIGraphicsEndImageContext();
+        //NSString *response = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
+        self.recieveView.image = image;
+        //  NSLog(@"response is %@",image);
+        self.running=NO;
+    }
 }
+
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder])
     {
+        NSLog(@"we are initializing");
         [self setMultipleTouchEnabled:NO];
         [self setBackgroundColor:[UIColor whiteColor]];
         path = [UIBezierPath bezierPath];
         [path setLineWidth:2.0];
+        self.recieveView = [[UIImageView alloc] initWithFrame:self.frame];
+        [self addSubview:self.recieveView];
     }
     return self;
     
@@ -60,6 +76,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"draw rect is called");
     [incrementalImage drawInRect:rect];
     [self.recievedData drawInRect:rect];
     [path stroke];
@@ -93,8 +110,8 @@
         ctr = 1;
     }
     //NSData *bezierData = [NSKeyedArchiver archivedDataWithRootObject:path];
-    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrementalImage)];
-    [delegate recivedTouch:touch fromUIView:self andData: imageData];
+    //NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(incrementalImage)];
+    //[delegate recivedTouch:touch fromUIView:self andData: imageData];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -113,6 +130,9 @@
     [self touchesEnded:touches withEvent:event];
 }
 
+/*
+APPARENTLY THIS IS NEVER BEING CALLED
+ 
 -(void)updateBoard:(NSData *)message
 {
     UIImage *newImage = [UIImage imageWithData:message];
@@ -120,7 +140,9 @@
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     incrementalImage = newImage;
+    NSLog(@"board has been updated");
 }
+ */
 
 - (void)drawBitmap
 {
