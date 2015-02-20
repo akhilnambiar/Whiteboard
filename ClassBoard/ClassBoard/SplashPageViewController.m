@@ -42,8 +42,14 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
     //NSString *newURL = [NSString stringWithFormat:@"%@%@", rootURL, @"login/"];
     //NSData *resp = [self getDataFrom:newURL withKeys:@[@"username"] withValues:@[[NSString stringWithFormat:@"%d", 1]]];
     //[self groupsFromJSON:resp forKeys:@[@"errcode",@"user_id",@"invites"] error:&error];
-    
+    self.navigationController.navigationBar.hidden=YES;
 }
+
+-(void)viewDidDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden=NO;
+}
+
+
 
 
 
@@ -63,8 +69,6 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
     [[self.GroupBoard layer] setBorderColor:[UIColor whiteColor].CGColor];
     [[self.SingleBoard layer] setBorderWidth:2.0f];
     [[self.SingleBoard layer] setBorderColor:[UIColor whiteColor].CGColor];
-    NSLog(@"The width of one item %f",self.Invites.frame.size.width);
-    NSLog(@"The height of one item %f",self.Invites.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,6 +89,7 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
             HandoutViewController *viewController = [segue destinationViewController];
             viewController.driveService = self.driveService;
             viewController.userData = self.userData;
+            viewController.groupInvite = NO;
         }
         else if([segue.identifier isEqualToString:@"splashToGroup"]){
             ClassGroupsViewController *viewController = [segue destinationViewController];
@@ -152,8 +157,10 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
     [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:data];
     NSURLResponse *urlResponse = nil;
+    /*
     NSData *urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-    NSData *response = [NSJSONSerialization JSONObjectWithData:urlData options:NSJSONWritingPrettyPrinted error:&error];
+    //NSData *response = [NSJSONSerialization JSONObjectWithData:urlData options:NSJSONWritingPrettyPrinted error:&error];
+     */
     
     
     NSHTTPURLResponse *responseCode = nil;

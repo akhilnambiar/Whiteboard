@@ -50,10 +50,11 @@
     for (UIButton* b in self.InviteButtons){
         [b.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:35]];
     }
-    NSError *error = [[NSError alloc] init];
+    //NSError *error = [[NSError alloc] init];
     const NSString *rU = rootURL;
     NSString *handoutURL = [rU stringByAppendingString:@"get_invites/"];
-    NSData* jsonData = [self getDataFrom:handoutURL withKeys:@[@"user_id",@"teacher",@"period"] withValues:@[self.userId,[self.userData objectForKey:@"teacher"],[self.userData objectForKey:@"period"] ] ];
+    
+    [self getDataFrom:handoutURL withKeys:@[@"user_id",@"teacher",@"period"] withValues:@[self.userId,[self.userData objectForKey:@"teacher"],[self.userData objectForKey:@"period"] ] ];
     // Do any additional setup after loading the view.
 }
 

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="classboardsplashFINALLR" translatesAutoresizingMaskIntoConstraints="NO" id="pu5-yQ-k17">
-                                <rect key="frame" x="-1" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Classboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoB-rB-aSw">
                                 <rect key="frame" x="163" y="189" width="442" height="107"/>
@@ -39,11 +39,20 @@
                                     <action selector="signin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N7A-Ox-GaY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8O-pi-quS">
+                                <rect key="frame" x="269" y="875" width="221" height="42"/>
+                                <color key="backgroundColor" red="0.96476483585858586" green="0.36550903899815984" blue="0.37520721434945659" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sign Up with Google"/>
+                                <connections>
+                                    <segue destination="rFb-9H-fHH" kind="push" id="Jdw-J9-Qso"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="FOM-FA-sxk"/>
                     <connections>
+                        <outlet property="signup" destination="J8O-pi-quS" id="j2m-3L-NMt"/>
                         <outlet property="titleLabel" destination="eoB-rB-aSw" id="oio-vu-oLb"/>
                         <segue destination="r2n-0T-QHB" kind="push" identifier="postSignon" id="lfJ-Wc-ja7"/>
                     </connections>
@@ -51,6 +60,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="462" y="-284"/>
+        </scene>
+        <!--SignupVC-->
+        <scene sceneID="pC5-jf-p5e">
+            <objects>
+                <viewController id="rFb-9H-fHH" customClass="SignupVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3el-lr-SBX"/>
+                        <viewControllerLayoutGuide type="bottom" id="RHj-pm-ytz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JUt-CS-TG8">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Oa-8u-GT1">
+                                <rect key="frame" x="227" y="143" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbV-pt-jwd">
+                                <rect key="frame" x="227" y="238" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrW-Yy-aoX">
+                                <rect key="frame" x="251" y="501" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qdM-lf-vx6">
+                                <rect key="frame" x="361" y="139" width="224" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OK-4r-0M0">
+                                <rect key="frame" x="361" y="234" width="224" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJv-Qo-YiV">
+                                <rect key="frame" x="261" y="671" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wKe-3p-AQg">
+                                <rect key="frame" x="361" y="802" width="224" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="School" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-UW-zf8">
+                                <rect key="frame" x="257" y="350" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zG3-TQ-fbQ">
+                                <rect key="frame" x="387" y="280" width="173" height="162"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Zc-2E-tVj">
+                                <rect key="frame" x="358" y="431" width="231" height="162"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bms-lv-om7">
+                                <rect key="frame" x="382" y="601" width="182" height="162"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soe-NX-hVC">
+                                <rect key="frame" x="269" y="806" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmS-ms-ER7">
+                                <rect key="frame" x="277" y="906" width="215" height="52"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickSignUp:" destination="rFb-9H-fHH" eventType="touchUpInside" id="9Rr-t4-KI8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*Your account must be a valid Google account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSf-mW-qAo">
+                                <rect key="frame" x="269" y="849" width="356" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bOw-gr-K16"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="wKe-3p-AQg" id="9fu-5I-7qz"/>
+                        <outlet property="lnameTextField" destination="4OK-4r-0M0" id="GA4-Z8-RJX"/>
+                        <outlet property="nameTextField" destination="qdM-lf-vx6" id="how-qi-KBW"/>
+                        <outlet property="periodPick" destination="5Zc-2E-tVj" id="zKZ-Tn-IBO"/>
+                        <outlet property="schoolPick" destination="zG3-TQ-fbQ" id="6ah-R4-XBe"/>
+                        <outlet property="teacherPick" destination="Bms-lv-om7" id="awh-2T-fya"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bjb-C8-PXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="462" y="1065"/>
         </scene>
         <!--Splash Page View Controller-->
         <scene sceneID="riz-Tp-T3O">
@@ -166,7 +281,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="confirmInvites:" destination="cFw-in-See" eventType="touchUpInside" id="G6k-Tt-kpk"/>
+                                    <action selector="confirmInvites:" destination="cFw-in-See" eventType="touchUpInside" id="nyN-W8-V3T"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Classmates to Invite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJ7-YQ-V2e">
@@ -562,6 +677,7 @@
                         <outlet property="thirdButton" destination="fIU-Kw-JfS" id="hlx-fL-x5o"/>
                         <outlet property="toolBar" destination="XBc-uf-pPB" id="8lu-rZ-Ysa"/>
                         <segue destination="rxw-Nj-chI" kind="push" identifier="WebsocketTestSegue" id="WfN-cV-pAd"/>
+                        <segue destination="r2n-0T-QHB" kind="push" identifier="backToHome" id="TCw-F8-Zgr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53h-io-eFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -602,7 +718,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="CzW-oF-i3a"/>
-        <segue reference="TLA-V3-tj8"/>
+        <segue reference="lfJ-Wc-ja7"/>
         <segue reference="9xQ-Vr-LXa"/>
+        <segue reference="zE7-xz-jvs"/>
     </inferredMetricsTieBreakers>
 </document>

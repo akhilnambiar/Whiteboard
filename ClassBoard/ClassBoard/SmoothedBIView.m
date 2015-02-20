@@ -16,7 +16,6 @@
 
 @implementation SmoothedBIView
 {
-    //SAVE POINT: Try creating a UIImageView and adding the image to it
     UIBezierPath *path;
     UIImage *incrementalImage;
     CGPoint pts[5]; // we now need to keep track of the four points of a Bezier segment and the first control point of the next segment

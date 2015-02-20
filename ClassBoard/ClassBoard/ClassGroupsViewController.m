@@ -41,7 +41,6 @@
     self.selectedMates = [[NSMutableArray alloc]init];
     const NSString *rU = rootURL;
     NSString *classListURL = [rU stringByAppendingString:@"get_classmates/"];
-    NSError *error = [[NSError alloc] init];
     [self getDataFrom:classListURL withKeys:@[@"teacher",@"period"] withValues:@[[self.userData objectForKey:@"teacher"],[self.userData objectForKey:@"period"]] ];
     self.classmateList.dataSource = self;
     self.classmateList.delegate = self;
@@ -64,6 +63,12 @@
         HandoutViewController *viewController = [segue destinationViewController];
         viewController.driveService = self.driveService;
         viewController.userData = self.userData;
+        viewController.selectedMates = self.selectedMates;
+        viewController.groupInvite = YES;
+        NSLog(@"Grouphandout selectedmates viewcontroller: %@ ",viewController.selectedMates);
+        NSLog(@"Grouphandout userData viewcontroller: %@ ",viewController.userData);
+        NSLog(@"Grouphandout selectedmates self: %@ ",self.selectedMates);
+        NSLog(@"Grouphandout userData self: %@ ",self.userData);
     }
 }
 
@@ -129,6 +134,8 @@
 - (IBAction)confirmInvites:(id)sender {
     NSMutableArray *t = [self finalizeInvites];
     [self makePostRequestwithKeys:@[@"user_id",@"file_name"] withValues:@[t,@"math_worksheet"]];
+    //This line of code has changed
+    [self performSegueWithIdentifier:@"groupsToHandout" sender:self];
 }
 
 - (NSData *) getDataFrom:(NSString *)url withKeys:(NSArray *)keys withValues:(NSArray *)values{
@@ -189,6 +196,7 @@
     
 }
 
+//Again, we need to finalize the invites as well. We should push this to the next view
 -(NSMutableArray*)finalizeInvites{
     NSArray *t = [self.jsonResp objectForKey:@"user_id"];
     NSLog(@"User_ID Array:%@",t);
@@ -205,6 +213,8 @@
     return result;
 }
 
+
+//Note: We cannot make a POST request here. We need to know the handout as well. We need to push this method to the next View
 -(void)makePostRequestwithKeys:(NSArray *)keys withValues:(NSArray *)values{
     NSError *error = [[NSError alloc] init];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -215,14 +225,6 @@
     }
     
     NSData *postData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-    /*
-     WE MIGHT BE ABLE TO TAKE THIS OUT
-     NSArray *converted = [[NSArray alloc] initWithArray:userIds];
-     NSString *stringOfArray = [[converted valueForKey:@"description"] componentsJoinedByString:@","];
-     NSString *post = [NSString stringWithFormat:@"user_id=[%@]", stringOfArray];
-     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-     */
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     const NSString *rU = rootURL;
     NSString *postURL = [rU stringByAppendingString:@"send_invites/"];
@@ -237,7 +239,6 @@
     NSURLResponse *response;
     NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
     NSString *theReply = [[NSString alloc] initWithBytes:[POSTReply bytes] length:[POSTReply length] encoding: NSASCIIStringEncoding];
-    [self performSegueWithIdentifier:@"groupsToHandout" sender:self];
     NSLog(@"Reply: %@", theReply);
 }
 

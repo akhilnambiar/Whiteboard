@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DrEditUtilities.h"
 #import "TestControllerViewController.h"
+#import "SplashPageViewController.h"
 
 @interface BoardViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *BottomBoardLayer;
@@ -266,7 +267,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     GTLUploadParameters *uploadParameters = nil;
     // Only update the file content if different.
     uploadParameters = [GTLUploadParameters uploadParametersWithData:boardPNG MIMEType:@"image/png"];
-    //SAVE POINT
     self.driveFile.title = self.fileTitle;
     self.driveFile.identifier = nil;
     //Design Decision
@@ -292,6 +292,9 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
         NSLog(@"Completion Handler is called");
         [alert dismissWithClickedButtonIndex:0 animated:YES];
         if (error == nil) {
+            //This will take them back to the home screen
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"File Saved" message:@"Would you like to return to the home screen?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
+            [alert show];
         } else {
             NSLog(@"An error occurred: %@", error);
             [DrEditUtilities showErrorMessageWithTitle:@"Unable to save file"
@@ -299,6 +302,26 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
                                               delegate:self];
         }
     }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0 && [alertView.title isEqualToString:@"File Saved"]){
+        [self performSegueWithIdentifier:@"backToHome" sender:self];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"backToHome"]){
+        SplashPageViewController *viewController = [segue destinationViewController];
+        viewController.driveService = self.driveService;
+        viewController.userData = self.userData;
+    }
+    else if ([segue.identifier isEqualToString:@"WebsocketTestSegue"]){
+        TestControllerViewController *viewController = [segue destinationViewController];
+        viewController.handoutImage = self.handoutImage;
+    }
+
 }
 
 -(NSData *) pngSnapshot{
@@ -338,13 +361,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
                                           otherButtonTitles:nil];
     [alert show];
     [self performSegueWithIdentifier:@"WebsocketTestSegue" sender:self];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"WebsocketTestSegue"]){
-        TestControllerViewController *viewController = [segue destinationViewController];
-        viewController.handoutImage = self.handoutImage;
-    }
 }
 
 @end

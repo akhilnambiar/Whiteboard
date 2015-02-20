@@ -35,6 +35,7 @@
 		1B3E1649195CEB2400DF7B16 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E1648195CEB2400DF7B16 /* CFNetwork.framework */; };
 		1B3E164B195CEB3200DF7B16 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E164A195CEB3200DF7B16 /* libicucore.dylib */; };
 		1B3E164F195CEC2700DF7B16 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E164E195CEC2700DF7B16 /* SmoothedBIView.m */; };
+		1B42D2BF1A96F23E0049D05C /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B42D2BE1A96F23E0049D05C /* SignupVC.m */; };
 		1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */; };
 		1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81ECBB197BBE0800789664 /* InvitesViewController.m */; };
 		1B96522E1992BE950071DD05 /* walkway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B96522D1992BE950071DD05 /* walkway.ttf */; };
@@ -123,6 +124,8 @@
 		1B3E164A195CEB3200DF7B16 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		1B3E164D195CEC2700DF7B16 /* SmoothedBIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmoothedBIView.h; sourceTree = "<group>"; };
 		1B3E164E195CEC2700DF7B16 /* SmoothedBIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmoothedBIView.m; sourceTree = "<group>"; };
+		1B42D2BD1A96F23D0049D05C /* SignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupVC.h; sourceTree = "<group>"; };
+		1B42D2BE1A96F23E0049D05C /* SignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupVC.m; sourceTree = "<group>"; };
 		1B4F678719734A8400AC7CD3 /* DrEditUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditUtilities.h; sourceTree = "<group>"; };
 		1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
 		1B81ECBA197BBE0800789664 /* InvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitesViewController.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				1B3E15F0195C8EA000DF7B16 /* ClassAppDelegate.h */,
 				1B3E15F1195C8EA000DF7B16 /* ClassAppDelegate.m */,
 				1B3E15F3195C8EA000DF7B16 /* Main.storyboard */,
+				1B42D2BD1A96F23D0049D05C /* SignupVC.h */,
+				1B42D2BE1A96F23E0049D05C /* SignupVC.m */,
 				1B9652331992CE0A0071DD05 /* TestControllerViewController.h */,
 				1B9652341992CE0A0071DD05 /* TestControllerViewController.m */,
 				1B169DDF1960D66300CDC9AA /* ClassGroupsViewController.h */,
@@ -429,6 +434,7 @@
 			files = (
 				1B9652351992CE0A0071DD05 /* TestControllerViewController.m in Sources */,
 				1B169DE81960DAB200CDC9AA /* HandoutViewController.m in Sources */,
+				1B42D2BF1A96F23E0049D05C /* SignupVC.m in Sources */,
 				1B3E15EE195C8EA000DF7B16 /* main.m in Sources */,
 				1B3E1630195CBB1100DF7B16 /* GTLDrive_Sources.m in Sources */,
 				1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */,

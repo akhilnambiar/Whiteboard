@@ -14,5 +14,6 @@
 @property (strong, nonatomic) GTLServiceDrive *driveService;
 @property (strong, nonatomic) GTLDriveFile *driveFile;
 @property BOOL withHandout;
+@property (weak, nonatomic) NSDictionary *userData;
 
 @end

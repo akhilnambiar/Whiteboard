@@ -12,4 +12,6 @@
 @interface HandoutViewController : UIViewController
 @property (weak, readwrite) GTLServiceDrive *driveService;
 @property (weak, nonatomic) NSDictionary *userData;
+@property (weak, nonatomic) NSMutableArray *selectedMates;
+@property BOOL groupInvite;
 @end

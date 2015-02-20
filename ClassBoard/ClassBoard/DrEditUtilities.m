@@ -89,10 +89,13 @@
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:data];
+    /*
     NSURLResponse *urlResponse = nil;
-    NSData *urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-    NSData *response = [NSJSONSerialization JSONObjectWithData:urlData options:NSJSONWritingPrettyPrinted error:&error];
     
+    NSData *urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+    
+    NSData *response = [NSJSONSerialization JSONObjectWithData:urlData options:NSJSONWritingPrettyPrinted error:&error];
+    */
     
     NSHTTPURLResponse *responseCode = nil;
     

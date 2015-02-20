@@ -55,6 +55,7 @@
         viewController.fileTitle = self.titleTextField.text;
         viewController.driveFile = self.driveFile;
         viewController.withHandout = self.withHandout;
+        viewController.userData = self.userData;
     }
 }
 -(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{

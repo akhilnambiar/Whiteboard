@@ -15,11 +15,12 @@
 
 
 
-@interface BoardViewController : UIViewController <SRWebSocketDelegate,boardViewDelegate>
+@interface BoardViewController : UIViewController <SRWebSocketDelegate,boardViewDelegate,UIAlertViewDelegate>
 
 @property (nonatomic, retain) GTLServiceDrive *driveService;
 @property GTLDriveFile *driveFile;
 @property NSString *fileTitle;
 @property BOOL withHandout;
+@property (weak, nonatomic) NSDictionary *userData;
 
 @end

@@ -14,6 +14,7 @@
 #import "DrEditUtilities.h"
 
 @interface ClassViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *signup;
 @property BOOL isAuthorized;
 @property (weak, readonly) GTLServiceDrive *driveService;
 @property NSDictionary* jsonResp;
@@ -32,6 +33,8 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:80]];
+    self.navigationController.navigationBar.hidden=YES;
+    self.signup.layer.cornerRadius = 10;
 }
 - (void)viewDidLoad
 {
@@ -45,7 +48,6 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
         [self isAuthorizedWithAuthentication:auth];
     }
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -133,6 +135,7 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
     NSError *error = [[NSError alloc] init];
     NSString *newURL = [NSString stringWithFormat:@"%@%@", rootURL, @"login/"];
     NSData *resp = [self getDataFrom:newURL withKeys:@[@"username"] withValues:@[[NSString stringWithFormat:@"%@",self.userId]]];
+    //Need to do something if the username has been taken
 }
 
 - (NSData *) getDataFrom:(NSString *)url withKeys:(NSArray *)keys withValues:(NSArray *)values{
@@ -202,7 +205,6 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
 - (void)getUserInfo:(GTLServiceDrive *)service {
     GTLQueryDrive *query = [GTLQueryDrive queryForAboutGet];
     // queryTicket can be used to track the status of the request.
-    GTLServiceTicket *queryTicket =
     [service executeQuery:query
         completionHandler:^(GTLServiceTicket *ticket, GTLDriveAbout *about,
                             NSError *error) {
