@@ -12,6 +12,7 @@
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "SplashPageViewController.h"
 #import "DrEditUtilities.h"
+#import "SignupVC.h"
 
 @interface ClassViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *signup;
@@ -26,10 +27,13 @@
 @implementation ClassViewController
 
 
-static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
-static NSString *const kClientId = @"919063903792-mq1o9pmi47qdbe2ar1rv72fhohta9unf.apps.googleusercontent.com";
-static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
-NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
+//static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
+//static NSString *const kClientId = @"919063903792-mq1o9pmi47qdbe2ar1rv72fhohta9unf.apps.googleusercontent.com";
+//static NSString *const kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
+NSString const *rootURL=@"https://limitless-wildwood-8014.herokuapp.com/";
+NSString const *kClientSecret = @"_4RSLRU9KjLFjZZiVXgEpFT5";
+NSString const *kClientId = @"919063903792-mq1o9pmi47qdbe2ar1rv72fhohta9unf.apps.googleusercontent.com";
+NSString *kKeychainItemName = @"iOSDriveSample: Google Drive";
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:80]];
@@ -42,8 +46,8 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
 	// Do any additional setup after loading the view, typically from a nib.
     GTMOAuth2Authentication *auth =
     [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
-                                                          clientID:kClientId
-                                                      clientSecret:kClientSecret];
+                                                          clientID:(NSString*) kClientId
+                                                      clientSecret:(NSString*) kClientSecret];
     if ([auth canAuthorize]) {
         [self isAuthorizedWithAuthentication:auth];
     }
@@ -60,8 +64,8 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
         SEL finishedSelector = @selector(viewController:finishedWithAuth:error:);
         GTMOAuth2ViewControllerTouch *authViewController =
         [[GTMOAuth2ViewControllerTouch alloc] initWithScope:kGTLAuthScopeDrive
-                                                   clientID:kClientId
-                                               clientSecret:kClientSecret
+                                                   clientID:(NSString *)kClientId
+                                               clientSecret:(NSString *)kClientSecret
                                            keychainItemName:kKeychainItemName
                                                    delegate:self
                                            finishedSelector:finishedSelector];
@@ -76,7 +80,6 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
 }
 
 -(void)showAlert{
-    NSLog(@"I reach here");
     self.loginAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading Classboard"
                                                           delegate:self];
 }
@@ -85,12 +88,12 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
       finishedWithAuth:(GTMOAuth2Authentication *)auth
                  error:(NSError *)error {
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self getUserInfo:self.driveService];
     if (error == nil) {
         //After they log in, we introduce the alert
+        [self isAuthorizedWithAuthentication:auth];
+        [self getUserInfo:self.driveService];
         self.loginAlert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading Classboard"
                                                               delegate:self];
-        [self isAuthorizedWithAuthentication:auth];
     }
 }
 
@@ -106,7 +109,10 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
         vc.driveService = self.driveService;
         vc.userData = self.jsonResp;
         vc.userId = self.userId;
-        
+    }
+    else if ([segue.identifier isEqualToString:@"signUp"]){
+        SignupVC *vc = [segue destinationViewController];
+        vc.driveService = self.driveService;
     }
 }
 
@@ -134,8 +140,11 @@ NSString *rootURL=@"http://shrouded-ocean-4177.herokuapp.com/";
 -(void)classAuthCheck {
     NSError *error = [[NSError alloc] init];
     NSString *newURL = [NSString stringWithFormat:@"%@%@", rootURL, @"login/"];
-    NSData *resp = [self getDataFrom:newURL withKeys:@[@"username"] withValues:@[[NSString stringWithFormat:@"%@",self.userId]]];
+    //NSData *resp = [self getDataFrom:newURL withKeys:@[@"username"] withValues:@[[NSString stringWithFormat:@"%@",self.userId]]];
     //Need to do something if the username has been taken
+    //For now we will skip ahead
+    [self performSegueWithIdentifier:@"postSignon" sender:self];
+    [self.loginAlert dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 - (NSData *) getDataFrom:(NSString *)url withKeys:(NSArray *)keys withValues:(NSArray *)values{

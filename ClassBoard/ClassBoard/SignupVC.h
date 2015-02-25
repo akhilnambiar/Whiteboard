@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ClassViewController.h"
+#import "GTMOAuth2ViewControllerTouch.h"
+#import "GTLDrive.h"
+#import "DrEditUtilities.h"
 @interface SignupVC : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
-
+@property GTLServiceDrive *driveService;
 @end

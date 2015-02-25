@@ -10,7 +10,12 @@
 #import "GTLServiceDrive.h"
 
 @interface SplashPageViewController : UIViewController
-extern const NSString *rootURL;
+/*
+extern NSString const *rootURL;
+extern NSString const *kClientSecret;
+extern NSString const *kClientId;
+extern NSString const *kKeychainItemName;
+ */
 @property (weak, nonatomic) GTLServiceDrive *driveService;
 @property (weak, nonatomic) NSDictionary *userData;
 @property NSString* userId;

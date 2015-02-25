@@ -7,7 +7,7 @@
 //
 
 #import "InvitesViewController.h"
-#import "SplashPageViewController.h"
+#import "ClassViewController.h"
 #import "BoardViewController.h"
 #import "DrEditUtilities.h"
 

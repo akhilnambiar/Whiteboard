@@ -10,5 +10,8 @@
 #import "GTLDrive.h"
 
 @interface ClassViewController : UIViewController
-
+extern NSString const *rootURL;
+extern NSString const *kClientSecret;
+extern NSString const *kClientId;
+extern NSString const *kKeychainItemName;
 @end

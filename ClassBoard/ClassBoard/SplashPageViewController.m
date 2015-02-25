@@ -23,8 +23,6 @@
 
 @end
 
-static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
-
 @implementation SplashPageViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -104,6 +102,7 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
         }
 }
 
+/*
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
     if([identifier isEqualToString:@"splashToDocument"]){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
@@ -116,7 +115,7 @@ static NSString *const kKeychainItemName = @"iOSDriveSample: Google Drive";
     }
     return YES;
 }
-
+*/
 
 
 - (NSData *) getDataFrom:(NSString *)url withKeys:(NSArray *)keys withValues:(NSArray *)values{

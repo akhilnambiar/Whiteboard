@@ -38,6 +38,7 @@
 		1B42D2BF1A96F23E0049D05C /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B42D2BE1A96F23E0049D05C /* SignupVC.m */; };
 		1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */; };
 		1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81ECBB197BBE0800789664 /* InvitesViewController.m */; };
+		1B8A8F6D1A9E5D3700C29491 /* DocumentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A8F6C1A9E5D3700C29491 /* DocumentVC.m */; };
 		1B96522E1992BE950071DD05 /* walkway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B96522D1992BE950071DD05 /* walkway.ttf */; };
 		1B9652351992CE0A0071DD05 /* TestControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9652341992CE0A0071DD05 /* TestControllerViewController.m */; };
 		1BCDF68C1978EE3C007745AD /* SaveLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */; };
@@ -130,6 +131,8 @@
 		1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
 		1B81ECBA197BBE0800789664 /* InvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitesViewController.h; sourceTree = "<group>"; };
 		1B81ECBB197BBE0800789664 /* InvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitesViewController.m; sourceTree = "<group>"; };
+		1B8A8F6B1A9E5D3700C29491 /* DocumentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentVC.h; sourceTree = "<group>"; };
+		1B8A8F6C1A9E5D3700C29491 /* DocumentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentVC.m; sourceTree = "<group>"; };
 		1B96522D1992BE950071DD05 /* walkway.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = walkway.ttf; sourceTree = "<group>"; };
 		1B9652331992CE0A0071DD05 /* TestControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestControllerViewController.h; sourceTree = "<group>"; };
 		1B9652341992CE0A0071DD05 /* TestControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestControllerViewController.m; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 				1B42D2BD1A96F23D0049D05C /* SignupVC.h */,
 				1B42D2BE1A96F23E0049D05C /* SignupVC.m */,
 				1B9652331992CE0A0071DD05 /* TestControllerViewController.h */,
+				1B8A8F6B1A9E5D3700C29491 /* DocumentVC.h */,
+				1B8A8F6C1A9E5D3700C29491 /* DocumentVC.m */,
 				1B9652341992CE0A0071DD05 /* TestControllerViewController.m */,
 				1B169DDF1960D66300CDC9AA /* ClassGroupsViewController.h */,
 				1B169DE01960D66300CDC9AA /* ClassGroupsViewController.m */,
@@ -447,6 +452,7 @@
 				1B3E15F2195C8EA000DF7B16 /* ClassAppDelegate.m in Sources */,
 				1B3E15F8195C8EA000DF7B16 /* ClassViewController.m in Sources */,
 				1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */,
+				1B8A8F6D1A9E5D3700C29491 /* DocumentVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

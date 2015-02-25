@@ -7,7 +7,7 @@
 //
 
 #import "ClassGroupsViewController.h"
-#import "SplashPageViewController.h"
+#import "ClassViewController.h"
 #import "HandoutViewController.h"
 #import "DrEditUtilities.h"
 
@@ -39,7 +39,7 @@
     [self.groupLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:40]];
     // Do any additional setup after loading the view.
     self.selectedMates = [[NSMutableArray alloc]init];
-    const NSString *rU = rootURL;
+    NSString *rU = rootURL;
     NSString *classListURL = [rU stringByAppendingString:@"get_classmates/"];
     [self getDataFrom:classListURL withKeys:@[@"teacher",@"period"] withValues:@[[self.userData objectForKey:@"teacher"],[self.userData objectForKey:@"period"]] ];
     self.classmateList.dataSource = self;
