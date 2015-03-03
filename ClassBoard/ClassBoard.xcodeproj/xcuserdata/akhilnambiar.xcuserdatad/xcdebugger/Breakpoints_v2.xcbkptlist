@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClassBoard/SignupVC.m"
-            timestampString = "446582256.842262"
+            timestampString = "447040851.993789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-addNewUser"
             landmarkType = "5">
          </BreakpointContent>

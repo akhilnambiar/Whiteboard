@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1B169DE11960D66300CDC9AA /* ClassGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B169DE01960D66300CDC9AA /* ClassGroupsViewController.m */; };
 		1B169DE81960DAB200CDC9AA /* HandoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B169DE71960DAB200CDC9AA /* HandoutViewController.m */; };
+		1B3480401AA54B7500F1B4A3 /* PushFIleTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B34803F1AA54B7500F1B4A3 /* PushFIleTVC.m */; };
+		1B3480471AA55A7300F1B4A3 /* DocumentTBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3480461AA55A7300F1B4A3 /* DocumentTBC.m */; };
 		1B3E15E2195C8EA000DF7B16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E15E1195C8EA000DF7B16 /* Foundation.framework */; };
 		1B3E15E4195C8EA000DF7B16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E15E3195C8EA000DF7B16 /* CoreGraphics.framework */; };
 		1B3E15E6195C8EA000DF7B16 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3E15E5195C8EA000DF7B16 /* UIKit.framework */; };
@@ -88,6 +90,10 @@
 		1B169DE01960D66300CDC9AA /* ClassGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassGroupsViewController.m; sourceTree = "<group>"; };
 		1B169DE61960DAB200CDC9AA /* HandoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoutViewController.h; sourceTree = "<group>"; };
 		1B169DE71960DAB200CDC9AA /* HandoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoutViewController.m; sourceTree = "<group>"; };
+		1B34803E1AA54B7500F1B4A3 /* PushFIleTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushFIleTVC.h; sourceTree = "<group>"; };
+		1B34803F1AA54B7500F1B4A3 /* PushFIleTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushFIleTVC.m; sourceTree = "<group>"; };
+		1B3480451AA55A7200F1B4A3 /* DocumentTBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentTBC.h; sourceTree = "<group>"; };
+		1B3480461AA55A7300F1B4A3 /* DocumentTBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentTBC.m; sourceTree = "<group>"; };
 		1B3E15DE195C8EA000DF7B16 /* ClassBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3E15E1195C8EA000DF7B16 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1B3E15E3195C8EA000DF7B16 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -226,6 +232,10 @@
 				1B3E15F0195C8EA000DF7B16 /* ClassAppDelegate.h */,
 				1B3E15F1195C8EA000DF7B16 /* ClassAppDelegate.m */,
 				1B3E15F3195C8EA000DF7B16 /* Main.storyboard */,
+				1B3480451AA55A7200F1B4A3 /* DocumentTBC.h */,
+				1B3480461AA55A7300F1B4A3 /* DocumentTBC.m */,
+				1B34803E1AA54B7500F1B4A3 /* PushFIleTVC.h */,
+				1B34803F1AA54B7500F1B4A3 /* PushFIleTVC.m */,
 				1B42D2BD1A96F23D0049D05C /* SignupVC.h */,
 				1B42D2BE1A96F23E0049D05C /* SignupVC.m */,
 				1B9652331992CE0A0071DD05 /* TestControllerViewController.h */,
@@ -441,6 +451,7 @@
 				1B169DE81960DAB200CDC9AA /* HandoutViewController.m in Sources */,
 				1B42D2BF1A96F23E0049D05C /* SignupVC.m in Sources */,
 				1B3E15EE195C8EA000DF7B16 /* main.m in Sources */,
+				1B3480471AA55A7300F1B4A3 /* DocumentTBC.m in Sources */,
 				1B3E1630195CBB1100DF7B16 /* GTLDrive_Sources.m in Sources */,
 				1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */,
 				1B3E1635195CD71000DF7B16 /* SplashPageViewController.m in Sources */,
@@ -453,6 +464,7 @@
 				1B3E15F8195C8EA000DF7B16 /* ClassViewController.m in Sources */,
 				1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */,
 				1B8A8F6D1A9E5D3700C29491 /* DocumentVC.m in Sources */,
+				1B3480401AA54B7500F1B4A3 /* PushFIleTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

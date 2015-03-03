@@ -137,7 +137,6 @@
 }
 
 -(void) addNewUser{
-    //SAVEPOINT: ADD ALL OF THE USERNAME INFORMATION TO MAKE A POST REQUEST
     //we need to keep track of teacher variables here
     NSString *school = [self.schoolList objectAtIndex:[self.schoolPick selectedRowInComponent:0]];
     NSString *teacher = [self.teacherList objectAtIndex:[self.teacherPick selectedRowInComponent:0]];
@@ -159,8 +158,8 @@
     NSString *firstName = self.nameTextField.text;
     NSString *lastName = self.lnameTextField.text;
     NSString *email = self.emailTextField.text;
-    [self makePostRequestwithKeys:@[@"user",@"school",@"teacher",@"period",@"first_name",@"last_name",@"email"] withValues:@[@"123",school,teacher,period,firstName,lastName,email]];
-    [self performSegueWithIdentifier:@"postSignon" sender:self];
+    [self makePostRequestwithKeys:@[@"username",@"school",@"teacher",@"period",@"first_name",@"last_name",@"email"] withValues:@[@"123",school,teacher,period,firstName,lastName,email]];
+    [self performSegueWithIdentifier:@"signToSplash" sender:self];
     [self.loginAlert dismissWithClickedButtonIndex:0 animated:YES];
 }
 

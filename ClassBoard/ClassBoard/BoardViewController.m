@@ -160,7 +160,7 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-
+#pragma mark SocketRocket
 // SRWebSocket handlers
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {

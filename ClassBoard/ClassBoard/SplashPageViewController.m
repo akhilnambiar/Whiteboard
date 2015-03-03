@@ -12,6 +12,7 @@
 #import "ClassGroupsViewController.h"
 #import "InvitesViewController.h"
 #import "DrEditUtilities.h"
+#import "DocumentTBC.h"
 
 @interface SplashPageViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *SingleBoard;
@@ -99,6 +100,11 @@
             viewController.driveService = self.driveService;
             viewController.userData = self.userData;
             viewController.userId = self.userId;
+        }
+        else if([segue.identifier isEqualToString:@"splashToDocuments"]){
+            DocumentTBC *viewController = [segue destinationViewController];
+            viewController.driveService = self.driveService;
+            viewController.userData = self.userData;
         }
 }
 

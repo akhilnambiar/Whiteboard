@@ -161,7 +161,7 @@
                         <outlet property="periodPick" destination="5Zc-2E-tVj" id="zKZ-Tn-IBO"/>
                         <outlet property="schoolPick" destination="zG3-TQ-fbQ" id="6ah-R4-XBe"/>
                         <outlet property="teacherPick" destination="Bms-lv-om7" id="awh-2T-fya"/>
-                        <segue destination="r2n-0T-QHB" kind="push" id="kLz-91-DUF"/>
+                        <segue destination="r2n-0T-QHB" kind="push" identifier="signToSplash" id="kLz-91-DUF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjb-C8-PXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -453,15 +453,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostRecent" id="IYf-eI-JJa"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F37-8v-gNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2166" y="2582"/>
+            <point key="canvasLocation" x="2204" y="2938"/>
         </scene>
-        <!--View Controller-->
+        <!--DocumentVC-->
         <scene sceneID="HOp-fC-4a2">
             <objects>
-                <viewController id="O3D-vY-11S" sceneMemberID="viewController">
+                <viewController id="O3D-vY-11S" customClass="DocumentVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zMl-rv-uhl"/>
                         <viewControllerLayoutGuide type="bottom" id="K4f-t7-pzo"/>
@@ -477,10 +479,10 @@
             </objects>
             <point key="canvasLocation" x="821" y="3494"/>
         </scene>
-        <!--View Controller-->
+        <!--DocumentVC-->
         <scene sceneID="lyo-Uq-vGb">
             <objects>
-                <viewController id="bE3-n1-hkk" sceneMemberID="viewController">
+                <viewController id="bE3-n1-hkk" customClass="DocumentVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a3Y-Q6-DKu"/>
                         <viewControllerLayoutGuide type="bottom" id="W1h-hg-UNR"/>
@@ -491,6 +493,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="YCV-wR-bqn"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLf-gU-JwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -754,12 +758,45 @@
             </objects>
             <point key="canvasLocation" x="-739" y="-284"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--PushF IleTVC-->
+        <scene sceneID="7tX-UP-QiW">
+            <objects>
+                <tableViewController id="Icu-hf-Ynr" customClass="PushFIleTVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Pdr-aT-K0B">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YoK-Gl-8Qd">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YoK-Gl-8Qd" id="lsf-Yi-tnB">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Icu-hf-Ynr" id="ne9-SF-1QS"/>
+                            <outlet property="delegate" destination="Icu-hf-Ynr" id="iDs-q0-qiF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="HTa-qv-jtM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eN1-34-mB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="436" y="2212"/>
+        </scene>
+        <!--DocumentTBC-->
         <scene sceneID="Mbw-Fl-zI1">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="4fx-u6-Igl" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="4fx-u6-Igl" customClass="DocumentTBC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="iDq-P0-BRK"/>
+                    <navigationItem key="navigationItem" id="iDq-P0-BRK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="92P-rS-JAE">
+                            <connections>
+                                <segue destination="Icu-hf-Ynr" kind="push" identifier="docToPush" id="xmE-TI-dRm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="SSM-Bw-LZd">
                         <autoresizingMask key="autoresizingMask"/>
@@ -791,9 +828,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="9xQ-Vr-LXa"/>
         <segue reference="QaU-7h-pGT"/>
-        <segue reference="TCw-F8-Zgr"/>
+        <segue reference="kLz-91-DUF"/>
         <segue reference="TLA-V3-tj8"/>
-        <segue reference="I09-Fa-8Ju"/>
     </inferredMetricsTieBreakers>
 </document>

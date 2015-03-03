@@ -140,10 +140,10 @@ NSString *kKeychainItemName = @"iOSDriveSample: Google Drive";
 -(void)classAuthCheck {
     NSError *error = [[NSError alloc] init];
     NSString *newURL = [NSString stringWithFormat:@"%@%@", rootURL, @"login/"];
-    //NSData *resp = [self getDataFrom:newURL withKeys:@[@"username"] withValues:@[[NSString stringWithFormat:@"%@",self.userId]]];
+    NSData *resp = [self getDataFrom:newURL withKeys:@[@"username"] withValues:@[[NSString stringWithFormat:@"%@",self.userId]]];
     //Need to do something if the username has been taken
     //For now we will skip ahead
-    [self performSegueWithIdentifier:@"postSignon" sender:self];
+    //[self performSegueWithIdentifier:@"postSignon" sender:self];
     [self.loginAlert dismissWithClickedButtonIndex:0 animated:YES];
 }
 

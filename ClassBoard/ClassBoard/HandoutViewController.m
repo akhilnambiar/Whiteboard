@@ -421,8 +421,8 @@
 }
 /*
  LOGIC:go through and get the thumbnails
+ This method is most likely not being used
  
- */
 -(void) getThumbnails:(NSMutableArray *)picArray {
     //Since we're in objective C, we don't have to do null checks, we can just check to see what we have and go from
     NSMutableArray* contents = [[NSMutableArray alloc] init];
@@ -433,7 +433,7 @@
     //[self drawHandouts:contents];
 }
 
-
+*/
 
 //This is the method that is clicked when you choose to have a handout
 -(void) clickButton:(id) sender{
@@ -498,6 +498,7 @@
         [result addObject:group];
     }
     self.jsonResp =  parsedObject;
+    NSLog(@"The jsonresp is: %@",self.jsonResp);
     [self loadDriveFiles];
     
 }
