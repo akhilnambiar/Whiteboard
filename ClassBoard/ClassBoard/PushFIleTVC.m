@@ -44,8 +44,7 @@
     return 0;
 }
 
-//SAVEPOINT: Get the files to be pushed (or we can manually push them)
-//SAVEPOINT: We should probably just focus on populating the files instead into the docs view
+//SAVEPOINT: Finish the Teacher Model
 //Loads all of the Handout Files
 -(void)loadHandoutFiles {
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
@@ -66,8 +65,15 @@
             }
             [self.driveFiles removeAllObjects];
             [self.driveFiles addObjectsFromArray:files.items];
-            NSLog(@"DriveFiles: %@",self.driveFiles);
-            //[];
+            //NSLog(@"DriveFiles: %@",self.driveFiles);
+            //Now we will print the driveFiles to get the correct information
+            NSArray* handoutFiles = @[@"addition_worksheet",@"english_worksheet",@"reading_worksheet",@"division_worksheet",@"LetterA.pdf",@"LetterB.pdf",@"LetterC.pdf"];
+            for (int i=0; i<[self.driveFiles count]; i++){
+                GTLDriveFile *f = [self.driveFiles objectAtIndex:i];
+                if ([handoutFiles indexOfObject:f.title]!=NSNotFound){
+                    NSLog(@"title:%@, gid:%@, thumbnailLink:%@,",f.title,f.identifier,f.thumbnailLink);
+                }
+            }
         } else {
             NSLog(@"An error occurred: %@", error);
             [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
