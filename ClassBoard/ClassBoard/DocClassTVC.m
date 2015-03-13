@@ -1,22 +1,21 @@
 //
-//  PushFIleTVC.m
+//  DocClassTVC.m
 //  ClassBoard
 //
-//  Created by Akhil Nambiar on 3/2/15.
+//  Created by Akhil Nambiar on 3/9/15.
 //  Copyright (c) 2015 Akhil Nambiar. All rights reserved.
 //
 
-#import "PushFIleTVC.h"
+#import "DocClassTVC.h"
 
-@interface PushFIleTVC ()
-@property NSMutableArray* driveFiles;
+@interface DocClassTVC ()
+
 @end
 
-@implementation PushFIleTVC
+@implementation DocClassTVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadHandoutFiles];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -43,48 +42,6 @@
     // Return the number of rows in the section.
     return 0;
 }
-
-//Loads all of the Handout Files
--(void)loadHandoutFiles {
-    GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
-    //query.q = @"mimeType = 'text/plain'";
-    //NSString *search = [NSString stringWithFormat:@"title =math"];
-    //query.q = search;
-    
-    UIAlertView *alert = [DrEditUtilities showLoadingMessageWithTitle:@"Loading files"
-                                                             delegate:self];
-    [self.driveService executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
-                                                              GTLDriveFileList *files,
-                                                              NSError *error) {
-        NSLog(@" we start the query");
-        [alert dismissWithClickedButtonIndex:0 animated:YES];
-        if (error == nil) {
-            if (self.driveFiles == nil) {
-                self.driveFiles = [[NSMutableArray alloc] init];
-            }
-            [self.driveFiles removeAllObjects];
-            [self.driveFiles addObjectsFromArray:files.items];
-            //NSLog(@"DriveFiles: %@",self.driveFiles);
-            //Now we will print the driveFiles to get the correct information
-            /*
-            NSArray* handoutFiles = @[@"addition_worksheet",@"english_worksheet",@"reading_worksheet",@"division_worksheet",@"LetterA.pdf",@"LetterB.pdf",@"LetterC.pdf",@"1-short_vowels.pdf",@"2-short-vowels.pdf",@"3-short-vowels.pdf",@"4-short-vowels.pdf"];
-            for (int i=0; i<[self.driveFiles count]; i++){
-                GTLDriveFile *f = [self.driveFiles objectAtIndex:i];
-                if ([handoutFiles indexOfObject:f.title]!=NSNotFound){
-                    NSLog(@"title:%@, gid:%@, thumbnailLink:%@,",f.title,f.identifier,f.thumbnailLink);
-                }
-            }
-             */
-        } else {
-            NSLog(@"An error occurred: %@", error);
-            [DrEditUtilities showErrorMessageWithTitle:@"Unable to load files"
-                                               message:[error description]
-                                              delegate:self];
-        }
-    }];
-}
-
-
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

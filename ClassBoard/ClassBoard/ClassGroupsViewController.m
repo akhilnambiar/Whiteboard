@@ -24,6 +24,7 @@
 
 @implementation ClassGroupsViewController
 
+#pragma mark Setup
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,9 +40,12 @@
     [self.groupLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:40]];
     // Do any additional setup after loading the view.
     self.selectedMates = [[NSMutableArray alloc]init];
-    NSString *rU = rootURL;
+    const NSString *rU = rootURL;
     NSString *classListURL = [rU stringByAppendingString:@"get_classmates/"];
-    [self getDataFrom:classListURL withKeys:@[@"teacher",@"period"] withValues:@[[self.userData objectForKey:@"teacher"],[self.userData objectForKey:@"period"]] ];
+    NSLog(@"userdata: %@",self.userData);
+    NSString* teacher=[[self.userData objectForKey:@"teacher"] objectAtIndex:1];
+    NSString* period=[[self.userData objectForKey:@"period"] objectAtIndex:1];
+    [self getDataFrom:classListURL withKeys:@[@"teacher",@"period"] withValues:@[teacher,period] ];
     self.classmateList.dataSource = self;
     self.classmateList.delegate = self;
 }
@@ -117,9 +121,6 @@
 }
 
 
-
-
-
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *student = cell.textLabel.text;
     NSLog(@"The row that is being called is,%@ and the BOOL is:%hhd",student,[self.selectedMates containsObject:student]);
@@ -131,6 +132,9 @@
     }
 }
 
+
+#pragma mark Controller Actions
+
 - (IBAction)confirmInvites:(id)sender {
     NSMutableArray *t = [self finalizeInvites];
     [self makePostRequestwithKeys:@[@"user_id",@"file_name"] withValues:@[t,@"math_worksheet"]];
@@ -138,6 +142,24 @@
     [self performSegueWithIdentifier:@"groupsToHandout" sender:self];
 }
 
+//Again, we need to finalize the invites as well. We should push this to the next view
+-(NSMutableArray*)finalizeInvites{
+    NSArray *t = [self.jsonResp objectForKey:@"user_id"];
+    NSLog(@"User_ID Array:%@",t);
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (int i=0;i<[self.selectedMates count];i++){
+        NSLog(@"%d",i);
+        NSNumber* x = (NSNumber *) [self.selectedMates objectAtIndex:i];
+        NSLog(@"%@",x);
+        NSLog(@"The actual class %@",[[self.selectedMates objectAtIndex:i] class]);
+        NSLog(@"Selectedmates: %@",self.selectedMates);
+        [result addObject:[t objectAtIndex:[x integerValue]]];
+    }
+    NSLog (@"The string we will send %@",result);
+    return result;
+}
+
+#pragma mark RESTAPI
 - (NSData *) getDataFrom:(NSString *)url withKeys:(NSArray *)keys withValues:(NSArray *)values{
     NSError *error = [[NSError alloc] init];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -171,8 +193,7 @@
 {
     NSError *localError = nil;
     NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error:&localError];
-    
-    
+    NSLog(@"parsedObject: %@,",parsedObject);
     if (localError != nil) {
         *error = localError;
     }
@@ -194,23 +215,6 @@
     [self.classmateList reloadData];
     //[self loadDriveFiles];
     
-}
-
-//Again, we need to finalize the invites as well. We should push this to the next view
--(NSMutableArray*)finalizeInvites{
-    NSArray *t = [self.jsonResp objectForKey:@"user_id"];
-    NSLog(@"User_ID Array:%@",t);
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    for (int i=0;i<[self.selectedMates count];i++){
-        NSLog(@"%d",i);
-        NSNumber* x = (NSNumber *) [self.selectedMates objectAtIndex:i];
-        NSLog(@"%@",x);
-        NSLog(@"The actual class %@",[[self.selectedMates objectAtIndex:i] class]);
-        NSLog(@"Selectedmates: %@",self.selectedMates);
-        [result addObject:[t objectAtIndex:[x integerValue]]];
-    }
-    NSLog (@"The string we will send %@",result);
-    return result;
 }
 
 

@@ -39,8 +39,11 @@
 		1B3E164F195CEC2700DF7B16 /* SmoothedBIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E164E195CEC2700DF7B16 /* SmoothedBIView.m */; };
 		1B42D2BF1A96F23E0049D05C /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B42D2BE1A96F23E0049D05C /* SignupVC.m */; };
 		1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */; };
+		1B622D4B1AAE6A6B00687F9A /* DocTitleTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B622D4A1AAE6A6B00687F9A /* DocTitleTVC.m */; };
+		1B622D521AAE6AB700687F9A /* DocClassTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B622D511AAE6AB700687F9A /* DocClassTVC.m */; };
+		1B622D551AAE6AEB00687F9A /* DocAssignTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B622D541AAE6AEB00687F9A /* DocAssignTVC.m */; };
+		1B622D581AAE6AFB00687F9A /* DocGroupTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B622D571AAE6AFB00687F9A /* DocGroupTVC.m */; };
 		1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81ECBB197BBE0800789664 /* InvitesViewController.m */; };
-		1B8A8F6D1A9E5D3700C29491 /* DocumentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A8F6C1A9E5D3700C29491 /* DocumentVC.m */; };
 		1B96522E1992BE950071DD05 /* walkway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B96522D1992BE950071DD05 /* walkway.ttf */; };
 		1B9652351992CE0A0071DD05 /* TestControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9652341992CE0A0071DD05 /* TestControllerViewController.m */; };
 		1BCDF68C1978EE3C007745AD /* SaveLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */; };
@@ -135,10 +138,16 @@
 		1B42D2BE1A96F23E0049D05C /* SignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupVC.m; sourceTree = "<group>"; };
 		1B4F678719734A8400AC7CD3 /* DrEditUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrEditUtilities.h; sourceTree = "<group>"; };
 		1B4F678819734A8400AC7CD3 /* DrEditUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrEditUtilities.m; sourceTree = "<group>"; };
+		1B622D491AAE6A6B00687F9A /* DocTitleTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocTitleTVC.h; sourceTree = "<group>"; };
+		1B622D4A1AAE6A6B00687F9A /* DocTitleTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocTitleTVC.m; sourceTree = "<group>"; };
+		1B622D501AAE6AB700687F9A /* DocClassTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocClassTVC.h; sourceTree = "<group>"; };
+		1B622D511AAE6AB700687F9A /* DocClassTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocClassTVC.m; sourceTree = "<group>"; };
+		1B622D531AAE6AEB00687F9A /* DocAssignTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocAssignTVC.h; sourceTree = "<group>"; };
+		1B622D541AAE6AEB00687F9A /* DocAssignTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocAssignTVC.m; sourceTree = "<group>"; };
+		1B622D561AAE6AFB00687F9A /* DocGroupTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocGroupTVC.h; sourceTree = "<group>"; };
+		1B622D571AAE6AFB00687F9A /* DocGroupTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocGroupTVC.m; sourceTree = "<group>"; };
 		1B81ECBA197BBE0800789664 /* InvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitesViewController.h; sourceTree = "<group>"; };
 		1B81ECBB197BBE0800789664 /* InvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitesViewController.m; sourceTree = "<group>"; };
-		1B8A8F6B1A9E5D3700C29491 /* DocumentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentVC.h; sourceTree = "<group>"; };
-		1B8A8F6C1A9E5D3700C29491 /* DocumentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentVC.m; sourceTree = "<group>"; };
 		1B96522D1992BE950071DD05 /* walkway.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = walkway.ttf; sourceTree = "<group>"; };
 		1B9652331992CE0A0071DD05 /* TestControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestControllerViewController.h; sourceTree = "<group>"; };
 		1B9652341992CE0A0071DD05 /* TestControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestControllerViewController.m; sourceTree = "<group>"; };
@@ -228,6 +237,14 @@
 				1B3E162F195CBB1100DF7B16 /* GTLDrive_Sources.m */,
 				1B3E162C195CBAE500DF7B16 /* GTMOAuth2ViewTouch.xib */,
 				1BCDF68A1978EE3C007745AD /* SaveLocationViewController.h */,
+				1B622D501AAE6AB700687F9A /* DocClassTVC.h */,
+				1B622D511AAE6AB700687F9A /* DocClassTVC.m */,
+				1B622D561AAE6AFB00687F9A /* DocGroupTVC.h */,
+				1B622D571AAE6AFB00687F9A /* DocGroupTVC.m */,
+				1B622D531AAE6AEB00687F9A /* DocAssignTVC.h */,
+				1B622D541AAE6AEB00687F9A /* DocAssignTVC.m */,
+				1B622D4A1AAE6A6B00687F9A /* DocTitleTVC.m */,
+				1B622D491AAE6A6B00687F9A /* DocTitleTVC.h */,
 				1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */,
 				1B3E15F0195C8EA000DF7B16 /* ClassAppDelegate.h */,
 				1B3E15F1195C8EA000DF7B16 /* ClassAppDelegate.m */,
@@ -239,8 +256,6 @@
 				1B42D2BD1A96F23D0049D05C /* SignupVC.h */,
 				1B42D2BE1A96F23E0049D05C /* SignupVC.m */,
 				1B9652331992CE0A0071DD05 /* TestControllerViewController.h */,
-				1B8A8F6B1A9E5D3700C29491 /* DocumentVC.h */,
-				1B8A8F6C1A9E5D3700C29491 /* DocumentVC.m */,
 				1B9652341992CE0A0071DD05 /* TestControllerViewController.m */,
 				1B169DDF1960D66300CDC9AA /* ClassGroupsViewController.h */,
 				1B169DE01960D66300CDC9AA /* ClassGroupsViewController.m */,
@@ -449,21 +464,24 @@
 			files = (
 				1B9652351992CE0A0071DD05 /* TestControllerViewController.m in Sources */,
 				1B169DE81960DAB200CDC9AA /* HandoutViewController.m in Sources */,
+				1B622D581AAE6AFB00687F9A /* DocGroupTVC.m in Sources */,
 				1B42D2BF1A96F23E0049D05C /* SignupVC.m in Sources */,
 				1B3E15EE195C8EA000DF7B16 /* main.m in Sources */,
 				1B3480471AA55A7300F1B4A3 /* DocumentTBC.m in Sources */,
 				1B3E1630195CBB1100DF7B16 /* GTLDrive_Sources.m in Sources */,
 				1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */,
+				1B622D551AAE6AEB00687F9A /* DocAssignTVC.m in Sources */,
 				1B3E1635195CD71000DF7B16 /* SplashPageViewController.m in Sources */,
 				1B3E163E195CE9B200DF7B16 /* BoardViewController.m in Sources */,
+				1B622D521AAE6AB700687F9A /* DocClassTVC.m in Sources */,
 				1BCDF68C1978EE3C007745AD /* SaveLocationViewController.m in Sources */,
 				1B3E164F195CEC2700DF7B16 /* SmoothedBIView.m in Sources */,
 				1B3E1647195CEA9600DF7B16 /* SRWebSocket.m in Sources */,
 				1B169DE11960D66300CDC9AA /* ClassGroupsViewController.m in Sources */,
+				1B622D4B1AAE6A6B00687F9A /* DocTitleTVC.m in Sources */,
 				1B3E15F2195C8EA000DF7B16 /* ClassAppDelegate.m in Sources */,
 				1B3E15F8195C8EA000DF7B16 /* ClassViewController.m in Sources */,
 				1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */,
-				1B8A8F6D1A9E5D3700C29491 /* DocumentVC.m in Sources */,
 				1B3480401AA54B7500F1B4A3 /* PushFIleTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *thirdButton;
 @property (weak, nonatomic) IBOutlet UIButton *testButton;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) NSData *imageData;
 
 //These properties are for the testboard
 @property UIImage* handoutImage;
@@ -119,35 +120,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     [self.thirdButton.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
     [self.saveButton.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:20]];
     [self.testButton.titleLabel setFont:[UIFont fontWithName:@"WalkwaySemiBold" size:16]];
-    //The following block is mainly for testing purposes. It checks to see if the websocket is working
-    /*
-    if(self.smooth2){
-        NSLog(@"yea");
-        NSLog(@"the image %@",self.handoutImage);
-        [self.handoutImageView2 setImage:self.handoutImage];
-        NSString *url = @"http://glacial-castle-5433.herokuapp.com/paint";
-        //This will make a get request
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        [request setHTTPMethod:@"GET"];
-        [request setURL:[NSURL URLWithString:url]];
-        
-        NSError *error = [[NSError alloc] init];
-        NSHTTPURLResponse *responseCode = nil;
-        
-        NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-        NSString* response;
-        if([responseCode statusCode] != 200){
-            NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
-            response = @"no hay response";
-        }
-     
-        response = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-        NSLog(@"response is %@",response);
-        [self.smooth2 updateLabel:oResponseData];
-    }
-    */
-    //end of testing code block
-    
     
     self.navigationController.toolbarHidden = NO; 
     self.red = 0.0/255.0;
@@ -339,11 +311,13 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     [self.driveService.fetcherService fetcherWithURLString:self.driveFile.downloadUrl];
     [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
         [alert dismissWithClickedButtonIndex:0 animated:YES];
+        self.imageData=data;
         if (error == nil) {
             UIImage *image = [UIImage imageWithData:data];
             [self.handoutImageView setImage:image];
             self.handoutImage = image;
-            NSLog(@"at first the image is: %@",self.handoutImage);
+            NSLog(@"the image is :%@",self.handoutImage);
+            [self displayImage];
         } else {
             NSLog(@"An error occurred: %@", error);
             [DrEditUtilities showErrorMessageWithTitle:@"Unable to load file"
@@ -362,5 +336,36 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     [alert show];
     [self performSegueWithIdentifier:@"WebsocketTestSegue" sender:self];
 }
+
+-(void)displayImage{
+    if (self.handoutImage==nil){
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:screenRect];
+        //NSURL *targetURL = [NSURL URLWithString:self.driveFile.downloadUrl];
+        //NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
+        //[webView loadRequest:request];
+        NSLog(@"data is %@",self.imageData);
+        [webView loadData:self.imageData MIMEType:@"application/pdf" textEncodingName:@"utf-8" baseURL:nil];
+        NSLog(@"download URL:%@",self.driveFile.downloadUrl);
+        [self.view addSubview:webView];
+        [self.view sendSubviewToBack:webView];
+    }
+}
+
+/*
+ Next Steps:
+ 
+1) First, we need to check to see if the image is null (is it a jpeg or a pdf)
+ 
+2) Then, we should be able to display our image as either a pdf or a jpeg
+ Display PDF in UIWebView
+ http://stackoverflow.com/questions/2832245/iphone-can-we-open-pdf-file-using-uiwebview
+ http://code.tutsplus.com/tutorials/ios-sdk-previewing-and-opening-documents--mobile-15130
+ 
+
+3) Once we display as a pdf, we need to call different saving functions depending on what kind of object it is.
+ http://stackoverflow.com/questions/15813005/creating-pdf-file-from-uiwebview
+ 
+ */
 
 @end

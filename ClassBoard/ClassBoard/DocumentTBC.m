@@ -7,7 +7,10 @@
 //
 
 #import "DocumentTBC.h"
-#import "DocumentVC.h"
+#import "DocTitleTVC.h"
+#import "DocClassTVC.h"
+#import "DocAssignTVC.h"
+#import "DocGroupTVC.h"
 #import "PushFIleTVC.h"
 
 @interface DocumentTBC ()
@@ -19,19 +22,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    DocumentVC* vc = nil;
-    vc=(DocumentVC *)[[self viewControllers] objectAtIndex:0];
+    DocTitleTVC* vc=(DocTitleTVC *)[[self viewControllers] objectAtIndex:0];
     vc.driveService=self.driveService;
     vc.userData=self.userData;
-    vc=(DocumentVC *)[[self viewControllers] objectAtIndex:1];
-    vc.driveService=self.driveService;
-    vc.userData=self.userData;
-    vc=(DocumentVC *)[[self viewControllers] objectAtIndex:2];
-    vc.driveService=self.driveService;
-    vc.userData=self.userData;
-    vc=(DocumentVC *)[[self viewControllers] objectAtIndex:3];
-    vc.driveService=self.driveService;
-    vc.userData=self.userData;
+    DocAssignTVC* vc3=(DocAssignTVC *)[[self viewControllers] objectAtIndex:1];
+    vc3.driveService=self.driveService;
+    vc3.userData=self.userData;
+    /*
+    DocClassTVC* vc2=(DocClassTVC *)[[self viewControllers] objectAtIndex:2];
+    vc2.driveService=self.driveService;
+    vc2.userData=self.userData;
+    DocGroupTVC* vc4=(DocGroupTVC *)[[self viewControllers] objectAtIndex:3];
+    vc4.driveService=self.driveService;
+    vc4.userData=self.userData;
+     */
 }
 
 - (void)didReceiveMemoryWarning {
