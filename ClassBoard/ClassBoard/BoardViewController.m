@@ -341,16 +341,16 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     if (self.handoutImage==nil){
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         UIWebView *webView = [[UIWebView alloc] initWithFrame:screenRect];
-        //NSURL *targetURL = [NSURL URLWithString:self.driveFile.downloadUrl];
-        //NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
-        //[webView loadRequest:request];
         NSLog(@"data is %@",self.imageData);
         [webView loadData:self.imageData MIMEType:@"application/pdf" textEncodingName:@"utf-8" baseURL:nil];
         NSLog(@"download URL:%@",self.driveFile.downloadUrl);
         [self.view addSubview:webView];
         [self.view sendSubviewToBack:webView];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
 }
+
+//SAVEPOINT: Have the page look a little better if you have time
 
 /*
  Next Steps:
