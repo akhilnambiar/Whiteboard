@@ -38,6 +38,7 @@
         //NSString *response = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
         self.recieveView.image = image;
         //  NSLog(@"response is %@",image);
+        [self drawBitmapAfterRecieving];
         self.running=NO;
     }
 }
@@ -75,7 +76,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    NSLog(@"draw rect is called");
+    NSLog(@"when is it called");
     [incrementalImage drawInRect:rect];
     [self.recievedData drawInRect:rect];
     [path stroke];
@@ -147,7 +148,6 @@ APPARENTLY THIS IS NEVER BEING CALLED
 {
     //AT SOME POINT, WE NEED TO INSTALL INCREMENTAL CACHING
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0.0);
-    
     if (!incrementalImage) // first time; paint background white
     {
         UIBezierPath *rectpath = [UIBezierPath bezierPathWithRect:self.bounds];
@@ -155,6 +155,29 @@ APPARENTLY THIS IS NEVER BEING CALLED
         [rectpath fill];
     }
     [incrementalImage drawAtPoint:CGPointZero];
+    [[UIColor blackColor] setStroke];
+    [path stroke];
+    incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+}
+
+-(void)drawBitmapAfterRecieving
+{
+    //AT SOME POINT, WE NEED TO INSTALL INCREMENTAL CACHING
+    
+    /*
+     Note: At times there is a unexpected nil window in _UIApplicationHandleEventFromQueueEvent, _windowServerHitTestWindow: (null)
+     This appears to be a hardewear issue at times and might not have to do with the code itself
+     */
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0.0);
+    if (!incrementalImage) // first time; paint background white
+    {
+        UIBezierPath *rectpath = [UIBezierPath bezierPathWithRect:self.bounds];
+        [[[UIColor whiteColor] colorWithAlphaComponent:0.0] setFill];
+        [rectpath fill];
+    }
+    [incrementalImage drawAtPoint:CGPointZero];
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
     [[UIColor blackColor] setStroke];
     [path stroke];
     incrementalImage = UIGraphicsGetImageFromCurrentImageContext();

@@ -173,6 +173,7 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     self.connectStatus.textColor = [UIColor redColor];
 }
 
+#pragma mark touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded: touches withEvent: event];
@@ -346,7 +347,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
         NSLog(@"download URL:%@",self.driveFile.downloadUrl);
         [self.view addSubview:webView];
         [self.view sendSubviewToBack:webView];
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
 }
 
