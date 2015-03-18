@@ -46,6 +46,7 @@
 		1B81ECBC197BBE0800789664 /* InvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81ECBB197BBE0800789664 /* InvitesViewController.m */; };
 		1B96522E1992BE950071DD05 /* walkway.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B96522D1992BE950071DD05 /* walkway.ttf */; };
 		1B9652351992CE0A0071DD05 /* TestControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9652341992CE0A0071DD05 /* TestControllerViewController.m */; };
+		1BA8019F1AB9F12F006C38AB /* DocGroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA8019E1AB9F12F006C38AB /* DocGroupVC.m */; };
 		1BCDF68C1978EE3C007745AD /* SaveLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */; };
 		1BF049D91A66F79B007125E5 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF049D41A66F698007125E5 /* libGTLTouchStaticLib.a */; };
 /* End PBXBuildFile section */
@@ -151,6 +152,8 @@
 		1B96522D1992BE950071DD05 /* walkway.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = walkway.ttf; sourceTree = "<group>"; };
 		1B9652331992CE0A0071DD05 /* TestControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestControllerViewController.h; sourceTree = "<group>"; };
 		1B9652341992CE0A0071DD05 /* TestControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestControllerViewController.m; sourceTree = "<group>"; };
+		1BA8019D1AB9F12F006C38AB /* DocGroupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocGroupVC.h; sourceTree = "<group>"; };
+		1BA8019E1AB9F12F006C38AB /* DocGroupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocGroupVC.m; sourceTree = "<group>"; };
 		1BCDF68A1978EE3C007745AD /* SaveLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveLocationViewController.h; sourceTree = "<group>"; };
 		1BCDF68B1978EE3C007745AD /* SaveLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveLocationViewController.m; sourceTree = "<group>"; };
 		1BF049CA1A66F68E007125E5 /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = "google-api-objectivec-client-read-only/Source/GTL.xcodeproj"; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				1B3E15F0195C8EA000DF7B16 /* ClassAppDelegate.h */,
 				1B3E15F1195C8EA000DF7B16 /* ClassAppDelegate.m */,
 				1B3E15F3195C8EA000DF7B16 /* Main.storyboard */,
+				1BA8019D1AB9F12F006C38AB /* DocGroupVC.h */,
+				1BA8019E1AB9F12F006C38AB /* DocGroupVC.m */,
 				1B3480451AA55A7200F1B4A3 /* DocumentTBC.h */,
 				1B3480461AA55A7300F1B4A3 /* DocumentTBC.m */,
 				1B34803E1AA54B7500F1B4A3 /* PushFIleTVC.h */,
@@ -467,6 +472,7 @@
 				1B622D581AAE6AFB00687F9A /* DocGroupTVC.m in Sources */,
 				1B42D2BF1A96F23E0049D05C /* SignupVC.m in Sources */,
 				1B3E15EE195C8EA000DF7B16 /* main.m in Sources */,
+				1BA8019F1AB9F12F006C38AB /* DocGroupVC.m in Sources */,
 				1B3480471AA55A7300F1B4A3 /* DocumentTBC.m in Sources */,
 				1B3E1630195CBB1100DF7B16 /* GTLDrive_Sources.m in Sources */,
 				1B4F678919734A8400AC7CD3 /* DrEditUtilities.m in Sources */,

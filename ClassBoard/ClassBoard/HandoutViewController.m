@@ -79,7 +79,6 @@
     return self;
 }
 
-//SAVEPOINT: You get the handout files, now they just need to be inserted correctly
 - (void)viewDidLoad
 {
     [super viewDidLoad];

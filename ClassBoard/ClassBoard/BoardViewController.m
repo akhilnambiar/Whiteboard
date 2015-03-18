@@ -350,8 +350,6 @@ NSString *clientSecret = @"919063903792-k7t7k2tlvsr2g99g10v27a0t9oa2u559@develop
     }
 }
 
-//SAVEPOINT: Have the page look a little better if you have time
-
 /*
  Next Steps:
  
