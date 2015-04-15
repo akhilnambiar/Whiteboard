@@ -623,7 +623,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "<Multiple/** values>/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "/Users/akhilnambiar/Documents/Github/Whiteboard/Classboard/google-api-objectivec-client-read-only/Source/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -642,7 +642,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "<Multiple/** values>/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "/Users/akhilnambiar/Documents/Github/Whiteboard/Classboard/google-api-objectivec-client-read-only/Source/**";
 				WRAPPER_EXTENSION = app;
 			};

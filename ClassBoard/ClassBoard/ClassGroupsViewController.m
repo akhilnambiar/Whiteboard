@@ -45,7 +45,8 @@
     NSLog(@"userdata: %@",self.userData);
     NSString* teacher=[[self.userData objectForKey:@"teacher"] objectAtIndex:1];
     NSString* period=[[self.userData objectForKey:@"period"] objectAtIndex:1];
-    [self getDataFrom:classListURL withKeys:@[@"teacher",@"period"] withValues:@[teacher,period] ];
+    NSString* user=[self.userData objectForKey:@"user_id"];
+    [self getDataFrom:classListURL withKeys:@[@"user",@"teacher",@"period"] withValues:@[user,teacher,period] ];
     self.classmateList.dataSource = self;
     self.classmateList.delegate = self;
 }
@@ -178,7 +179,6 @@
     [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:data];
     NSHTTPURLResponse *responseCode = nil;
-    
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
     
     if([responseCode statusCode] != 200){

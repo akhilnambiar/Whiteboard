@@ -54,7 +54,7 @@
     const NSString *rU = rootURL;
     NSString *handoutURL = [rU stringByAppendingString:@"get_invites/"];
     
-    [self getDataFrom:handoutURL withKeys:@[@"user_id",@"teacher",@"period"] withValues:@[self.userId,[self.userData objectForKey:@"teacher"],[self.userData objectForKey:@"period"] ] ];
+    [self getDataFrom:handoutURL withKeys:@[@"inviter"] withValues:@[self.userId] ];
     // Do any additional setup after loading the view.
 }
 
@@ -168,7 +168,7 @@
     [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:data];
     NSHTTPURLResponse *responseCode = nil;
-    
+    NSLog(@"The request is %@",dict);
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
     
     if([responseCode statusCode] != 200){
